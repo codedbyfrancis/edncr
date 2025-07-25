@@ -1,0 +1,33 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "devsecure": "NODE_TLS_REJECT_UNAUTHORIZED=0 nuxt dev --https --ssl-cert /Users/f/localhost.pem --ssl-key /Users/f/localhost-key.pem",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/fonts": "^0.11.4",
+    "@nuxt/image": "^1.10.0",
+    "@nuxt/scripts": "^0.11.10",
+    "@nuxt/ui": "^3.3.0",
+    "@nuxtjs/i18n": "^10.0.3",
+    "@nuxtjs/supabase": "^1.6.0",
+    "@unhead/vue": "^2.0.12",
+    "@vueuse/nuxt": "^13.5.0",
+    "nuxt": "^4.0.1",
+    "typescript": "^5.8.3",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@iconify-json/cil": "^1.2.2",
+    "@iconify-json/lucide": "^1.2.58",
+    "@iconify-json/material-symbols": "^1.2.30",
+    "@iconify-json/mdi": "^1.2.3"
+  }
+}

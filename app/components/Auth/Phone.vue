@@ -92,7 +92,7 @@ async function verifyOtp() {
           class="input-phone"
           v-model="phone"
           :ui="{
-            base: 'px-4 py-2 pl-16',
+            base: 'px-4 py-2 pl-22',
             leading: 'pointer-events-none',
           }"
         >

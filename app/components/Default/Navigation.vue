@@ -29,7 +29,7 @@ async function signOut() {
 </script>
 <template>
   <nav class="p-4">
-    <div><DefaultLogo /></div>
+    <div><DefaultHeaderLogo /></div>
 
     <ul class="flex">
       <NuxtLinkLocale to="/" class="nav-items">

@@ -48,7 +48,7 @@ onBeforeUnmount(() => {
 <template>
   <nav ref="navRef">
     <div class="logo">
-      <DefaultLogo />
+      <DefaultHeaderLogo />
     </div>
     <!-- Hamburger Icon -->
     <button

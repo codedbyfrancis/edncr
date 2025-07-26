@@ -2,11 +2,17 @@
   <div class="footer">
     <div>
       <div class="copyright">
-        <LogoCbf :fill="`var(--logo-fill)`" :width="18" :height="18" />
-        <span>Copyright</span>
+        <span>ⓒ Copyright {{ new Date().getFullYear() }}</span>
       </div>
       <div class="cbf">
-        <span>CodedbyFrancis</span>
+        <span
+          >This website was CodedbyFrancis
+          <LogoCbf
+            :fill="`var(--logo-fill)`"
+            :width="1.5"
+            :height="1.5"
+          />.</span
+        >
       </div>
     </div>
     <ClientOnly>
@@ -19,10 +25,11 @@
 .footer {
   @apply text-center py-5;
   .copyright {
-    @apply flex flex-row items-center justify-center gap-2;
+    @apply flex flex-row items-center justify-center gap-2 text-base;
   }
-  .cbf {
-    @apply text-sm;
+  .cbf,
+  span {
+    @apply flex flex-row justify-center items-center gap-2 text-sm;
   }
 }
 </style>

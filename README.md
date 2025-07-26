@@ -6,3 +6,9 @@ Remove the url to allow
 chrome://settings/content/federatedIdentityApi
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+
+# Supabase Locally
+
+## If can not start
+
+Run: supabase stop --no-backup && supabase start

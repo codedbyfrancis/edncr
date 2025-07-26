@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
+const config = useRuntimeConfig();
 
 const loading = ref(false);
 
@@ -9,7 +10,8 @@ const signInWithGoogle = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: window.location.origin + '/accounts/confirm',
+      redirectTo: config.public.appUrl + '/accounts/confirm',
+      // redirectTo: window.location.origin + '/accounts/confirm',
     },
   });
   if (error) {

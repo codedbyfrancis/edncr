@@ -9,8 +9,8 @@
           >This website was CodedbyFrancis
           <LogoCbf
             :fill="`var(--logo-fill)`"
-            :width="1.5"
-            :height="1.5"
+            :width="0.8"
+            :height="0.8"
           />.</span
         >
       </div>

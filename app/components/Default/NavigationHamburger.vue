@@ -86,7 +86,7 @@ onBeforeUnmount(() => {
     <transition name="fade">
       <div
         v-if="isOpen"
-        class="absolute top-18 left-0 w-full bg-[var(--surface-container-low)] text-[var(--on-surface-variant)] shadow-md md:hidden z-50"
+        class="absolute top-14 left-0 w-full bg-[var(--surface-container-low)] text-[var(--on-surface-variant)] shadow-md md:hidden z-50"
       >
         <ul class="flex flex-col p-4">
           <NuxtLinkLocale @click="isOpen = false" to="/" class="nav-items">

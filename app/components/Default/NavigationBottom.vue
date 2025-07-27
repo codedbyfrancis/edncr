@@ -57,6 +57,24 @@ const { locale } = useI18n();
           <span class="name">Contacts</span>
         </li>
       </NuxtLinkLocale>
+
+      <NuxtLinkLocale to="/manage" class="icon">
+        <li>
+          <span class="icon">
+            <UIcon
+              v-if="route.name === 'manage___' + locale"
+              name="material-symbols:settings-applications"
+              class="size-7"
+            />
+            <UIcon
+              v-else
+              name="material-symbols:settings-applications-outline"
+              class="size-7"
+            />
+          </span>
+          <span class="name">Manage</span>
+        </li>
+      </NuxtLinkLocale>
     </ul>
   </div>
 </template>

@@ -172,9 +172,9 @@ onBeforeUnmount(() => {
                 </div>
                 <div>
                   <NuxtLinkLocale
+                    class="cursor-pointer flex items-center gap-3 py-3 px-4 rounded-full font-medium hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out"
                     v-if="user"
                     @click="signOut"
-                    class="cursor-pointer nav-items"
                   >
                     <li>Logout</li>
                   </NuxtLinkLocale>
@@ -213,7 +213,10 @@ nav {
     @apply pl-2;
   }
   .nav-items {
-    @apply rounded-full py-4 px-8 hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out;
+    @apply rounded-full py-4 px-8 font-[Inika] hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out;
+  }
+  .log-out {
+    @apply hover:bg-[var(--error)] hover:text-[var(--on-surface-variant)];
   }
   .router-link-active {
     @apply rounded-full px-8 font-semibold text-[var(--on-primary)] bg-[var(--on-primary-container)] hover:text-[var(--on-primary)] hover:bg-[var(--on-primary-container)];

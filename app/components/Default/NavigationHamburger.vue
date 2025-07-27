@@ -183,13 +183,13 @@ onBeforeUnmount(() => {
             </li>
 
             <li class="nav-component">
-              <div class="py-2">Select your language:</div>
+              <div>Select your language:</div>
               <DefaultLanguageSwitcher />
             </li>
             <li class="nav-component">
               <div class="flex justify-between">
-                <div class="py-2">Select your theme:</div>
-                <div class="py-2">Select text size:</div>
+                <div>Select your theme:</div>
+                <div>Select text size:</div>
               </div>
 
               <div class="flex justify-between">
@@ -208,7 +208,7 @@ onBeforeUnmount(() => {
 @reference "tailwindcss";
 
 nav {
-  @apply flex items-center justify-between py-2;
+  @apply flex items-center justify-between py-2 bg-[var(--surface-container-low)];
   .logo {
     @apply pl-2;
   }
@@ -228,7 +228,7 @@ nav {
     }
   }
   .nav-component {
-    @apply p-4;
+    @apply p-4 py-3;
   }
 
   .fade-enter-active,

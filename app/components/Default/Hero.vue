@@ -38,4 +38,9 @@
     </div>
   </section>
 </template>
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+@reference 'tailwindcss';
+.hero {
+  @apply font-[Inika];
+}
+</style>

@@ -10,7 +10,9 @@ const head = useLocaleHead({
 <template>
   <Html :lang="locale.code" :dir="head.htmlAttrs.dir">
     <header>
-      <DefaultNavigationAccessibility />
+      <div class="hidden md:block">
+        <DefaultNavigationAccessibility />
+      </div>
       <div class="hidden md:block">
         <DefaultNavigation />
       </div>

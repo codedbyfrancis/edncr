@@ -2,7 +2,7 @@
 @import '@nuxt/ui';
 
 body {
-  @apply bg-[var(--background)] text-[var(--on-background)] font-[Inika];
+  @apply bg-[var(--background)] text-[var(--on-background)] font-[Roboto];
 }
 
 section {

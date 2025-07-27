@@ -84,7 +84,7 @@ async function signOut() {
 nav {
   @apply flex items-center justify-between bg-[var(--surface-container-low)] text-[var(--on-surface-container)] p-4;
   .nav-items {
-    @apply flex items-center py-2 px-4 whitespace-nowrap font-medium rounded-full hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out;
+    @apply flex items-center font-[Inika] py-2 px-4 whitespace-nowrap font-medium rounded-full hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out;
   }
   .nav-items-components {
     @apply py-2 px-4 rounded-full text-xl bg-[var(--transparent)] text-[var(--on-surface-container)] hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out;

@@ -31,12 +31,12 @@ section,
   .dirham-symbol {
     font-family: 'UAESymbol', sans-serif;
     color: inherit;
-    @apply text-[1rem] pr-1;
+    /* @apply text-[1rem] pr-1; */
     /* font-size: inherit; */
     /* font-size: 2rem; */
   }
   .amount {
-    @apply text-[1.5rem];
+    /* @apply text-[1.5rem]; */
   }
 }
 </style>

@@ -28,13 +28,15 @@ watch(
 </script>
 
 <template>
-  <div>
-    <div>Authenticating your credentials...</div>
-  </div>
+  <section>
+    <div class="page">
+      <div>Authenticating your credentials...</div>
+    </div>
+  </section>
 </template>
 <style lang="css" scoped>
 @reference "tailwindcss";
-div {
+section {
   @apply flex items-center justify-center h-[80vh] text-2xl font-bold;
   color: var(--on-surface);
 }

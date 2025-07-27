@@ -41,14 +41,9 @@ const signInWithGoogle = async () => {
   </section>
 </template>
 <style lang="css" scoped>
-/* @reference "tailwindcss";
-section {
-  .auth-card {
-    .button {
-      .icon {
-        @apply p-3 mr-2;
-      }
-    }
-  }
-} */
+@reference 'tailwindcss';
+section,
+.auth-card {
+  @apply flex flex-col justify-center items-center;
+}
 </style>

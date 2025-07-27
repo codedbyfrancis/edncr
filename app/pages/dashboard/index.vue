@@ -26,10 +26,12 @@ useSeoMeta({
 </script>
 <template>
   <section>
-    <h1>Dashboard/index {{ $t('language') }}</h1>
-    <h2>
-      {{ $t('welcome') }} <span v-if="user?.email">{{ user?.email }}</span
-      ><span v-else>{{ user?.phone }}</span>
-    </h2>
+    <div class="page">
+      <h1>Dashboard/index {{ $t('language') }}</h1>
+      <h2>
+        {{ $t('welcome') }} <span v-if="user?.email">{{ user?.email }}</span
+        ><span v-else>{{ user?.phone }}</span>
+      </h2>
+    </div>
   </section>
 </template>

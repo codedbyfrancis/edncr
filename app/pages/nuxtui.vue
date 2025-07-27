@@ -14,8 +14,10 @@ useSeoMeta({
 </script>
 <template>
   <section>
-    <h1>NuxtUi {{ $t('language') }}</h1>
-    <h2>{{ $t('welcome') }}</h2>
-    <NuxtuiSamples />
+    <div class="page">
+      <h1>NuxtUi {{ $t('language') }}</h1>
+      <h2>{{ $t('welcome') }}</h2>
+      <NuxtuiSamples />
+    </div>
   </section>
 </template>

@@ -2,40 +2,43 @@
 @import '@nuxt/ui';
 
 body {
-  @apply bg-[var(--background)] text-[var(--on-background)] font-sans;
-}
-
-h1 {
-  @apply text-left text-2xl font-bold mb-4;
-}
-h2 {
-  @apply text-2xl font-medium mb-2;
+  @apply bg-[var(--background)] text-[var(--on-background)] font-[Inika];
 }
 
 section {
-  .auth-card {
-    @apply flex flex-col gap-2 text-center justify-center w-3/4 py-5;
-    h3 {
-      @apply text-2xl font-semibold;
+  @apply flex flex-col text-left;
+  .page {
+    h1 {
+      @apply text-left text-2xl font-bold mb-4;
     }
-    input {
-      @apply flex justify-center w-3/4 rounded-full py-3;
+    h2 {
+      @apply text-left text-2xl font-medium mb-2;
     }
-    .input {
-      @apply w-full flex justify-center;
-    }
-    button {
-      @apply flex rounded-full justify-center py-2 text-lg w-3/4 cursor-pointer;
-    }
-    .input-phone {
-      @apply flex justify-center bg-amber-300;
-    }
-    .pin {
-      @apply w-3/4;
-    }
-    .alert {
-      @apply text-left;
-    }
+  }
+}
+
+.auth-card {
+  @apply flex flex-col gap-2 text-center justify-center w-3/4 py-5;
+  h3 {
+    @apply text-2xl font-semibold;
+  }
+  input {
+    @apply flex justify-center w-3/4 rounded-full py-3;
+  }
+  .input {
+    @apply w-full flex justify-center;
+  }
+  button {
+    @apply flex rounded-full justify-center py-2 text-lg w-3/4 cursor-pointer;
+  }
+  .input-phone {
+    @apply flex justify-center bg-amber-300;
+  }
+  .pin {
+    @apply w-3/4;
+  }
+  .alert {
+    @apply text-left;
   }
 }
 

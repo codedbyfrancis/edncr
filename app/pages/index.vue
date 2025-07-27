@@ -13,9 +13,18 @@ useSeoMeta({
 });
 </script>
 <template>
-  <section>
-    <h1>Index {{ $t('language') }}</h1>
-    <h2>{{ $t('welcome') }}</h2>
-    <UiDirhamFont />
-  </section>
+  <div>
+    <div class="hero">
+      <DefaultHero />
+    </div>
+    <section>
+      <div class="page">
+        <div>
+          <h1>Index {{ $t('language') }}</h1>
+          <h2>{{ $t('welcome') }}</h2>
+          <UiDirhamFont />
+        </div>
+      </div>
+    </section>
+  </div>
 </template>

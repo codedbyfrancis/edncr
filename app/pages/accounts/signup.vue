@@ -25,22 +25,37 @@ useGoogleOneTap({
 });
 </script>
 <template>
-  <div>
-    <div>
-      <h1>Sign up {{ $t('language') }}</h1>
-      <h2>{{ $t('welcome') }}</h2>
-    </div>
-    <section>
-      <div class="box">
-        <USeparator label="Sign-up with your Email" />
-        <AuthEmailSignup />
+  <section>
+    <div class="auth">
+      <div>
+        <h1>Sign up {{ $t('language') }}</h1>
+        <h2>{{ $t('welcome') }}</h2>
       </div>
-    </section>
-  </div>
+
+      <div class="flex flex-col justify-center items-center">
+        <div class="box">
+          <AuthEmailSignup />
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 <style lang="css" scoped>
 @reference "tailwindcss";
 section {
+  .auth {
+    h1 {
+      @apply text-left text-2xl font-bold mb-4;
+    }
+    h2 {
+      @apply text-left text-2xl font-medium mb-2;
+    }
+    .box {
+      @apply flex flex-col justify-center items-center w-full md:w-1/2 p-4 bg-[var(--surface-container-low)] rounded-2xl shadow-lg;
+    }
+  }
+}
+/* section {
   @apply flex flex-col items-center justify-center text-center;
   h1 {
     @apply text-2xl font-bold mb-4;
@@ -51,5 +66,5 @@ section {
       @apply w-full max-w-md;
     }
   }
-}
+} */
 </style>

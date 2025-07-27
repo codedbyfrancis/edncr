@@ -25,8 +25,10 @@ useSeoMeta({
 </script>
 <template>
   <section>
-    <h1>Profile {{ $t('language') }}</h1>
-    <h2>{{ $t('welcome') }}</h2>
-    <pre>{{ data }}</pre>
+    <div class="page">
+      <h1>Profile {{ $t('language') }}</h1>
+      <h2>{{ $t('welcome') }}</h2>
+      <pre>{{ data }}</pre>
+    </div>
   </section>
 </template>

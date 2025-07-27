@@ -13,6 +13,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 });
 
+import { LazyUSeparator } from '#components';
 // Remove the url to allow
 // chrome://settings/content/federatedIdentityApi
 import { useGoogleOneTap } from '~/composables/useGoogleOneTap';
@@ -25,29 +26,44 @@ useGoogleOneTap({
 });
 </script>
 <template>
-  <div>
-    <div>
-      <h1>Accounts/Index {{ $t('language') }}</h1>
-      <h2>{{ $t('welcome') }}</h2>
-    </div>
-    <section>
-      <div class="box">
-        <AuthPhone />
-        <USeparator label="Log in with Magic Link" />
-        <AuthMagiclink />
-        <USeparator label="Sign in with your Social Media" />
-        <AuthGoogle />
-        <USeparator label="Sign in with your Email" />
-        <AuthEmailLogin />
-        <USeparator label="Sign up with your Email" />
-        <AuthEmailSignup />
+  <section>
+    <div class="auth">
+      <div>
+        <h1>Accounts/Index {{ $t('language') }}</h1>
+        <h2>{{ $t('welcome') }}</h2>
       </div>
-    </section>
-  </div>
+      <div class="flex flex-col justify-center items-center">
+        <div class="box">
+          <AuthPhone />
+          <LazyUSeparator />
+          <AuthMagiclink />
+          <USeparator />
+          <AuthGoogle />
+          <USeparator />
+          <AuthEmailLogin />
+          <USeparator />
+          <AuthEmailSignup />
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 <style lang="css" scoped>
 @reference "tailwindcss";
 section {
+  .auth {
+    h1 {
+      @apply text-left text-2xl font-bold mb-4;
+    }
+    h2 {
+      @apply text-left text-2xl font-medium mb-2;
+    }
+    .box {
+      @apply flex flex-col justify-center items-center w-full md:w-1/2 p-4 bg-[var(--surface-container-low)] rounded-2xl shadow-lg;
+    }
+  }
+}
+/* section {
   @apply flex flex-col items-center justify-center text-center;
   h1 {
     @apply text-2xl font-bold mb-4;
@@ -58,5 +74,5 @@ section {
       @apply w-full max-w-md;
     }
   }
-}
+} */
 </style>

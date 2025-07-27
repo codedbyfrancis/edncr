@@ -12,8 +12,8 @@ create table "public"."blogs" (
     "sub_title" character varying,
     "content" text not null,
     "featured_image" character varying,
-    "user_id" uuid not null,
-    "approved_by_user_id" uuid not null,
+    "user_id" uuid,
+    "approved_by_user_id" uuid,
     "modified_at" timestamp with time zone,
     "approved_at" timestamp with time zone default now(),
     "created_at" timestamp with time zone default now(),
@@ -31,13 +31,12 @@ create table "public"."pages" (
     "sub_title" character varying,
     "content" text not null,
     "featured_image" character varying,
-    "user_id" uuid not null,
-    "approved_by_user_id" uuid not null,
+    "user_id" uuid,
+    "approved_by_user_id" uuid,
     "status" pages_status default 'editing'::pages_status,
     "modified_at" timestamp with time zone,
     "approved_at" timestamp with time zone default now(),
     "created_at" timestamp with time zone default now()
-    
 );
 
 
@@ -255,14 +254,45 @@ grant truncate on table "public"."profiles" to "service_role";
 
 grant update on table "public"."profiles" to "service_role";
 
+create policy "Enable insert for authenticated users only"
+on "public"."blogs"
+as permissive
+for insert
+to authenticated
+with check ((( SELECT profiles.role
+   FROM profiles
+  WHERE (profiles.user_id = auth.uid())) = ANY (ARRAY['editor'::roles, 'manager'::roles, 'superuser'::roles])));
+
+
+create policy "Enable read access for all users"
+on "public"."blogs"
+as permissive
+for select
+to public
+using (true);
+
+
+create policy "Enable update for users based on email"
+on "public"."blogs"
+as permissive
+for update
+to authenticated
+using ((( SELECT profiles.role
+   FROM profiles
+  WHERE (profiles.user_id = auth.uid())) = ANY (ARRAY['editor'::roles, 'manager'::roles, 'superuser'::roles])))
+with check ((( SELECT profiles.role
+   FROM profiles
+  WHERE (profiles.user_id = auth.uid())) = ANY (ARRAY['editor'::roles, 'manager'::roles, 'superuser'::roles])));
+
+
 create policy "Enable insert for users based on user role"
 on "public"."pages"
 as permissive
 for insert
-to public
-with check ((EXISTS ( SELECT 1
+to authenticated
+with check ((( SELECT profiles.role
    FROM profiles
-  WHERE ((profiles.user_id = auth.uid()) AND (profiles.role = ANY (ARRAY['contributor'::roles, 'editor'::roles, 'manager'::roles, 'superuser'::roles]))))));
+  WHERE (profiles.user_id = auth.uid())) = ANY (ARRAY['editor'::roles, 'manager'::roles, 'superuser'::roles])));
 
 
 create policy "Enable read access for all users"
@@ -278,10 +308,12 @@ on "public"."pages"
 as permissive
 for update
 to authenticated
-using ((user_id = auth.uid()))
-with check ((EXISTS ( SELECT 1
+using ((( SELECT profiles.role
    FROM profiles
-  WHERE ((profiles.user_id = auth.uid()) AND (profiles.role = ANY (ARRAY['contributor'::roles, 'editor'::roles, 'manager'::roles, 'superuser'::roles]))))));
+  WHERE (profiles.user_id = auth.uid())) = ANY (ARRAY['editor'::roles, 'manager'::roles, 'superuser'::roles])))
+with check ((( SELECT profiles.role
+   FROM profiles
+  WHERE (profiles.user_id = auth.uid())) = ANY (ARRAY['editor'::roles, 'manager'::roles, 'superuser'::roles])));
 
 
 create policy "Enable insert for authenticated users only"

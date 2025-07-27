@@ -13,7 +13,8 @@ const user = data?.claims;
 const { data: profileData, error } = await supabase
   .from('profiles')
   .select()
-  .eq('user_id', user?.sub)
+  .eq('user_id', user.sub)
+  .in('role', ['contributor', 'editor', 'manager', 'superuser'])
   .single();
 
 // const user = useSupabaseUser();
@@ -32,14 +33,21 @@ useSeoMeta({
 </script>
 <template>
   <section
-    v-if="profileData.role === 'manager' || profileData.role === 'superuser'"
+    v-if="profileData?.role === 'manager' || profileData?.role === 'superuser'"
   >
     <div class="page">
-      <h1>Manage/index {{ $t('language') }}</h1>
-      <h2>
-        {{ $t('welcome') }} <span v-if="user?.email">{{ user?.email }}</span
-        ><span v-else>{{ user?.phone }}</span>
-      </h2>
+      <NuxtLink
+        to="/manage/pages"
+        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        Pages
+      </NuxtLink>
+      <NuxtLink
+        to="/manage/blogs"
+        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        Blogs
+      </NuxtLink>
     </div>
   </section>
   <section v-else>

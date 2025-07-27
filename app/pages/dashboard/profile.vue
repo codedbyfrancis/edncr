@@ -10,12 +10,10 @@ const supabase = useSupabaseClient();
 const { data } = await supabase.auth.getClaims();
 const user = data?.claims;
 
-console.log(data);
-
 const { data: profileData, error } = await supabase
   .from('profiles')
   .select()
-  .eq('user_id', user.sub)
+  .eq('user_id', user?.sub)
   .single();
 
 const config = useRuntimeConfig();
@@ -36,6 +34,7 @@ useSeoMeta({
     <div class="page">
       <h1>Profile {{ $t('language') }}</h1>
       <h2>{{ $t('welcome') }}</h2>
+      {{ user?.sub }}
       <div v-if="profileData">
         <div>Modified: {{ useTimeAgo(profileData.modified_at) }}</div>
         <div>

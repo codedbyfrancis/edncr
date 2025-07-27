@@ -13,7 +13,7 @@ const user = data?.claims;
 const { data: profileData, error } = await supabase
   .from('profiles')
   .select()
-  .eq('user_id', user.sub)
+  .eq('user_id', user?.sub)
   .single();
 
 // const user = useSupabaseUser();
@@ -34,7 +34,6 @@ useSeoMeta({
   <section
     v-if="profileData.role === 'manager' || profileData.role === 'superuser'"
   >
-    {{ profileData.role }}
     <div class="page">
       <h1>Manage/index {{ $t('language') }}</h1>
       <h2>

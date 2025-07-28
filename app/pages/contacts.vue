@@ -14,9 +14,8 @@ useSeoMeta({
 </script>
 <template>
   <section>
-    <div class="page">
-      <h1>Contact {{ $t('language') }}</h1>
-      <h2>{{ $t('welcome') }}</h2>
-    </div>
+    <DefaultPagesMain
+      :data="{ title: 'Contact', description: 'Contact description' }"
+    />
   </section>
 </template>

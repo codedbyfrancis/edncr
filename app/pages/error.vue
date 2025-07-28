@@ -1,6 +1,7 @@
 <template>
   <NuxtLayout>
-    <NuxtRouteAnnouncer />
-    <section>Error 404/Pages</section>
+    <DefaultPagesError
+      :data="{ title: '404 Error', description: 'Page not found.' }"
+    />
   </NuxtLayout>
 </template>

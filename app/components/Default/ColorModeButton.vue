@@ -30,7 +30,7 @@ const isDark = computed({
     </template>
   </ClientOnly>
 </template>
-<style scoped>
+<style lang="css" scoped>
 @reference "tailwindcss";
 .nav-items-components-scoped {
   @apply py-2 px-4 rounded-full text-xl bg-[var(--transparent)] text-[var(--on-surface-container)] hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out;

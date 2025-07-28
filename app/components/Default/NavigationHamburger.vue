@@ -204,7 +204,7 @@ onBeforeUnmount(() => {
   </nav>
 </template>
 
-<style scoped>
+<style lang="css" scoped>
 @reference "tailwindcss";
 
 nav {

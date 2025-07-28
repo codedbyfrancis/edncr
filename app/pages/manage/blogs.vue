@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+
 definePageMeta({
   middleware: 'auth',
   layout: 'default',
@@ -58,6 +60,18 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 });
 
+const { locale } = useI18n();
+
+const getTranslatedBlog = (blog: any) => {
+  const translated = blog.blogs_translations.find((t: any) => t.lang === locale.value);
+  if (translated) {
+    return translated;
+  } else {
+    // Fallback to English if current locale translation is not found
+    return blog.blogs_translations.find((t: any) => t.lang === 'en') || blog.blogs_translations[0];
+  }
+};
+
 const getStatusColor = (status: string) => {
   switch (status) {
     case 'approved':
@@ -106,7 +120,7 @@ const formatDate = (dateString: string) => {
             <div class="flex-1">
               <div class="flex items-center gap-3 mb-2">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ blog.blogs_translations[0]?.title }}
+                  {{ getTranslatedBlog(blog)?.title }}
                 </h3>
                 <UBadge 
                   :color="getStatusColor(blog.status)" 
@@ -117,16 +131,16 @@ const formatDate = (dateString: string) => {
                 </UBadge>
               </div>
               
-              <p v-if="blog.blogs_translations[0]?.sub_title" class="text-gray-600 dark:text-gray-300 mb-3">
-                {{ blog.blogs_translations[0]?.sub_title }}
+              <p v-if="getTranslatedBlog(blog)?.sub_title" class="text-gray-600 dark:text-gray-300 mb-3">
+                {{ getTranslatedBlog(blog)?.sub_title }}
               </p>
               
               <div class="flex flex-wrap gap-2 mb-3">
                 <UBadge color="blue" variant="soft" size="sm">
-                  {{ blog.blogs_translations[0]?.category }}
+                  {{ getTranslatedBlog(blog)?.category }}
                 </UBadge>
-                <UBadge v-if="blog.blogs_translations[0]?.sub_category" color="purple" variant="soft" size="sm">
-                  {{ blog.blogs_translations[0]?.sub_category }}
+                <UBadge v-if="getTranslatedBlog(blog)?.sub_category" color="purple" variant="soft" size="sm">
+                  {{ getTranslatedBlog(blog)?.sub_category }}
                 </UBadge>
               </div>
               
@@ -136,14 +150,14 @@ const formatDate = (dateString: string) => {
                   <span>Created: {{ formatDate(blog.created_at) }}</span>
                 </div>
                 
-                <div v-if="blog.blogs_translations[0]?.modified_at" class="flex items-center gap-2">
+                <div v-if="getTranslatedBlog(blog)?.modified_at" class="flex items-center gap-2">
                   <UIcon name="i-heroicons-pencil-square" class="w-4 h-4" />
-                  <span>Modified: {{ formatDate(blog.blogs_translations[0]?.modified_at) }}</span>
+                  <span>Modified: {{ formatDate(getTranslatedBlog(blog)?.modified_at) }}</span>
                 </div>
                 
-                <div v-if="blog.blogs_translations[0]?.approved_at" class="flex items-center gap-2">
+                <div v-if="getTranslatedBlog(blog)?.approved_at" class="flex items-center gap-2">
                   <UIcon name="i-heroicons-check-circle" class="w-4 h-4" />
-                  <span>Approved: {{ formatDate(blog.blogs_translations[0]?.approved_at) }}</span>
+                  <span>Approved: {{ formatDate(getTranslatedBlog(blog)?.approved_at) }}</span>
                 </div>
               </div>
             </div>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+
 definePageMeta({
   middleware: 'auth',
   layout: 'default',
@@ -47,6 +49,18 @@ useSeoMeta({
   ogImage: config.public.imageCdnUrl + '/icons/android-chrome-512x512.png',
   twitterCard: 'summary_large_image',
 });
+
+const { locale } = useI18n();
+
+const getTranslatedPage = (page: any) => {
+  const translated = page.pages_translations.find((t: any) => t.lang === locale.value);
+  if (translated) {
+    return translated;
+  } else {
+    // Fallback to English if current locale translation is not found
+    return page.pages_translations.find((t: any) => t.lang === 'en') || page.pages_translations[0];
+  }
+};
 
 const getStatusColor = (status: string) => {
   switch (status) {
@@ -108,7 +122,7 @@ const formatDate = (dateString: string) => {
             <div class="flex-1">
               <div class="flex items-center gap-3 mb-2">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ page.pages_translations[0]?.title }}
+                  {{ getTranslatedPage(page)?.title }}
                 </h3>
                 <UBadge
                   :color="getStatusColor(page.status)"
@@ -120,23 +134,23 @@ const formatDate = (dateString: string) => {
               </div>
 
               <p
-                v-if="page.pages_translations[0]?.sub_title"
+                v-if="getTranslatedPage(page)?.sub_title"
                 class="text-gray-600 dark:text-gray-300 mb-3"
               >
-                {{ page.pages_translations[0]?.sub_title }}
+                {{ getTranslatedPage(page)?.sub_title }}
               </p>
 
               <div class="flex flex-wrap gap-2 mb-3">
                 <UBadge color="blue" variant="soft" size="sm">
-                  {{ page.pages_translations[0]?.category }}
+                  {{ getTranslatedPage(page)?.category }}
                 </UBadge>
                 <UBadge
-                  v-if="page.pages_translations[0]?.sub_category"
+                  v-if="getTranslatedPage(page)?.sub_category"
                   color="purple"
                   variant="soft"
                   size="sm"
                 >
-                  {{ page.pages_translations[0]?.sub_category }}
+                  {{ getTranslatedPage(page)?.sub_category }}
                 </UBadge>
               </div>
 
@@ -146,14 +160,14 @@ const formatDate = (dateString: string) => {
                   <span>Created: {{ formatDate(page.created_at) }}</span>
                 </div>
 
-                <div v-if="page.pages_translations[0]?.modified_at" class="flex items-center gap-2">
+                <div v-if="getTranslatedPage(page)?.modified_at" class="flex items-center gap-2">
                   <UIcon name="i-heroicons-pencil-square" class="w-4 h-4" />
-                  <span>Modified: {{ formatDate(page.pages_translations[0]?.modified_at) }}</span>
+                  <span>Modified: {{ formatDate(getTranslatedPage(page)?.modified_at) }}</span>
                 </div>
 
-                <div v-if="page.pages_translations[0]?.approved_at" class="flex items-center gap-2">
+                <div v-if="getTranslatedPage(page)?.approved_at" class="flex items-center gap-2">
                   <UIcon name="i-heroicons-check-circle" class="w-4 h-4" />
-                  <span>Approved: {{ formatDate(page.pages_translations[0]?.approved_at) }}</span>
+                  <span>Approved: {{ formatDate(getTranslatedPage(page)?.approved_at) }}</span>
                 </div>
               </div>
             </div>

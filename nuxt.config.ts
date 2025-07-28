@@ -1,4 +1,5 @@
 import tailwindcss from '@tailwindcss/vite';
+import { defineNuxtConfig } from 'nuxt/config';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -30,7 +31,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      titleTemplate: '%s | ' + process.env.NUXT_PUBLIC_APP_NAME,
+      // titleTemplate: '%s | ' + process.env.NUXT_PUBLIC_APP_NAME,
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/icons/favicon.ico' },
 

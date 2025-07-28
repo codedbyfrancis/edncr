@@ -1,602 +1,83 @@
--- Create test users for each role (trigger will auto-create profiles)
-INSERT INTO auth.users (
-    id, 
-    email, 
-    encrypted_password, 
-    role, 
-    email_confirmed_at, 
-    created_at, 
-    updated_at,
-    raw_user_meta_data
-)
-VALUES 
-    (
-        '00000000-0000-0000-0000-000000000001',
-        'user@example.com', 
-        crypt('password123', gen_salt('bf')), 
-        'authenticated',
-        now(),
-        now(),
-        now(),
-        '{"full_name": "Regular User"}'::jsonb
-    ),
-    (
-        '00000000-0000-0000-0000-000000000002',
-        'contributor@example.com', 
-        crypt('password123', gen_salt('bf')), 
-        'authenticated',
-        now(),
-        now(),
-        now(),
-        '{"full_name": "Content Contributor"}'::jsonb
-    ),
-    (
-        '00000000-0000-0000-0000-000000000003',
-        'editor@example.com', 
-        crypt('password123', gen_salt('bf')), 
-        'authenticated',
-        now(),
-        now(),
-        now(),
-        '{"full_name": "Content Editor"}'::jsonb
-    ),
-    (
-        '00000000-0000-0000-0000-000000000004',
-        'manager@example.com', 
-        crypt('password123', gen_salt('bf')), 
-        'authenticated',
-        now(),
-        now(),
-        now(),
-        '{"full_name": "Project Manager"}'::jsonb
-    ),
-    (
-        '00000000-0000-0000-0000-000000000005',
-        'superuser@example.com', 
-        crypt('password123', gen_salt('bf')), 
-        'authenticated',
-        now(),
-        now(),
-        now(),
-        '{"full_name": "Super User"}'::jsonb
-    );
-
--- Update profiles with appropriate roles and names
-UPDATE public.profiles SET role = 'user', first_name = 'Regular', last_name = 'User' 
-WHERE user_id = '00000000-0000-0000-0000-000000000001';
-
-UPDATE public.profiles SET role = 'contributor', first_name = 'Content', last_name = 'Contributor' 
-WHERE user_id = '00000000-0000-0000-0000-000000000002';
-
-UPDATE public.profiles SET role = 'editor', first_name = 'Content', last_name = 'Editor' 
-WHERE user_id = '00000000-0000-0000-0000-000000000003';
-
-UPDATE public.profiles SET role = 'manager', first_name = 'Project', last_name = 'Manager' 
-WHERE user_id = '00000000-0000-0000-0000-000000000004';
-
-UPDATE public.profiles SET role = 'superuser', first_name = 'Super', last_name = 'User' 
-WHERE user_id = '00000000-0000-0000-0000-000000000005';
-
--- Create sample pages
-INSERT INTO public.pages (
-    category,
-    sub_category,
-    title,
-    sub_title,
-    content,
-    featured_image,
-    user_id,
-    approved_by_user_id,
-    status,
-    created_at,
-    modified_at,
-    approved_at
-)
+-- Create users
+INSERT INTO auth.users (instance_id, id, aud, role, email, encrypted_password, email_confirmed_at, recovery_token, recovery_sent_at, last_sign_in_at, raw_app_meta_data, raw_user_meta_data, created_at, updated_at, confirmation_token, email_change, email_change_sent_at)
 VALUES
-    (
-        'main',
-        'general',
-        'Welcome to Our Platform',
-        'Getting started guide',
-        'This is a comprehensive guide to help you get started with our platform. Learn about all the features and capabilities available to you.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/welcome-banner.jpg',
-        '00000000-0000-0000-0000-000000000002',
-        '00000000-0000-0000-0000-000000000004',
-        'approved',
-        now() - interval '10 days',
-        now() - interval '5 days',
-        now() - interval '3 days'
-    ),
-    (
-        'documentation',
-        'tutorials',
-        'User Authentication Guide',
-        'Step-by-step authentication setup',
-        'Learn how to implement secure user authentication in your application. This guide covers best practices and common pitfalls.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/auth-guide.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        '00000000-0000-0000-0000-000000000005',
-        'approved',
-        now() - interval '8 days',
-        now() - interval '4 days',
-        now() - interval '2 days'
-    ),
-    (
-        'blog',
-        'technology',
-        'The Future of Web Development',
-        'Trends and predictions for 2025',
-        'Explore the latest trends in web development and what to expect in the coming year. From new frameworks to emerging technologies.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/future-web.jpg',
-        '00000000-0000-0000-0000-000000000002',
-        NULL,
-        'for_review',
-        now() - interval '3 days',
-        now() - interval '1 day',
-        NULL
-    ),
-    (
-        'help',
-        'faq',
-        'Frequently Asked Questions',
-        'Common questions and answers',
-        'Find answers to the most commonly asked questions about our platform and services.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/faq.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        '00000000-0000-0000-0000-000000000004',
-        'approved',
-        now() - interval '15 days',
-        now() - interval '7 days',
-        now() - interval '5 days'
-    ),
-    (
-        'main',
-        'features',
-        'Advanced Features Overview',
-        'Discover powerful capabilities',
-        'Dive deep into the advanced features that make our platform unique. Learn how to leverage these tools for maximum productivity.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/features-overview.jpg',
-        '00000000-0000-0000-0000-000000000002',
-        NULL,
-        'editing',
-        now() - interval '2 days',
-        now() - interval '1 hour',
-        NULL
-    ),
-    (
-        'blog',
-        'company',
-        'Our Company Story',
-        'How we started and where we are going',
-        'Learn about our journey from a small startup to a leading platform provider. Discover our mission and vision.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/company-story.jpg',
-        '00000000-0000-0000-0000-000000000004',
-        '00000000-0000-0000-0000-000000000005',
-        'approved',
-        now() - interval '20 days',
-        now() - interval '10 days',
-        now() - interval '8 days'
-    ),
-    (
-        'documentation',
-        'api',
-        'API Reference Guide',
-        'Complete API documentation',
-        'Comprehensive documentation for our REST API endpoints. Includes examples, parameters, and response formats.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/api-reference.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        NULL,
-        'for_modification',
-        now() - interval '5 days',
-        now() - interval '2 days',
-        NULL
-    ),
-    (
-        'help',
-        'troubleshooting',
-        'Common Issues and Solutions',
-        'Troubleshooting guide',
-        'Step-by-step solutions for common problems users encounter. Includes screenshots and detailed explanations.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/troubleshooting.jpg',
-        '00000000-0000-0000-0000-000000000002',
-        '00000000-0000-0000-0000-000000000003',
-        'approved',
-        now() - interval '12 days',
-        now() - interval '6 days',
-        now() - interval '4 days'
-    ),
-    (
-        'blog',
-        'updates',
-        'Platform Updates March 2025',
-        'Latest features and improvements',
-        'Check out the latest updates and improvements to our platform. New features, bug fixes, and performance enhancements.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/updates-march.jpg',
-        '00000000-0000-0000-0000-000000000004',
-        NULL,
-        'for_review',
-        now() - interval '1 day',
-        now() - interval '6 hours',
-        NULL
-    ),
-    (
-        'main',
-        'privacy',
-        'Privacy Policy',
-        'How we protect your data',
-        'Our comprehensive privacy policy explaining how we collect, use, and protect your personal information.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/privacy-policy.jpg',
-        '00000000-0000-0000-0000-000000000005',
-        '00000000-0000-0000-0000-000000000005',
-        'approved',
-        now() - interval '30 days',
-        now() - interval '15 days',
-        now() - interval '14 days'
-    );
+    (gen_random_uuid(), gen_random_uuid(), 'authenticated', 'authenticated', 'user@example.com', crypt('password', gen_salt('bf')), (now() at time zone 'utc'), '', (now() at time zone 'utc'), (now() at time zone 'utc'), '{"provider":"email","providers":["email"]}', '{"full_name":"Normal User"}', (now() at time zone 'utc'), (now() at time zone 'utc'), '', '', (now() at time zone 'utc')),
+    (gen_random_uuid(), gen_random_uuid(), 'authenticated', 'authenticated', 'contributor@example.com', crypt('password', gen_salt('bf')), (now() at time zone 'utc'), '', (now() at time zone 'utc'), (now() at time zone 'utc'), '{"provider":"email","providers":["email"]}', '{"full_name":"Contributor User"}', (now() at time zone 'utc'), (now() at time zone 'utc'), '', '', (now() at time zone 'utc')),
+    (gen_random_uuid(), gen_random_uuid(), 'authenticated', 'authenticated', 'editor@example.com', crypt('password', gen_salt('bf')), (now() at time zone 'utc'), '', (now() at time zone 'utc'), (now() at time zone 'utc'), '{"provider":"email","providers":["email"]}', '{"full_name":"Editor User"}', (now() at time zone 'utc'), (now() at time zone 'utc'), '', '', (now() at time zone 'utc')),
+    (gen_random_uuid(), gen_random_uuid(), 'authenticated', 'authenticated', 'manager@example.com', crypt('password', gen_salt('bf')), (now() at time zone 'utc'), '', (now() at time zone 'utc'), (now() at time zone 'utc'), '{"provider":"email","providers":["email"]}', '{"full_name":"Manager User"}', (now() at time zone 'utc'), (now() at time zone 'utc'), '', '', (now() at time zone 'utc')),
+    (gen_random_uuid(), gen_random_uuid(), 'authenticated', 'authenticated', 'superuser@example.com', crypt('password', gen_salt('bf')), (now() at time zone 'utc'), '', (now() at time zone 'utc'), (now() at time zone 'utc'), '{"provider":"email","providers":["email"]}', '{"full_name":"Super User"}', (now() at time zone 'utc'), (now() at time zone 'utc'), '', '', (now() at time zone 'utc'));
 
--- Create sample blogs (25 entries)
-INSERT INTO public.blogs (
-    category,
-    sub_category,
-    title,
-    sub_title,
-    content,
-    featured_image,
-    user_id,
-    approved_by_user_id,
-    status,
-    created_at,
-    modified_at,
-    approved_at
-)
-VALUES
-    (
-        'technology',
-        'web-development',
-        'Building Modern Web Applications with Vue 3',
-        'A comprehensive guide to Vue 3 composition API',
-        'Vue 3 has revolutionized how we build web applications. In this post, we explore the composition API and its benefits over the options API.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/vue3-guide.jpg',
-        '00000000-0000-0000-0000-000000000002',
-        '00000000-0000-0000-0000-000000000003',
-        'approved',
-        now() - interval '5 days',
-        now() - interval '3 days',
-        now() - interval '2 days'
-    ),
-    (
-        'business',
-        'startup',
-        'Lessons Learned from Building a SaaS Product',
-        'Five years of startup journey',
-        'Building a successful SaaS product requires more than just good code. Here are the key lessons we learned during our five-year journey.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/saas-lessons.jpg',
-        '00000000-0000-0000-0000-000000000004',
-        '00000000-0000-0000-0000-000000000005',
-        'approved',
-        now() - interval '10 days',
-        now() - interval '8 days',
-        now() - interval '7 days'
-    ),
-    (
-        'technology',
-        'ai',
-        'The Rise of AI in Software Development',
-        'How AI is changing the way we code',
-        'Artificial Intelligence is transforming software development. From code generation to bug detection, AI tools are becoming indispensable.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/ai-development.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        NULL,
-        'for_review',
-        now() - interval '2 days',
-        now() - interval '1 day',
-        NULL
-    ),
-    (
-        'lifestyle',
-        'productivity',
-        'Remote Work Best Practices for Developers',
-        'Staying productive while working from home',
-        'Remote work has become the norm for many developers. Here are proven strategies to maintain productivity and work-life balance.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/remote-work.jpg',
-        '00000000-0000-0000-0000-000000000002',
-        '00000000-0000-0000-0000-000000000004',
-        'approved',
-        now() - interval '15 days',
-        now() - interval '12 days',
-        now() - interval '10 days'
-    ),
-    (
-        'technology',
-        'mobile',
-        'Cross-Platform Mobile Development in 2025',
-        'React Native vs Flutter vs Native',
-        'Comparing the top mobile development frameworks in 2025. Which one should you choose for your next project?',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/mobile-dev.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        NULL,
-        'editing',
-        now() - interval '1 day',
-        now() - interval '2 hours',
-        NULL
-    ),
-    (
-        'business',
-        'marketing',
-        'Developer Marketing: Reaching Technical Audiences',
-        'Strategies that actually work',
-        'Marketing to developers requires a different approach. Learn the strategies that resonate with technical audiences.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/dev-marketing.jpg',
-        '00000000-0000-0000-0000-000000000004',
-        '00000000-0000-0000-0000-000000000005',
-        'approved',
-        now() - interval '20 days',
-        now() - interval '18 days',
-        now() - interval '17 days'
-    ),
-    (
-        'technology',
-        'security',
-        'Web Security Fundamentals Every Developer Should Know',
-        'Protecting your applications from common threats',
-        'Security should be built into every application from day one. Here are the fundamental security practices every developer must know.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/web-security.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        '00000000-0000-0000-0000-000000000004',
-        'approved',
-        now() - interval '25 days',
-        now() - interval '22 days',
-        now() - interval '20 days'
-    ),
-    (
-        'lifestyle',
-        'career',
-        'From Junior to Senior: A Developer Career Roadmap',
-        'Navigating your development career',
-        'Advancing from junior to senior developer requires more than technical skills. Here is a comprehensive roadmap for career growth.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/career-roadmap.jpg',
-        '00000000-0000-0000-0000-000000000002',
-        NULL,
-        'for_modification',
-        now() - interval '3 days',
-        now() - interval '1 day',
-        NULL
-    ),
-    (
-        'technology',
-        'database',
-        'Database Design Patterns for Modern Applications',
-        'Scaling your data architecture',
-        'As applications grow, database design becomes critical. Explore proven patterns for building scalable data architectures.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/database-patterns.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        '00000000-0000-0000-0000-000000000005',
-        'approved',
-        now() - interval '12 days',
-        now() - interval '9 days',
-        now() - interval '8 days'
-    ),
-    (
-        'business',
-        'leadership',
-        'Leading Engineering Teams in a Remote World',
-        'Management lessons for technical leaders',
-        'Leading remote engineering teams presents unique challenges. Here are strategies for building effective remote technical teams.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/remote-leadership.jpg',
-        '00000000-0000-0000-0000-000000000004',
-        NULL,
-        'for_review',
-        now() - interval '4 days',
-        now() - interval '2 days',
-        NULL
-    ),
-    (
-        'technology',
-        'devops',
-        'Container Orchestration with Kubernetes',
-        'From Docker to production-ready deployments',
-        'Kubernetes has become the standard for container orchestration. Learn how to deploy and manage containerized applications at scale.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/kubernetes-guide.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        '00000000-0000-0000-0000-000000000004',
-        'approved',
-        now() - interval '18 days',
-        now() - interval '15 days',
-        now() - interval '14 days'
-    ),
-    (
-        'lifestyle',
-        'health',
-        'Developer Health: Avoiding Burnout and RSI',
-        'Taking care of your physical and mental health',
-        'Software development can be demanding on both mind and body. Here are essential health tips for developers.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/developer-health.jpg',
-        '00000000-0000-0000-0000-000000000002',
-        '00000000-0000-0000-0000-000000000003',
-        'approved',
-        now() - interval '30 days',
-        now() - interval '28 days',
-        now() - interval '27 days'
-    ),
-    (
-        'technology',
-        'testing',
-        'Test-Driven Development: A Practical Guide',
-        'Writing better code through testing',
-        'TDD can dramatically improve code quality and developer confidence. Learn how to implement TDD effectively in your projects.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/tdd-guide.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        NULL,
-        'editing',
-        now() - interval '6 hours',
-        now() - interval '2 hours',
-        NULL
-    ),
-    (
-        'business',
-        'freelancing',
-        'The Freelance Developer Complete Guide',
-        'Building a successful freelance career',
-        'Freelancing offers freedom and flexibility, but also comes with unique challenges. Here is your complete guide to freelance success.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/freelance-guide.jpg',
-        '00000000-0000-0000-0000-000000000002',
-        '00000000-0000-0000-0000-000000000004',
-        'approved',
-        now() - interval '35 days',
-        now() - interval '32 days',
-        now() - interval '30 days'
-    ),
-    (
-        'technology',
-        'performance',
-        'Web Performance Optimization Techniques',
-        'Making your websites lightning fast',
-        'Performance is crucial for user experience and SEO. Learn the latest techniques for optimizing web application performance.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/performance-optimization.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        '00000000-0000-0000-0000-000000000005',
-        'approved',
-        now() - interval '14 days',
-        now() - interval '11 days',
-        now() - interval '9 days'
-    ),
-    (
-        'lifestyle',
-        'learning',
-        'Continuous Learning for Software Developers',
-        'Staying current in a fast-moving field',
-        'Technology evolves rapidly, and developers must keep learning. Here are strategies for continuous professional development.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/continuous-learning.jpg',
-        '00000000-0000-0000-0000-000000000002',
-        NULL,
-        'for_review',
-        now() - interval '1 day',
-        now() - interval '12 hours',
-        NULL
-    ),
-    (
-        'technology',
-        'microservices',
-        'Microservices Architecture: When and How',
-        'Breaking down monolithic applications',
-        'Microservices can solve scalability issues but add complexity. Learn when and how to implement microservices architecture.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/microservices.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        '00000000-0000-0000-0000-000000000004',
-        'approved',
-        now() - interval '22 days',
-        now() - interval '19 days',
-        now() - interval '18 days'
-    ),
-    (
-        'business',
-        'pricing',
-        'SaaS Pricing Strategies That Work',
-        'Finding the right price for your product',
-        'Pricing can make or break a SaaS product. Explore proven pricing strategies and psychological factors that influence purchasing decisions.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/saas-pricing.jpg',
-        '00000000-0000-0000-0000-000000000004',
-        NULL,
-        'for_modification',
-        now() - interval '5 days',
-        now() - interval '3 days',
-        NULL
-    ),
-    (
-        'technology',
-        'frontend',
-        'State Management in Modern Frontend Applications',
-        'Redux, Zustand, and beyond',
-        'Managing application state is one of the biggest challenges in frontend development. Compare different state management solutions.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/state-management.jpg',
-        '00000000-0000-0000-0000-000000000002',
-        '00000000-0000-0000-0000-000000000003',
-        'approved',
-        now() - interval '8 days',
-        now() - interval '6 days',
-        now() - interval '5 days'
-    ),
-    (
-        'lifestyle',
-        'work-life-balance',
-        'Maintaining Work-Life Balance as a Developer',
-        'Setting boundaries in a connected world',
-        'Technology makes it easy to work 24/7, but that does not mean you should. Learn how to maintain healthy work-life boundaries.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/work-life-balance.jpg',
-        '00000000-0000-0000-0000-000000000002',
-        '00000000-0000-0000-0000-000000000005',
-        'approved',
-        now() - interval '40 days',
-        now() - interval '38 days',
-        now() - interval '37 days'
-    ),
-    (
-        'technology',
-        'blockchain',
-        'Blockchain Development: Beyond Cryptocurrency',
-        'Real-world applications of blockchain technology',
-        'Blockchain technology has applications far beyond cryptocurrency. Explore practical use cases and development considerations.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/blockchain-dev.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        NULL,
-        'editing',
-        now() - interval '3 hours',
-        now() - interval '1 hour',
-        NULL
-    ),
-    (
-        'business',
-        'open-source',
-        'Monetizing Open Source Projects',
-        'Sustainable business models for OSS',
-        'Open source does not have to mean free forever. Explore sustainable business models for open source projects.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/open-source-monetization.jpg',
-        '00000000-0000-0000-0000-000000000004',
-        '00000000-0000-0000-0000-000000000005',
-        'approved',
-        now() - interval '28 days',
-        now() - interval '25 days',
-        now() - interval '24 days'
-    ),
-    (
-        'technology',
-        'apis',
-        'RESTful API Design Best Practices',
-        'Building APIs that developers love',
-        'A well-designed API can make or break a platform. Learn the principles of designing RESTful APIs that are intuitive and scalable.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/api-design.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        '00000000-0000-0000-0000-000000000004',
-        'approved',
-        now() - interval '16 days',
-        now() - interval '13 days',
-        now() - interval '12 days'
-    ),
-    (
-        'lifestyle',
-        'networking',
-        'Building Your Developer Network',
-        'Community, conferences, and connections',
-        'Networking is crucial for career growth in tech. Learn how to build meaningful professional relationships in the developer community.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/developer-networking.jpg',
-        '00000000-0000-0000-0000-000000000002',
-        NULL,
-        'for_review',
-        now() - interval '7 days',
-        now() - interval '4 days',
-        NULL
-    ),
-    (
-        'technology',
-        'cloud',
-        'Multi-Cloud Strategy for Modern Applications',
-        'Avoiding vendor lock-in while maximizing benefits',
-        'Multi-cloud deployments offer flexibility and resilience but add complexity. Learn how to implement an effective multi-cloud strategy.',
-        'https://res.cloudinary.com/your-cloud-name/image/upload/v1/blog/multi-cloud.jpg',
-        '00000000-0000-0000-0000-000000000003',
-        '00000000-0000-0000-0000-000000000005',
-        'approved',
-        now() - interval '21 days',
-        now() - interval '18 days',
-        now() - interval '16 days'
-    );
+-- Update profiles with roles and first_name
+UPDATE public.profiles SET role = 'user', first_name = 'Normal' WHERE email = 'user@example.com';
+UPDATE public.profiles SET role = 'contributor', first_name = 'Contributor' WHERE email = 'contributor@example.com';
+UPDATE public.profiles SET role = 'editor', first_name = 'Editor' WHERE email = 'editor@example.com';
+UPDATE public.profiles SET role = 'manager', first_name = 'Manager' WHERE email = 'manager@example.com';
+UPDATE public.profiles SET role = 'superuser', first_name = 'Super' WHERE email = 'superuser@example.com';
+
+-- Add 5 pages with translations
+DO $$
+DECLARE
+    superuser_id uuid;
+    page_id bigint;
+BEGIN
+    -- Get the user_id for the superuser
+    SELECT id INTO superuser_id FROM auth.users WHERE email = 'superuser@example.com';
+
+    -- Insert page 1 and its translations
+    INSERT INTO public.pages (slug, user_id, status) VALUES ('about-us', superuser_id, 'approved') RETURNING id INTO page_id;
+    INSERT INTO public.pages_translations (page_id, lang, title, content, user_id, status) VALUES
+        (page_id, 'en', 'About Us', 'This is the about us page.', superuser_id, 'approved'),
+        (page_id, 'ar', 'من نحن', 'هذه هي صفحة من نحن.', superuser_id, 'approved'),
+        (page_id, 'nl', 'Over Ons', 'Dit is de over ons pagina.', superuser_id, 'approved');
+
+    -- Insert page 2 and its translations
+    INSERT INTO public.pages (slug, user_id, status) VALUES ('contact-us', superuser_id, 'approved') RETURNING id INTO page_id;
+    INSERT INTO public.pages_translations (page_id, lang, title, content, user_id, status) VALUES
+        (page_id, 'en', 'Contact Us', 'This is the contact us page.', superuser_id, 'approved'),
+        (page_id, 'ar', 'اتصل بنا', 'هذه هي صفحة اتصل بنا.', superuser_id, 'approved'),
+        (page_id, 'nl', 'Contacteer Ons', 'Dit is de contacteer ons pagina.', superuser_id, 'approved');
+
+    -- Insert page 3 and its translations
+    INSERT INTO public.pages (slug, user_id, status) VALUES ('terms-of-service', superuser_id, 'approved') RETURNING id INTO page_id;
+    INSERT INTO public.pages_translations (page_id, lang, title, content, user_id, status) VALUES
+        (page_id, 'en', 'Terms of Service', 'This is the terms of service page.', superuser_id, 'approved'),
+        (page_id, 'ar', 'شروط الخدمة', 'هذه هي صفحة شروط الخدمة.', superuser_id, 'approved'),
+        (page_id, 'nl', 'Servicevoorwaarden', 'Dit is de servicevoorwaarden pagina.', superuser_id, 'approved');
+
+    -- Insert page 4 and its translations
+    INSERT INTO public.pages (slug, user_id, status) VALUES ('privacy-policy', superuser_id, 'approved') RETURNING id INTO page_id;
+    INSERT INTO public.pages_translations (page_id, lang, title, content, user_id, status) VALUES
+        (page_id, 'en', 'Privacy Policy', 'This is the privacy policy page.', superuser_id, 'approved'),
+        (page_id, 'ar', 'سياسة الخصوصية', 'هذه هي صفحة سياسة الخصوصية.', superuser_id, 'approved'),
+        (page_id, 'nl', 'Privacybeleid', 'Dit is de privacybeleid pagina.', superuser_id, 'approved');
+
+    -- Insert page 5 and its translations
+    INSERT INTO public.pages (slug, user_id, status) VALUES ('faq', superuser_id, 'approved') RETURNING id INTO page_id;
+    INSERT INTO public.pages_translations (page_id, lang, title, content, user_id, status) VALUES
+        (page_id, 'en', 'FAQ', 'This is the FAQ page.', superuser_id, 'approved'),
+        (page_id, 'ar', 'الأسئلة الشائعة', 'هذه هي صفحة الأسئلة الشائعة.', superuser_id, 'approved'),
+        (page_id, 'nl', 'Veelgestelde Vragen', 'Dit is de veelgestelde vragen pagina.', superuser_id, 'approved');
+END $$;
+
+-- Add 10 blogs with translations
+DO $$
+DECLARE
+    superuser_id uuid;
+    blog_id bigint;
+BEGIN
+    -- Get the user_id for the superuser
+    SELECT id INTO superuser_id FROM auth.users WHERE email = 'superuser@example.com';
+
+    -- Insert 10 blogs with translations
+    FOR i IN 1..10 LOOP
+        INSERT INTO public.blogs (slug, user_id, status)
+        VALUES ('blog-post-' || i, superuser_id, 'approved')
+        RETURNING id INTO blog_id;
+
+        INSERT INTO public.blogs_translations (blog_id, lang, title, content, user_id, status)
+        VALUES
+            (blog_id, 'en', 'Blog Post ' || i, 'This is the content for blog post ' || i, superuser_id, 'approved'),
+            (blog_id, 'ar', 'تدوينة ' || i, 'هذا هو محتوى التدوينة ' || i, superuser_id, 'approved'),
+            (blog_id, 'nl', 'Blogbericht ' || i, 'Dit is de inhoud voor blogbericht ' || i, superuser_id, 'approved');
+    END LOOP;
+END $$;

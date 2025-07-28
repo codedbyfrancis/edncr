@@ -25,7 +25,14 @@ const { data: profileData } = await supabase
 // Fetch all pages data
 const { data: pagesData } = await supabase
   .from('pages')
-  .select('*')
+  .select(`
+    id,
+    slug,
+    status,
+    created_at,
+    user_id,
+    pages_translations!inner(*)
+  `)
   .order('created_at', { ascending: false });
 
 const config = useRuntimeConfig();
@@ -59,6 +66,7 @@ const getStatusColor = (status: string) => {
 };
 
 const formatDate = (dateString: string) => {
+  if (!dateString) return 'N/A';
   return new Date(dateString).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
@@ -100,7 +108,7 @@ const formatDate = (dateString: string) => {
             <div class="flex-1">
               <div class="flex items-center gap-3 mb-2">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ page.title }}
+                  {{ page.pages_translations[0]?.title }}
                 </h3>
                 <UBadge
                   :color="getStatusColor(page.status)"
@@ -112,23 +120,23 @@ const formatDate = (dateString: string) => {
               </div>
 
               <p
-                v-if="page.sub_title"
+                v-if="page.pages_translations[0]?.sub_title"
                 class="text-gray-600 dark:text-gray-300 mb-3"
               >
-                {{ page.sub_title }}
+                {{ page.pages_translations[0]?.sub_title }}
               </p>
 
               <div class="flex flex-wrap gap-2 mb-3">
                 <UBadge color="blue" variant="soft" size="sm">
-                  {{ page.category }}
+                  {{ page.pages_translations[0]?.category }}
                 </UBadge>
                 <UBadge
-                  v-if="page.sub_category"
+                  v-if="page.pages_translations[0]?.sub_category"
                   color="purple"
                   variant="soft"
                   size="sm"
                 >
-                  {{ page.sub_category }}
+                  {{ page.pages_translations[0]?.sub_category }}
                 </UBadge>
               </div>
 
@@ -138,14 +146,14 @@ const formatDate = (dateString: string) => {
                   <span>Created: {{ formatDate(page.created_at) }}</span>
                 </div>
 
-                <div v-if="page.modified_at" class="flex items-center gap-2">
+                <div v-if="page.pages_translations[0]?.modified_at" class="flex items-center gap-2">
                   <UIcon name="i-heroicons-pencil-square" class="w-4 h-4" />
-                  <span>Modified: {{ formatDate(page.modified_at) }}</span>
+                  <span>Modified: {{ formatDate(page.pages_translations[0]?.modified_at) }}</span>
                 </div>
 
-                <div v-if="page.approved_at" class="flex items-center gap-2">
+                <div v-if="page.pages_translations[0]?.approved_at" class="flex items-center gap-2">
                   <UIcon name="i-heroicons-check-circle" class="w-4 h-4" />
-                  <span>Approved: {{ formatDate(page.approved_at) }}</span>
+                  <span>Approved: {{ formatDate(page.pages_translations[0]?.approved_at) }}</span>
                 </div>
               </div>
             </div>
@@ -155,7 +163,7 @@ const formatDate = (dateString: string) => {
                 color="gray"
                 variant="ghost"
                 size="sm"
-                :to="`/page/${page.id}`"
+                :to="`/page/${page.slug}`"
                 icon="i-heroicons-eye"
               >
                 View

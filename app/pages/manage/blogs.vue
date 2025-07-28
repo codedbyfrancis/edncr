@@ -11,7 +11,7 @@ const user = data?.claims;
 if (!user?.sub) {
   throw createError({
     statusCode: 401,
-    statusMessage: 'Authentication required'
+    statusMessage: 'Authentication required',
   });
 }
 
@@ -23,10 +23,27 @@ const { data: profileData } = await supabase
   .single();
 
 // Fetch all blogs data
-const { data: blogsData } = await supabase
-  .from('blogs')
-  .select('*')
-  .order('created_at', { ascending: false });
+const { data: blogsData } = await useAsyncData('blogs', async () => {
+  const { data } = await supabase
+    .from('blogs')
+    .select(`
+      id,
+      slug,
+      status,
+      created_at,
+      user_id,
+      blogs_translations!inner (
+        title,
+        sub_title,
+        category,
+        sub_category,
+        modified_at,
+        approved_at
+      )
+    `)
+    .order('created_at', { ascending: false });
+  return data;
+});
 
 const config = useRuntimeConfig();
 useSeoMeta({
@@ -59,12 +76,13 @@ const getStatusColor = (status: string) => {
 };
 
 const formatDate = (dateString: string) => {
+  if (!dateString) return 'N/A';
   return new Date(dateString).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
-    day: 'numeric'
-  })
-}
+    day: 'numeric',
+  });
+};
 </script>
 
 <template>
@@ -88,7 +106,7 @@ const formatDate = (dateString: string) => {
             <div class="flex-1">
               <div class="flex items-center gap-3 mb-2">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ blog.title }}
+                  {{ blog.blogs_translations[0]?.title }}
                 </h3>
                 <UBadge 
                   :color="getStatusColor(blog.status)" 
@@ -99,16 +117,16 @@ const formatDate = (dateString: string) => {
                 </UBadge>
               </div>
               
-              <p v-if="blog.sub_title" class="text-gray-600 dark:text-gray-300 mb-3">
-                {{ blog.sub_title }}
+              <p v-if="blog.blogs_translations[0]?.sub_title" class="text-gray-600 dark:text-gray-300 mb-3">
+                {{ blog.blogs_translations[0]?.sub_title }}
               </p>
               
               <div class="flex flex-wrap gap-2 mb-3">
                 <UBadge color="blue" variant="soft" size="sm">
-                  {{ blog.category }}
+                  {{ blog.blogs_translations[0]?.category }}
                 </UBadge>
-                <UBadge v-if="blog.sub_category" color="purple" variant="soft" size="sm">
-                  {{ blog.sub_category }}
+                <UBadge v-if="blog.blogs_translations[0]?.sub_category" color="purple" variant="soft" size="sm">
+                  {{ blog.blogs_translations[0]?.sub_category }}
                 </UBadge>
               </div>
               
@@ -118,14 +136,14 @@ const formatDate = (dateString: string) => {
                   <span>Created: {{ formatDate(blog.created_at) }}</span>
                 </div>
                 
-                <div v-if="blog.modified_at" class="flex items-center gap-2">
+                <div v-if="blog.blogs_translations[0]?.modified_at" class="flex items-center gap-2">
                   <UIcon name="i-heroicons-pencil-square" class="w-4 h-4" />
-                  <span>Modified: {{ formatDate(blog.modified_at) }}</span>
+                  <span>Modified: {{ formatDate(blog.blogs_translations[0]?.modified_at) }}</span>
                 </div>
                 
-                <div v-if="blog.approved_at" class="flex items-center gap-2">
+                <div v-if="blog.blogs_translations[0]?.approved_at" class="flex items-center gap-2">
                   <UIcon name="i-heroicons-check-circle" class="w-4 h-4" />
-                  <span>Approved: {{ formatDate(blog.approved_at) }}</span>
+                  <span>Approved: {{ formatDate(blog.blogs_translations[0]?.approved_at) }}</span>
                 </div>
               </div>
             </div>
@@ -135,7 +153,7 @@ const formatDate = (dateString: string) => {
                 color="gray" 
                 variant="ghost" 
                 size="sm"
-                :to="`/blog/${blog.id}`"
+                :to="`/blogs/${blog.slug}`"
                 icon="i-heroicons-eye"
               >
                 View

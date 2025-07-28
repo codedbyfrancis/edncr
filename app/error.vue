@@ -12,8 +12,8 @@ const props = defineProps({
     <section>
       <!-- For development only -->
       <div class="text-center page">
-        <h1>{{ error.statusCode }}</h1>
-        <h2>{{ error.statusMessage }}</h2>
+        <h1>{{ error?.statusCode }}</h1>
+        <h2>{{ error?.statusMessage }}</h2>
         <pre class="text-left">{{ error }}</pre>
       </div>
 

@@ -118,9 +118,7 @@ export default defineNuxtConfig({
         file: 'nl.json',
       },
     ],
-    bundle: {
-      optimizeTranslationDirective: false,
-    },
+    bundle: {},
   },
 
   ui: {

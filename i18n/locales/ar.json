@@ -4,6 +4,7 @@
   "language": "Arabic",
   "currency-symbol": "AED",
   "currency-unit": "Dirham",
+  "flag-icon": "flag:ae-4x3",
   "hello": "مرحبًا",
   "welcome": "مرحباً"
 }

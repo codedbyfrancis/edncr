@@ -102,6 +102,7 @@ export default defineNuxtConfig({
         name: 'English',
         dir: 'ltr',
         file: 'en.json',
+        flagicon: 'flag:gb-4x3',
       },
       {
         code: 'ar',
@@ -109,6 +110,7 @@ export default defineNuxtConfig({
         name: 'عربي',
         dir: 'rtl',
         file: 'ar.json',
+        flagicon: 'flag:ae-4x3',
       },
       {
         code: 'nl',
@@ -116,6 +118,7 @@ export default defineNuxtConfig({
         name: 'Dutch',
         dir: 'ltr',
         file: 'nl.json',
+        flagicon: 'flag:nl-4x3',
       },
     ],
     bundle: {},

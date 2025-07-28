@@ -7,6 +7,7 @@ const router = useRouter();
 const items: DropdownMenuItem[] = locales.value.map((locale) => ({
   label: locale.name,
   value: locale.code,
+  icon: locale.flagicon,
   onClick: () => setLocale(locale.code),
 }));
 </script>
@@ -33,9 +34,9 @@ const items: DropdownMenuItem[] = locales.value.map((locale) => ({
         <button
           @click="item.onClick"
           :class="locale === item.value ? 'active-locale' : ''"
-          class="locale-buttons"
+          class="locale-buttons flex flex-row gap-1 items-center"
         >
-          {{ item.label }}
+          <UIcon :name="item.icon" class="size-5" />{{ item.label }}
         </button>
       </div>
       Top

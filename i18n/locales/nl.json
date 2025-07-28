@@ -4,6 +4,7 @@
   "language": "Dutch",
   "currency-symbol": "€",
   "currency-unit": "EURO",
+  "flag-icon": "flag:nl-4x3",
   "hello": "Hallo",
   "welcome": "Welkom"
 }

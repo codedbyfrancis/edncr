@@ -1,6 +1,6 @@
 create type "public"."language" as enum ('en', 'ar', 'nl');
 
-create type "public"."pages_status" as enum ('editing', 'for_modification', 'for_review', 'approved', 'deleted');
+create type "public"."pages_status" as enum ('draft', 'for_review', 'rejected',  'approved', 'deleted');
 
 create type "public"."roles" as enum ('user', 'contributor', 'editor', 'manager', 'superuser');
 
@@ -13,7 +13,7 @@ create table "public"."blogs" (
     "approved_by_user_id" uuid,
     "approved_at" timestamp with time zone default now(),
     "created_at" timestamp with time zone default now(),
-    "status" pages_status default 'editing'::pages_status
+    "status" pages_status default 'draft'::pages_status
 );
 
 
@@ -34,7 +34,7 @@ create table "public"."blogs_translations" (
     "modified_at" timestamp with time zone,
     "approved_at" timestamp with time zone default now(),
     "created_at" timestamp with time zone default now(),
-    "status" pages_status default 'editing'::pages_status
+    "status" pages_status default 'draft'::pages_status
 );
 
 
@@ -45,7 +45,7 @@ create table "public"."pages" (
     "slug" text not null,
     "user_id" uuid,
     "approved_by_user_id" uuid,
-    "status" pages_status default 'editing'::pages_status,
+    "status" pages_status default 'draft'::pages_status,
     "approved_at" timestamp with time zone default now(),
     "created_at" timestamp with time zone default now()
 );
@@ -65,7 +65,7 @@ create table "public"."pages_translations" (
     "featured_image" character varying,
     "user_id" uuid,
     "approved_by_user_id" uuid,
-    "status" pages_status default 'editing'::pages_status,
+    "status" pages_status default 'draft'::pages_status,
     "modified_at" timestamp with time zone,
     "approved_at" timestamp with time zone default now(),
     "created_at" timestamp with time zone default now()

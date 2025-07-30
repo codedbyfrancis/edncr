@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n';
 
 definePageMeta({
   middleware: 'auth',
-  layout: 'default',
+  layout: 'defaultpages',
 });
 
 const supabase = useSupabaseClient();
@@ -27,14 +27,16 @@ const { data: profileData } = await supabase
 // Fetch all pages data
 const { data: pagesData } = await supabase
   .from('pages')
-  .select(`
+  .select(
+    `
     id,
     slug,
     status,
     created_at,
     user_id,
     pages_translations!inner(*)
-  `)
+  `
+  )
   .order('created_at', { ascending: false });
 
 const config = useRuntimeConfig();
@@ -53,12 +55,17 @@ useSeoMeta({
 const { locale } = useI18n();
 
 const getTranslatedPage = (page: any) => {
-  const translated = page.pages_translations.find((t: any) => t.lang === locale.value);
+  const translated = page.pages_translations.find(
+    (t: any) => t.lang === locale.value
+  );
   if (translated) {
     return translated;
   } else {
     // Fallback to English if current locale translation is not found
-    return page.pages_translations.find((t: any) => t.lang === 'en') || page.pages_translations[0];
+    return (
+      page.pages_translations.find((t: any) => t.lang === 'en') ||
+      page.pages_translations[0]
+    );
   }
 };
 
@@ -160,14 +167,26 @@ const formatDate = (dateString: string) => {
                   <span>Created: {{ formatDate(page.created_at) }}</span>
                 </div>
 
-                <div v-if="getTranslatedPage(page)?.modified_at" class="flex items-center gap-2">
+                <div
+                  v-if="getTranslatedPage(page)?.modified_at"
+                  class="flex items-center gap-2"
+                >
                   <UIcon name="i-heroicons-pencil-square" class="w-4 h-4" />
-                  <span>Modified: {{ formatDate(getTranslatedPage(page)?.modified_at) }}</span>
+                  <span
+                    >Modified:
+                    {{ formatDate(getTranslatedPage(page)?.modified_at) }}</span
+                  >
                 </div>
 
-                <div v-if="getTranslatedPage(page)?.approved_at" class="flex items-center gap-2">
+                <div
+                  v-if="getTranslatedPage(page)?.approved_at"
+                  class="flex items-center gap-2"
+                >
                   <UIcon name="i-heroicons-check-circle" class="w-4 h-4" />
-                  <span>Approved: {{ formatDate(getTranslatedPage(page)?.approved_at) }}</span>
+                  <span
+                    >Approved:
+                    {{ formatDate(getTranslatedPage(page)?.approved_at) }}</span
+                  >
                 </div>
               </div>
             </div>

@@ -4,7 +4,7 @@ const { locales } = useI18n();
 
 definePageMeta({
   middleware: 'auth',
-  layout: 'default',
+  layout: 'defaultdashboard',
 });
 
 const supabase = useSupabaseClient();

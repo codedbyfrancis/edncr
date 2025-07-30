@@ -1,4 +1,7 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: 'default',
+});
 const config = useRuntimeConfig();
 useSeoMeta({
   title: 'Index',
@@ -17,14 +20,11 @@ useSeoMeta({
     <div class="hero">
       <DefaultHero />
     </div>
-    <section>
-      <div class="page">
-        <div>
-          <h1>Index {{ $t('language') }}</h1>
-          <h2>{{ $t('welcome') }}</h2>
-          <UiDirhamFont />
-        </div>
-      </div>
-    </section>
+
+    <div class="content">
+      <h1>Index {{ $t('language') }}</h1>
+      <h2>{{ $t('welcome') }}</h2>
+      <UiDirhamFont />
+    </div>
   </div>
 </template>

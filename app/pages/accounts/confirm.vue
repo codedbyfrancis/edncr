@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: 'defaultpages',
+});
+
 // For Google sign-in
 const user = useSupabaseUser();
 const config = useRuntimeConfig();

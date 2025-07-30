@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   middleware: 'auth',
-  layout: 'default',
+  layout: 'defaultpages',
 });
 const supabase = useSupabaseClient();
 const { data } = await supabase.auth.getClaims();

@@ -20,7 +20,7 @@ const head = useLocaleHead({
         <DefaultNavigationHamburger />
       </section>
     </header>
-    <section class="index">
+    <section class="blogs">
       <slot />
     </section>
     <footer>

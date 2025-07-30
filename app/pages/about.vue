@@ -1,4 +1,7 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: 'defaultpages',
+});
 const config = useRuntimeConfig();
 useSeoMeta({
   title: 'About',

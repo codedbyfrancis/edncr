@@ -16,13 +16,13 @@ section.header_hamburger {
 }
 
 section.dashboard {
-  @apply flex flex-row bg-blue-200 w-full md:container;
+  @apply flex flex-col md:flex-row bg-blue-200;
 
   div.dashboard_nav {
     @apply flex flex-col gap-2 text-left w-3/4 py-5 px-2 min-w-[250px] max-w-[350px];
   }
   div.dashboard_content {
-    @apply container mx-auto;
+    @apply w-full md:container text-left bg-amber-100;
     h1 {
       @apply text-left text-2xl font-bold mb-4;
     }

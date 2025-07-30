@@ -19,7 +19,7 @@ section.dashboard {
   @apply flex flex-col md:flex-row bg-blue-200;
 
   div.dashboard_nav {
-    @apply flex flex-col gap-2 text-left w-3/4 py-5 px-2 min-w-[250px] max-w-[350px];
+    @apply flex flex-col gap-2 text-left w-3/4 py-5 px-2 min-w-[200px] max-w-[350px];
   }
   div.dashboard_content {
     @apply w-full md:container text-left bg-amber-100;

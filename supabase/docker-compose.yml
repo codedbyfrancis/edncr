@@ -1,0 +1,5 @@
+services:
+  docker-cli:
+    image: docker
+    volumes:
+      - ~/.colima/default/docker.sock:/var/run/docker.sock

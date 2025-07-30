@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   middleware: 'auth',
-  layout: 'default',
+  layout: 'dashboard',
 });
 const supabase = useSupabaseClient();
 // const {
@@ -26,12 +26,10 @@ useSeoMeta({
 </script>
 <template>
   <section>
-    <div class="page">
-      <h1>Dashboard/index {{ $t('language') }}</h1>
-      <h2>
-        {{ $t('welcome') }} <span v-if="user?.email">{{ user?.email }}</span
-        ><span v-else>{{ user?.phone }}</span>
-      </h2>
-    </div>
+    <h1>Dashboard/index {{ $t('language') }}</h1>
+    <h2>
+      {{ $t('welcome') }} <span v-if="user?.email">{{ user?.email }}</span
+      ><span v-else>{{ user?.phone }}</span>
+    </h2>
   </section>
 </template>

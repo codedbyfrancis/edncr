@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   middleware: 'auth',
-  layout: 'default',
+  layout: 'dashboard',
 });
 const supabase = useSupabaseClient();
 // const {
@@ -31,27 +31,25 @@ useSeoMeta({
 </script>
 <template>
   <section>
-    <div class="page">
-      <h1>Profile {{ $t('language') }}</h1>
-      <h2>{{ $t('welcome') }}</h2>
-      {{ user?.sub }}
-      <div v-if="profileData">
-        <div>Modified: {{ useTimeAgo(profileData.modified_at) }}</div>
-        <div>
-          Modified:
-          {{
-            useDateFormat(
-              profileData.modified_at,
-              'dddd, MMMM D, YYYY [at] hh:mm A'
-            )
-          }}
-        </div>
-        <pre>{{ profileData }}</pre>
+    <h1>Profile {{ $t('language') }}</h1>
+    <h2>{{ $t('welcome') }}</h2>
+    {{ user?.sub }}
+    <div v-if="profileData">
+      <div>Modified: {{ useTimeAgo(profileData.modified_at) }}</div>
+      <div>
+        Registered:
+        {{
+          useDateFormat(
+            profileData.modified_at,
+            'dddd, MMMM D, YYYY [at] hh:mm A'
+          )
+        }}
       </div>
-      <div v-else-if="error">
-        <p>Could not load profile: {{ error.message }}</p>
-      </div>
-      <pre>{{ data }}</pre>
+      <pre>{{ profileData }}</pre>
     </div>
+    <div v-else-if="error">
+      <p>Could not load profile: {{ error.message }}</p>
+    </div>
+    <pre>{{ data }}</pre>
   </section>
 </template>

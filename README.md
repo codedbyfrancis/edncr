@@ -11,4 +11,5 @@ Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduct
 
 ## If can not start
 
+Run: colima start
 Run: supabase stop --no-backup && supabase start

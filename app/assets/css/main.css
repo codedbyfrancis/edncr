@@ -39,30 +39,30 @@ section.index {
 section.pages {
   @apply container mx-auto bg-red-200;
   h1 {
-    @apply text-left text-2xl font-bold mb-4;
+    @apply text-2xl font-bold mb-4;
   }
   h2 {
-    @apply text-left text-2xl font-medium mb-2;
+    @apply text-2xl font-medium mb-2;
   }
 }
 
 section.blogs {
   @apply container mx-auto bg-yellow-200;
   h1 {
-    @apply text-left text-2xl font-bold mb-4;
+    @apply text-2xl font-bold mb-4;
   }
   h2 {
-    @apply text-left text-2xl font-medium mb-2;
+    @apply text-2xl font-medium mb-2;
   }
 }
 
 div.pages {
   @apply container mx-auto bg-red-200;
   h1 {
-    @apply text-left text-2xl font-bold mb-4;
+    @apply text-2xl font-bold mb-4;
   }
   h2 {
-    @apply text-left text-2xl font-medium mb-2;
+    @apply text-2xl font-medium mb-2;
   }
 }
 

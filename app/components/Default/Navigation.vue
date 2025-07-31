@@ -44,6 +44,10 @@ async function signOut() {
         <li>Contacts</li>
       </NuxtLinkLocale>
 
+      <NuxtLinkLocale to="/typography" class="nav-items">
+        <li>Typography</li>
+      </NuxtLinkLocale>
+
       <NuxtLinkLocale to="/nuxtui" class="nav-items">
         <li>NuxtUi</li>
       </NuxtLinkLocale>

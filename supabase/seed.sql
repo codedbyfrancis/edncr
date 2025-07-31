@@ -18,66 +18,110 @@ UPDATE public.profiles SET role = 'superuser', first_name = 'Super' WHERE email 
 DO $$
 DECLARE
     superuser_id uuid;
+    editor_id uuid;
+    manager_id uuid;
     page_id bigint;
+    i integer := 0;
 BEGIN
-    -- Get the user_id for the superuser
+    -- Get user_ids
     SELECT id INTO superuser_id FROM auth.users WHERE email = 'superuser@example.com';
+    SELECT id INTO editor_id FROM auth.users WHERE email = 'editor@example.com';
+    SELECT id INTO manager_id FROM auth.users WHERE email = 'manager@example.com';
 
-    -- Insert page 1 and its translations
-    INSERT INTO public.pages (slug, user_id, status) VALUES ('about-us', superuser_id, 'approved') RETURNING id INTO page_id;
-    INSERT INTO public.pages_translations (page_id, lang, title, content, user_id, status) VALUES
-        (page_id, 'en', 'About Us', 'This is the about us page.', superuser_id, 'approved'),
-        (page_id, 'ar', 'من نحن', 'هذه هي صفحة من نحن.', superuser_id, 'approved'),
-        (page_id, 'nl', 'Over Ons', 'Dit is de over ons pagina.', superuser_id, 'approved');
+    -- Insert page 1 (approved)
+    i := 1;
+    INSERT INTO public.pages (slug, user_id, status, approved_by_user_id, approved_at, created_at) VALUES ('about-us', editor_id, 'approved', manager_id, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval) RETURNING id INTO page_id;
+    INSERT INTO public.pages_translations (page_id, lang, title, sub_title, content, featured_image, user_id, status, approved_by_user_id, approved_at, modified_at, created_at) VALUES
+        (page_id, 'en', 'About Us', 'Learn more about our company', 'This is the about us page.', 'https://example.com/images/about-us.jpg', editor_id, 'approved', manager_id, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval),
+        (page_id, 'ar', 'من نحن', 'اعرف المزيد عن شركتنا', 'هذه هي صفحة من نحن.', 'https://example.com/images/about-us.jpg', editor_id, 'approved', manager_id, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval),
+        (page_id, 'nl', 'Over Ons', 'Lees meer over ons bedrijf', 'Dit is de over ons pagina.', 'https://example.com/images/about-us.jpg', editor_id, 'approved', manager_id, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval);
 
-    -- Insert page 2 and its translations
-    INSERT INTO public.pages (slug, user_id, status) VALUES ('contact-us', superuser_id, 'approved') RETURNING id INTO page_id;
-    INSERT INTO public.pages_translations (page_id, lang, title, content, user_id, status) VALUES
-        (page_id, 'en', 'Contact Us', 'This is the contact us page.', superuser_id, 'approved'),
-        (page_id, 'ar', 'اتصل بنا', 'هذه هي صفحة اتصل بنا.', superuser_id, 'approved'),
-        (page_id, 'nl', 'Contacteer Ons', 'Dit is de contacteer ons pagina.', superuser_id, 'approved');
+    -- Insert page 2 (draft)
+    i := 2;
+    INSERT INTO public.pages (slug, user_id, status, created_at) VALUES ('contact-us', superuser_id, 'draft', (now() at time zone 'utc') - (i || ' days')::interval) RETURNING id INTO page_id;
+    INSERT INTO public.pages_translations (page_id, lang, title, sub_title, content, user_id, status, created_at) VALUES
+        (page_id, 'en', 'Contact Us', 'Get in touch with us', 'This is the contact us page.', superuser_id, 'draft', (now() at time zone 'utc') - (i || ' days')::interval),
+        (page_id, 'ar', 'اتصل بنا', 'تواصل معنا', 'هذه هي صفحة اتصل بنا.', superuser_id, 'draft', (now() at time zone 'utc') - (i || ' days')::interval),
+        (page_id, 'nl', 'Contacteer Ons', 'Neem contact met ons op', 'Dit is de contacteer ons pagina.', superuser_id, 'draft', (now() at time zone 'utc') - (i || ' days')::interval);
 
-    -- Insert page 3 and its translations
-    INSERT INTO public.pages (slug, user_id, status) VALUES ('terms-of-service', superuser_id, 'approved') RETURNING id INTO page_id;
-    INSERT INTO public.pages_translations (page_id, lang, title, content, user_id, status) VALUES
-        (page_id, 'en', 'Terms of Service', 'This is the terms of service page.', superuser_id, 'approved'),
-        (page_id, 'ar', 'شروط الخدمة', 'هذه هي صفحة شروط الخدمة.', superuser_id, 'approved'),
-        (page_id, 'nl', 'Servicevoorwaarden', 'Dit is de servicevoorwaarden pagina.', superuser_id, 'approved');
+    -- Insert page 3 (for_review)
+    i := 3;
+    INSERT INTO public.pages (slug, user_id, status, created_at) VALUES ('terms-of-service', editor_id, 'for_review', (now() at time zone 'utc') - (i || ' days')::interval) RETURNING id INTO page_id;
+    INSERT INTO public.pages_translations (page_id, lang, title, sub_title, content, user_id, status, created_at) VALUES
+        (page_id, 'en', 'Terms of Service', 'Read our terms of service', 'This is the terms of service page.', editor_id, 'for_review', (now() at time zone 'utc') - (i || ' days')::interval),
+        (page_id, 'ar', 'شروط الخدمة', 'اقرأ شروط الخدمة الخاصة بنا', 'هذه هي صفحة شروط الخدمة.', editor_id, 'for_review', (now() at time zone 'utc') - (i || ' days')::interval),
+        (page_id, 'nl', 'Servicevoorwaarden', 'Lees onze servicevoorwaarden', 'Dit is de servicevoorwaarden pagina.', editor_id, 'for_review', (now() at time zone 'utc') - (i || ' days')::interval);
 
-    -- Insert page 4 and its translations
-    INSERT INTO public.pages (slug, user_id, status) VALUES ('privacy-policy', superuser_id, 'approved') RETURNING id INTO page_id;
-    INSERT INTO public.pages_translations (page_id, lang, title, content, user_id, status) VALUES
-        (page_id, 'en', 'Privacy Policy', 'This is the privacy policy page.', superuser_id, 'approved'),
-        (page_id, 'ar', 'سياسة الخصوصية', 'هذه هي صفحة سياسة الخصوصية.', superuser_id, 'approved'),
-        (page_id, 'nl', 'Privacybeleid', 'Dit is de privacybeleid pagina.', superuser_id, 'approved');
+    -- Insert page 4 (rejected)
+    i := 4;
+    INSERT INTO public.pages (slug, user_id, status, created_at) VALUES ('privacy-policy', editor_id, 'rejected', (now() at time zone 'utc') - (i || ' days')::interval) RETURNING id INTO page_id;
+    INSERT INTO public.pages_translations (page_id, lang, title, sub_title, content, user_id, status, created_at) VALUES
+        (page_id, 'en', 'Privacy Policy', 'Our commitment to your privacy', 'This is the privacy policy page.', editor_id, 'rejected', (now() at time zone 'utc') - (i || ' days')::interval),
+        (page_id, 'ar', 'سياسة الخصوصية', 'التزامنا بخصوصيتك', 'هذه هي صفحة سياسة الخصوصية.', editor_id, 'rejected', (now() at time zone 'utc') - (i || ' days')::interval),
+        (page_id, 'nl', 'Privacybeleid', 'Onze toewijding aan uw privacy', 'Dit is de privacybeleid pagina.', editor_id, 'rejected', (now() at time zone 'utc') - (i || ' days')::interval);
 
-    -- Insert page 5 and its translations
-    INSERT INTO public.pages (slug, user_id, status) VALUES ('faq', superuser_id, 'approved') RETURNING id INTO page_id;
-    INSERT INTO public.pages_translations (page_id, lang, title, content, user_id, status) VALUES
-        (page_id, 'en', 'FAQ', 'This is the FAQ page.', superuser_id, 'approved'),
-        (page_id, 'ar', 'الأسئلة الشائعة', 'هذه هي صفحة الأسئلة الشائعة.', superuser_id, 'approved'),
-        (page_id, 'nl', 'Veelgestelde Vragen', 'Dit is de veelgestelde vragen pagina.', superuser_id, 'approved');
+    -- Insert page 5 (approved)
+    i := 5;
+    INSERT INTO public.pages (slug, user_id, status, approved_by_user_id, approved_at, created_at) VALUES ('faq', manager_id, 'approved', superuser_id, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval) RETURNING id INTO page_id;
+    INSERT INTO public.pages_translations (page_id, lang, title, sub_title, content, featured_image, user_id, status, approved_by_user_id, approved_at, modified_at, created_at) VALUES
+        (page_id, 'en', 'FAQ', 'Frequently Asked Questions', 'This is the FAQ page.', 'https://example.com/images/faq.jpg', manager_id, 'approved', superuser_id, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval),
+        (page_id, 'ar', 'الأسئلة الشائعة', 'الأسئلة المتداولة', 'هذه هي صفحة الأسئلة الشائعة.', 'https://example.com/images/faq.jpg', manager_id, 'approved', superuser_id, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval),
+        (page_id, 'nl', 'Veelgestelde Vragen', 'Veelgestelde Vragen', 'Dit is de veelgestelde vragen pagina.', 'https://example.com/images/faq.jpg', manager_id, 'approved', superuser_id, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval);
 END $$;
 
 -- Add 10 blogs with translations
 DO $$
 DECLARE
     superuser_id uuid;
+    editor_id uuid;
+    contributor_id uuid;
+    manager_id uuid;
     blog_id bigint;
 BEGIN
-    -- Get the user_id for the superuser
+    -- Get user_ids
     SELECT id INTO superuser_id FROM auth.users WHERE email = 'superuser@example.com';
+    SELECT id INTO editor_id FROM auth.users WHERE email = 'editor@example.com';
+    SELECT id INTO contributor_id FROM auth.users WHERE email = 'contributor@example.com';
+    SELECT id INTO manager_id FROM auth.users WHERE email = 'manager@example.com';
 
-    -- Insert 10 blogs with translations
+    -- Insert 10 blogs with varied statuses and users
     FOR i IN 1..10 LOOP
-        INSERT INTO public.blogs (slug, user_id, status)
-        VALUES ('blog-post-' || i, superuser_id, 'approved')
-        RETURNING id INTO blog_id;
-
-        INSERT INTO public.blogs_translations (blog_id, lang, title, content, user_id, status)
-        VALUES
-            (blog_id, 'en', 'Blog Post ' || i, 'This is the content for blog post ' || i, superuser_id, 'approved'),
-            (blog_id, 'ar', 'تدوينة ' || i, 'هذا هو محتوى التدوينة ' || i, superuser_id, 'approved'),
-            (blog_id, 'nl', 'Blogbericht ' || i, 'Dit is de inhoud voor blogbericht ' || i, superuser_id, 'approved');
+        IF i % 4 = 0 THEN -- Approved by manager
+            INSERT INTO public.blogs (slug, user_id, status, approved_by_user_id, approved_at, created_at)
+            VALUES ('blog-post-' || i, editor_id, 'approved', manager_id, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval)
+            RETURNING id INTO blog_id;
+            INSERT INTO public.blogs_translations (blog_id, lang, title, sub_title, content, featured_image, user_id, status, approved_by_user_id, approved_at, modified_at, created_at)
+            VALUES
+                (blog_id, 'en', 'Blog Post ' || i, 'An approved blog post by an editor', 'This is the content for blog post ' || i, 'https://example.com/images/blog' || i || '.jpg', editor_id, 'approved', manager_id, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval),
+                (blog_id, 'ar', 'تدوينة ' || i, 'تدوينة معتمدة من قبل محرر', 'هذا هو محتوى التدوينة ' || i, 'https://example.com/images/blog' || i || '.jpg', editor_id, 'approved', manager_id, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval),
+                (blog_id, 'nl', 'Blogbericht ' || i, 'Een goedgekeurd blogbericht door een redacteur', 'Dit is de inhoud voor blogbericht ' || i, 'https://example.com/images/blog' || i || '.jpg', editor_id, 'approved', manager_id, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval, (now() at time zone 'utc') - (i || ' days')::interval);
+        ELSIF i % 4 = 1 THEN -- Draft by contributor
+            INSERT INTO public.blogs (slug, user_id, status, created_at)
+            VALUES ('blog-post-' || i, contributor_id, 'draft', (now() at time zone 'utc') - (i || ' days')::interval)
+            RETURNING id INTO blog_id;
+            INSERT INTO public.blogs_translations (blog_id, lang, title, sub_title, content, user_id, status, created_at)
+            VALUES
+                (blog_id, 'en', 'Blog Post ' || i, 'A draft by a contributor', 'This is the content for blog post ' || i, contributor_id, 'draft', (now() at time zone 'utc') - (i || ' days')::interval),
+                (blog_id, 'ar', 'تدوينة ' || i, 'مسودة من قبل مساهم', 'هذا هو محتوى التدوينة ' || i, contributor_id, 'draft', (now() at time zone 'utc') - (i || ' days')::interval),
+                (blog_id, 'nl', 'Blogbericht ' || i, 'Een concept van een bijdrager', 'Dit is de inhoud voor blogbericht ' || i, contributor_id, 'draft', (now() at time zone 'utc') - (i || ' days')::interval);
+        ELSIF i % 4 = 2 THEN -- For review by editor
+            INSERT INTO public.blogs (slug, user_id, status, created_at)
+            VALUES ('blog-post-' || i, editor_id, 'for_review', (now() at time zone 'utc') - (i || ' days')::interval)
+            RETURNING id INTO blog_id;
+            INSERT INTO public.blogs_translations (blog_id, lang, title, sub_title, content, user_id, status, created_at)
+            VALUES
+                (blog_id, 'en', 'Blog Post ' || i, 'For review by an editor', 'This is the content for blog post ' || i, editor_id, 'for_review', (now() at time zone 'utc') - (i || ' days')::interval),
+                (blog_id, 'ar', 'تدوينة ' || i, 'للمراجعة من قبل محرر', 'هذا هو محتوى التدوينة ' || i, editor_id, 'for_review', (now() at time zone 'utc') - (i || ' days')::interval),
+                (blog_id, 'nl', 'Blogbericht ' || i, 'Ter beoordeling door een redacteur', 'Dit is de inhoud voor blogbericht ' || i, editor_id, 'for_review', (now() at time zone 'utc') - (i || ' days')::interval);
+        ELSE -- Rejected by superuser
+            INSERT INTO public.blogs (slug, user_id, status, created_at)
+            VALUES ('blog-post-' || i, contributor_id, 'rejected', (now() at time zone 'utc') - (i || ' days')::interval)
+            RETURNING id INTO blog_id;
+            INSERT INTO public.blogs_translations (blog_id, lang, title, sub_title, content, user_id, status, created_at)
+            VALUES
+                (blog_id, 'en', 'Blog Post ' || i, 'A rejected post', 'This content was not approved.', contributor_id, 'rejected', (now() at time zone 'utc') - (i || ' days')::interval),
+                (blog_id, 'ar', 'تدوينة ' || i, 'مشاركة مرفوضة', 'لم تتم الموافقة على هذا المحتوى.', contributor_id, 'rejected', (now() at time zone 'utc') - (i || ' days')::interval),
+                (blog_id, 'nl', 'Blogbericht ' || i, 'Een afgewezen bericht', 'Deze inhoud is niet goedgekeurd.', contributor_id, 'rejected', (now() at time zone 'utc') - (i || ' days')::interval);
+        END IF;
     END LOOP;
 END $$;

@@ -13,3 +13,5 @@ Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduct
 
 Run: colima start
 Run: supabase stop --no-backup && supabase start
+
+Run: colima start && supabase stop --no-backup && supabase start

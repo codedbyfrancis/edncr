@@ -6,28 +6,66 @@ definePageMeta({
 
 <template>
   <div>
-    <h1>Typography</h1>
+    <h1>[Typography]</h1>
 
     <div>
-      <div>
-        <h0 class="font-extrabold">Heading 0</h0>
-        <h1>Heading 1</h1>
-        <h2>Heading 2</h2>
-        <h3>Heading 3</h3>
-        <h4>Heading 4</h4>
-        <h5>Heading 5</h5>
-        <h6>Heading 6</h6>
+      <div class="my-5 w-full md:w-1/2 flex flex-col gap-3">
+        <h0 class="font-extrabold">Heading 0 Lorem ipsum dolor sit amet.</h0>
+        <h1>Heading 1 Lorem ipsum dolor sit amet.</h1>
+        <h2>Heading 2 Lorem ipsum dolor sit amet.</h2>
+        <h3>Heading 3 Lorem ipsum dolor sit amet.</h3>
+        <h4>Heading 4 Lorem ipsum dolor sit amet.</h4>
+        <h5>Heading 5 Lorem ipsum dolor sit amet.</h5>
+        <h6>Heading 6 Lorem ipsum dolor sit amet.</h6>
       </div>
 
-      <div>
+      <div class="my-5 w-full md:w-1/2 flex flex-col gap-5">
         <p>
           This is a paragraph of text. It is used to display long-form content.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque
+          aliquam tempora placeat quod, accusantium, natus excepturi, officiis
+          autem exercitationem obcaecati quaerat voluptatum accusamus atque non
+          dolores fugiat sit sint! Laborum deleniti magni delectus esse et
+          cumque non, sunt, eligendi iste rem omnis perferendis aut aliquam
+          debitis porro commodi quidem dolorem minus, perspiciatis nulla
+          pariatur ullam minima. Magni odit vero amet quaerat quas aut quo
+          tenetur perspiciatis labore, modi quod vitae non tempora hic aliquid
+          incidunt fugiat commodi sapiente reiciendis fuga saepe deleniti. Quam
+          magnam fugiat similique, odio voluptatibus deserunt laboriosam
+          blanditiis laborum ipsam, asperiores assumenda voluptates qui quos
+          eaque harum minus sit ad aliquam. Sint doloremque non esse officiis ea
+          eligendi aspernatur quidem tempora explicabo vitae nisi, eos libero
+          error cupiditate amet soluta vero fugit magnam culpa enim? Facilis
+          eaque aspernatur repudiandae alias veritatis, maiores sint ullam
+          quaerat, enim earum aliquid! Mollitia impedit eaque nesciunt aliquam
+          odit recusandae, odio voluptatem aperiam delectus libero, magnam
+          consectetur quas? Molestiae omnis aperiam officiis ea nemo placeat
+          iste accusamus eum, eveniet animi! Necessitatibus alias eos impedit,
+          vero dicta aperiam omnis, voluptatum nulla pariatur maiores maxime quo
+          eligendi optio nisi? Illo dolorum nisi, alias quis laborum quod
+          perspiciatis repellat quos odio distinctio commodi facilis expedita
+          explicabo in eveniet magni pariatur et? Odit architecto corporis enim
+          quo ipsa commodi, delectus praesentium numquam sequi officia magnam
+          animi blanditiis rem voluptatum possimus fugiat autem quia aliquid
+          dicta quae soluta eaque, nam iste sint!
         </p>
         <p class="secondary-body">
           This is a secondary body text. It has a slightly larger font size.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum culpa
+          dolorum repellat sint, velit quis odio molestias consectetur placeat
+          doloribus mollitia iste voluptate aliquam fugit expedita eligendi ipsa
+          id. Voluptatem recusandae provident, hic perspiciatis culpa quasi!
+          Numquam quae atque minus rem, commodi molestias laudantium ab odio
+          accusamus animi maxime voluptatem, reiciendis itaque labore
+          aspernatur, repudiandae id autem inventore sunt. Dolorem illum
+          corrupti velit molestias magni omnis doloribus saepe deleniti
+          nesciunt, quibusdam alias cum minima quas?
         </p>
         <p class="caption">
-          This is a caption. It is used for short descriptions or labels.
+          This is a caption. It is used for short descriptions or labels. Lorem
+          ipsum dolor sit amet consectetur adipisicing elit. Quidem id,
+          consectetur iure sapiente velit incidunt! Aut adipisci corrupti nihil
+          placeat?
         </p>
         <p class="overline">
           This is an overline. It is used for small headings or labels.
@@ -35,7 +73,7 @@ definePageMeta({
       </div>
     </div>
 
-    <div>
+    <div class="my-5">
       <h2>Inline Elements</h2>
       <p>
         This is a paragraph with <strong>strong text</strong>,
@@ -46,7 +84,7 @@ definePageMeta({
       </p>
     </div>
 
-    <div>
+    <div class="my-5">
       <h2>Blockquote</h2>
       <blockquote>
         <p>
@@ -56,7 +94,7 @@ definePageMeta({
       </blockquote>
     </div>
 
-    <div>
+    <div class="my-5">
       <h2>Lists</h2>
       <div>
         <div>
@@ -78,7 +116,7 @@ definePageMeta({
       </div>
     </div>
 
-    <div>
+    <div class="my-5">
       <h2>Code Block</h2>
       <pre><code>&lt;template&gt;
   &lt;div&gt;

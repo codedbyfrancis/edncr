@@ -50,6 +50,12 @@ section.dashboard {
     h4 {
       @apply text-[clamp(1.1rem,2.5vw+.1rem,1.5625rem)] leading-[1.3] tracking-[-0.015em] font-medium;
     }
+    h5 {
+      @apply text-[clamp(1rem,2vw+.05rem,1.25rem)] leading-[1.35] tracking-[-0.01em] font-medium;
+    }
+    h6 {
+      @apply text-[clamp(0.875rem,1.5vw,1rem)] leading-[1.4] tracking-[-0.005em] font-normal;
+    }
   }
 }
 
@@ -76,7 +82,7 @@ section.dashboard {
 } */
 
 section.pages {
-  @apply container mx-auto bg-red-200;
+  @apply container mx-auto bg-[var(--container)] text-[var(--on-container)];
   p {
     @apply text-[clamp(0.9rem,1vw+.9rem,1rem)] leading-[1.5] tracking-normal;
   }
@@ -103,6 +109,12 @@ section.pages {
   }
   h4 {
     @apply text-[clamp(1.1rem,2.5vw+.1rem,1.5625rem)] leading-[1.3] tracking-[-0.015em] font-medium;
+  }
+  h5 {
+    @apply text-[clamp(1rem,2vw+.05rem,1.25rem)] leading-[1.35] tracking-[-0.01em] font-medium;
+  }
+  h6 {
+    @apply text-[clamp(0.875rem,1.5vw,1rem)] leading-[1.4] tracking-[-0.005em] font-normal;
   }
 }
 
@@ -135,6 +147,12 @@ section.blogs {
   h4 {
     @apply text-[clamp(1.1rem,2.5vw+.1rem,1.5625rem)] leading-[1.3] tracking-[-0.015em] font-medium;
   }
+  h5 {
+    @apply text-[clamp(1rem,2vw+.05rem,1.25rem)] leading-[1.35] tracking-[-0.01em] font-medium;
+  }
+  h6 {
+    @apply text-[clamp(0.875rem,1.5vw,1rem)] leading-[1.4] tracking-[-0.005em] font-normal;
+  }
 }
 
 div.pages {
@@ -166,6 +184,12 @@ div.pages {
   h4 {
     @apply text-[clamp(1.1rem,2.5vw+.1rem,1.5625rem)] leading-[1.3] tracking-[-0.015em] font-medium;
   }
+  h5 {
+    @apply text-[clamp(1rem,2vw+.05rem,1.25rem)] leading-[1.35] tracking-[-0.01em] font-medium;
+  }
+  h6 {
+    @apply text-[clamp(0.875rem,1.5vw,1rem)] leading-[1.4] tracking-[-0.005em] font-normal;
+  }
 }
 
 div.blogs {
@@ -196,6 +220,12 @@ div.blogs {
   }
   h4 {
     @apply text-[clamp(1.1rem,2.5vw+.1rem,1.5625rem)] leading-[1.3] tracking-[-0.015em] font-medium;
+  }
+  h5 {
+    @apply text-[clamp(1rem,2vw+.05rem,1.25rem)] leading-[1.35] tracking-[-0.01em] font-medium;
+  }
+  h6 {
+    @apply text-[clamp(0.875rem,1.5vw,1rem)] leading-[1.4] tracking-[-0.005em] font-normal;
   }
 }
 

@@ -48,6 +48,10 @@ async function signOut() {
         <li>Typography</li>
       </NuxtLinkLocale>
 
+      <NuxtLinkLocale to="/colors" class="nav-items">
+        <li>Colors</li>
+      </NuxtLinkLocale>
+
       <NuxtLinkLocale to="/nuxtui" class="nav-items">
         <li>NuxtUi</li>
       </NuxtLinkLocale>

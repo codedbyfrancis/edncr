@@ -21,6 +21,7 @@ useSeoMeta({
       <h1>NuxtUi {{ $t('language') }}</h1>
       <h2>{{ $t('welcome') }}</h2>
       <NuxtuiSamples />
+      <Colors />
     </div>
   </section>
 </template>

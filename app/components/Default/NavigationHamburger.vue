@@ -105,6 +105,14 @@ onBeforeUnmount(() => {
             <li>Contacts</li>
           </NuxtLinkLocale>
 
+          <NuxtLinkLocale to="/typography" class="nav-items">
+            <li>Typography</li>
+          </NuxtLinkLocale>
+
+          <NuxtLinkLocale to="/colors" class="nav-items">
+            <li>Colors</li>
+          </NuxtLinkLocale>
+
           <NuxtLinkLocale
             @click="isOpen = false"
             to="/nuxtui"
@@ -213,7 +221,7 @@ nav {
     @apply pl-2;
   }
   .nav-items {
-    @apply rounded-full py-4 px-8 font-[Inika] hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out;
+    @apply rounded-full py-4 px-8 font-[Inter] hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out;
   }
   .log-out {
     @apply hover:bg-[var(--error)] hover:text-[var(--on-surface-variant)];

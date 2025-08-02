@@ -122,14 +122,6 @@ onBeforeUnmount(() => {
           </NuxtLinkLocale>
 
           <NuxtLinkLocale
-            @click="isOpen = false"
-            to="/nuxtui"
-            class="nav-items"
-          >
-            <li>NuxtUi</li>
-          </NuxtLinkLocale>
-
-          <NuxtLinkLocale
             v-if="user"
             @click="isOpen = false"
             to="/dashboard"

@@ -16,33 +16,33 @@ definePageMeta({
             label="Primary"
             size="lg"
             :ui="{
-              base: 'rounded-full px-8 py-4 text-lg bg-[color:var(--primary)] text-[color:var(--on-primary)]',
+              base: 'rounded-full px-8 py-4 text-lg bg-[color:var(--primary)] text-[color:var(--on-primary)] cursor-pointer',
             }"
           />
           <UButton
             label="Secondary"
             color="secondary"
-            :ui="{ base: 'rounded-full px-8 py-4 text-lg' }"
+            :ui="{ base: 'rounded-full px-8 py-4 text-lg cursor-pointer' }"
           />
           <UButton
             label="Info"
             color="info"
-            :ui="{ base: 'rounded-full px-8 py-4 text-lg' }"
+            :ui="{ base: 'rounded-full px-8 py-4 text-lg cursor-pointer' }"
           />
           <UButton
             label="Success"
             color="success"
-            :ui="{ base: 'rounded-full px-8 py-4 text-lg' }"
+            :ui="{ base: 'rounded-full px-8 py-4 text-lg cursor-pointer' }"
           />
           <UButton
             label="Warning"
             color="warning"
-            :ui="{ base: 'rounded-full px-8 py-4 text-lg' }"
+            :ui="{ base: 'rounded-full px-8 py-4 text-lg cursor-pointer' }"
           />
           <UButton
             label="Error"
             color="error"
-            :ui="{ base: 'rounded-full px-8 py-4 text-lg' }"
+            :ui="{ base: 'rounded-full px-8 py-4 text-lg cursor-pointer' }"
           />
         </div>
       </div>

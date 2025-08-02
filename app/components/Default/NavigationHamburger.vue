@@ -105,11 +105,19 @@ onBeforeUnmount(() => {
             <li>Contacts</li>
           </NuxtLinkLocale>
 
-          <NuxtLinkLocale to="/typography" class="nav-items">
+          <NuxtLinkLocale
+            @click="isOpen = false"
+            to="/typography"
+            class="nav-items"
+          >
             <li>Typography</li>
           </NuxtLinkLocale>
 
-          <NuxtLinkLocale to="/colors" class="nav-items">
+          <NuxtLinkLocale
+            @click="isOpen = false"
+            to="/colors"
+            class="nav-items"
+          >
             <li>Colors</li>
           </NuxtLinkLocale>
 

@@ -2,7 +2,7 @@
 @import '@nuxt/ui';
 
 body {
-  @apply bg-[var(--background)] text-[var(--on-background)] font-[Inter];
+  @apply bg-[var(--background)] text-[var(--on-background)] font-[Inter] text-[16px] lg:text-[18px];
 }
 
 section.header_accessibility {
@@ -259,6 +259,39 @@ section.footer_navigation {
   .alert {
     @apply text-left;
   }
+}
+
+blockquote {
+  @apply relative pl-4 border-l-2 rounded-md; /* subtle accent bar */
+  @apply bg-[var(--surface-container-high)] p-[clamp(0.75rem,1vw+0.5rem,1rem)] m-[clamp(0.75rem,1vw+0.5rem,1rem)];
+  color: inherit;
+  font-style: normal; /* drop italic if you prefer a neutral tone */
+  p {
+    @apply italic text-[clamp(1rem,1.1vw+1rem,1.2rem)] leading-[1.5] tracking-normal;
+  }
+  cite {
+    @apply mt-2 text-[0.85em] opacity-75;
+  }
+}
+
+/* Inline code */
+code {
+  @apply font-mono text-[0.95em] px-1 py-[0.125rem] rounded-sm;
+  @apply bg-[var(--surface-container-highest)];
+  @apply align-baseline;
+  white-space: pre-wrap;
+}
+
+/* Code block */
+pre {
+  @apply overflow-x-auto rounded-lg p-4 font-mono text-sm leading-[1.4];
+  @apply bg-[var(--surface-container-high)] text-[var(--on-container)];
+  position: relative;
+}
+
+/* Optional: differentiate language header / copy button area inside code blocks */
+pre > code {
+  @apply block whitespace-pre p-3;
 }
 
 :root {

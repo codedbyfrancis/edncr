@@ -10,7 +10,7 @@ definePageMeta({
 
     <div>
       <div class="my-5 w-full md:w-1/2 flex flex-col gap-3">
-        <h0 class="font-extrabold">Heading 0 Lorem ipsum dolor sit amet.</h0>
+        <h1 class="display">Display Lorem ipsum dolor sit amet.</h1>
         <h1>Heading 1 Lorem ipsum dolor sit amet.</h1>
         <h2>Heading 2 Lorem ipsum dolor sit amet.</h2>
         <h3>Heading 3 Lorem ipsum dolor sit amet.</h3>

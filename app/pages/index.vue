@@ -21,7 +21,7 @@ useSeoMeta({
       <DefaultHero />
     </div>
 
-    <div class="content">
+    <div class="content container mx-auto">
       <h1>Index {{ $t('language') }}</h1>
       <h2>{{ $t('welcome') }}</h2>
       <UiDirhamFont />

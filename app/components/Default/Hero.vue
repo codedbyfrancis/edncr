@@ -1,6 +1,6 @@
 <script lang="ts" setup></script>
 <template>
-  <div class="hero">
+  <div class="hero bg-[var(--primary)]/5">
     <div class="relative py-24 sm:py-32 md:py-40">
       <UContainer
         class="text-center flex flex-col items-center justify-between"

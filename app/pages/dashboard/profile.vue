@@ -31,25 +31,27 @@ useSeoMeta({
 </script>
 <template>
   <section>
-    <h1>Profile {{ $t('language') }}</h1>
-    <h2>{{ $t('welcome') }}</h2>
-    {{ user?.sub }}
-    <div v-if="profileData">
-      <div>Modified: {{ useTimeAgo(profileData.modified_at) }}</div>
-      <div>
-        Registered:
-        {{
-          useDateFormat(
-            profileData.modified_at,
-            'dddd, MMMM D, YYYY [at] hh:mm A'
-          )
-        }}
+    <div class="container mx-auto">
+      <h1>Profile {{ $t('language') }}</h1>
+      <h2>{{ $t('welcome') }}</h2>
+      {{ user?.sub }}
+      <div v-if="profileData">
+        <div>Modified: {{ useTimeAgo(profileData.modified_at) }}</div>
+        <div>
+          Registered:
+          {{
+            useDateFormat(
+              profileData.modified_at,
+              'dddd, MMMM D, YYYY [at] hh:mm A'
+            )
+          }}
+        </div>
+        <pre>{{ profileData }}</pre>
       </div>
-      <pre>{{ profileData }}</pre>
+      <div v-else-if="error">
+        <p>Could not load profile: {{ error.message }}</p>
+      </div>
+      <pre>{{ data }}</pre>
     </div>
-    <div v-else-if="error">
-      <p>Could not load profile: {{ error.message }}</p>
-    </div>
-    <pre>{{ data }}</pre>
   </section>
 </template>

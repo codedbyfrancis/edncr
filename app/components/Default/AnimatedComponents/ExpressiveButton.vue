@@ -2,7 +2,7 @@
   <button
     v-ripple
     :class="[
-      'relative rounded-2xl px-6 py-3 font-medium text-white transition-all duration-200 ease-material focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/40',
+      'relative rounded-full px-6 py-3 font-medium text-white transition-all duration-200 ease-material focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/40',
       'shadow-elevated hover:shadow-hovered active:scale-95',
       bgClass,
       classOverride,

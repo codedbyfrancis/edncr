@@ -4,17 +4,17 @@
       class="relative overflow-hidden rounded-2xl bg-[var(--surface-container)] shadow-elevated transition-all duration-300 ease-material group-hover:shadow-hovered group-hover:-translate-y-1"
     >
       <div class="p-6">
-        <h3
-          class="text-lg font-semibold mb-2 text-[var(--on-surface-container)]"
-        >
-          <slot name="title">Feature Title</slot>
+        <h3 class="font-semibold mb-2 text-[var(--on-surface-container)]">
+          <slot name="title"><h1>Feature Title</h1></slot>
         </h3>
         <p
-          class="text-sm text-[var(--on-surface-container)] transition-opacity duration-250 ease-material"
+          class="text-[var(--on-surface-container)] transition-opacity duration-250 ease-material"
         >
-          <slot name="description">
-            This description fades in and the card lifts subtly to draw
-            attention.
+          <slot name="description"
+            ><p>
+              This description fades in and the card lifts subtly to draw
+              attention.
+            </p>
           </slot>
         </p>
         <div class="mt-4">

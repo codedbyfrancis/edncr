@@ -162,7 +162,7 @@ onBeforeUnmount(() => {
             <li class="nav-component" v-if="user">
               <div class="py-2">Profile:</div>
               <div class="flex justify-between gap-3 items-center">
-                <div class="w-1/2 overflow-hidden">
+                <div class="w-3/4 overflow-hidden">
                   <NuxtLinkLocale
                     class="flex items-center gap-3 py-2 px-4 rounded-full font-medium hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out"
                     v-if="user"
@@ -173,7 +173,7 @@ onBeforeUnmount(() => {
                     <span>{{ user.email }}</span>
                   </NuxtLinkLocale>
                 </div>
-                <div class="w-1/2 overflow-hidden">
+                <div class="w-1/4 overflow-hidden">
                   <NuxtLinkLocale
                     class="cursor-pointer flex items-center justify-center gap-3 py-3 px-4 rounded-full font-medium hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out"
                     v-if="user"

@@ -52,6 +52,10 @@ async function signOut() {
         <li>Colors</li>
       </NuxtLinkLocale>
 
+      <NuxtLinkLocale to="/animations" class="nav-items">
+        <li>Animations</li>
+      </NuxtLinkLocale>
+
       <ClientOnly>
         <NuxtLinkLocale v-if="user" to="/dashboard" class="nav-items">
           <li>Dashboard</li>

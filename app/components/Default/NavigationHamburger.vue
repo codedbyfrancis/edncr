@@ -122,6 +122,14 @@ onBeforeUnmount(() => {
           </NuxtLinkLocale>
 
           <NuxtLinkLocale
+            @click="isOpen = false"
+            to="/animations"
+            class="nav-items"
+          >
+            <li>Animations</li>
+          </NuxtLinkLocale>
+
+          <NuxtLinkLocale
             v-if="user"
             @click="isOpen = false"
             to="/dashboard"
@@ -129,19 +137,6 @@ onBeforeUnmount(() => {
           >
             <li>Dashboard</li>
           </NuxtLinkLocale>
-
-          <!-- <NuxtLinkLocale
-            v-if="user"
-            @click="isOpen = false"
-            to="/dashboard/profile"
-          >
-            <li class="nav-items-avatar">
-              <span>
-                <DefaultAvatar />
-              </span>
-              <span>{{ user.email }}</span>
-            </li>
-          </NuxtLinkLocale> -->
 
           <NuxtLinkLocale
             v-if="!user"

@@ -5,11 +5,11 @@
       <UContainer
         class="text-center flex flex-col items-center justify-between"
       >
-        <h0
-          class="text-transparent font-extrabold bg-clip-text bg-gradient-to-r from-blue-500 via-red-500 to-yellow-500"
+        <h1
+          class="display text-transparent font-extrabold bg-clip-text bg-gradient-to-r from-blue-500 via-red-500 to-yellow-500"
         >
           Your Awesome Hero Title
-        </h0>
+        </h1>
         <p>
           Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
           cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat
@@ -51,7 +51,7 @@
   .overline {
     @apply uppercase text-[clamp(0.55rem,0.8vw+.5rem,0.64rem)] leading-[1.3] tracking-[0.1em];
   }
-  h0 {
+  .display {
     @apply text-[clamp(2.5rem,5vw+.5rem,5.75rem)] leading-[1.1] tracking-[-0.04em];
   }
   h1 {

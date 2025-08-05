@@ -8,7 +8,7 @@
 
   /* Emphasized text */
   em {
-    @apply italic;
+    @apply font-semibold italic;
   }
 
   /* Links

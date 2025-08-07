@@ -7,9 +7,10 @@
     }"
   >
     <UButton
-      label="Open"
+      label="Open Drawer"
       variant="subtle"
       trailing-icon="i-lucide-chevron-up"
+      :ui="{ base: 'rounded-full px-4 py-2 text-lg cursor-pointer' }"
     />
 
     <!-- <button

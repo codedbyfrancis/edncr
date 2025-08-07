@@ -8,11 +8,9 @@ definePageMeta({
     <div class="container mx-auto">
       <h1>[Animations]</h1>
 
-      <div>
-        <AnimationsButtons />
-      </div>
-      <div>
-        <AnimationsDrawer />
+      <div class="flex flex-col gap-5">
+        <div><AnimationsButtons /></div>
+        <div><AnimationsDrawer /></div>
       </div>
     </div>
   </div>

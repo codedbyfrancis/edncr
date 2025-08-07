@@ -11,6 +11,9 @@ definePageMeta({
       <div>
         <AnimationsButtons />
       </div>
+      <div>
+        <AnimationsDrawer />
+      </div>
     </div>
   </div>
 </template>

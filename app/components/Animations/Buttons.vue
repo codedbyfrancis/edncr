@@ -52,6 +52,12 @@
             class="absolute inset-0 z-0 h-full w-full rounded-md transition-all duration-300 group-hover:-translate-x-3 group-hover:-translate-y-3 group-hover:[box-shadow:5px_5px_#a3a3a3,10px_10px_#d4d4d4,15px_15px_#e5e5e5]"
           ></div>
         </button>
+
+        <button
+          class="relative overflow-hidden px-6 py-3 font-semibold rounded-full text-inherit before:content-[''] before:absolute before:left-1/2 before:top-0 before:h-full before:w-0 before:-translate-x-1/2 before:bg-[var(--primary)] hover:text-[var(--on-primary)] before:transition-all before:duration-500 hover:before:w-full before:-z-10 z-10"
+        >
+          <span class="relative z-10">Hover Me</span>
+        </button>
       </div>
     </div>
   </div>

@@ -7,6 +7,10 @@ chrome://settings/content/federatedIdentityApi
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+# Run Project
+
+Run: npm run devsecure -- --host
+
 # Supabase Locally
 
 ## If can not start

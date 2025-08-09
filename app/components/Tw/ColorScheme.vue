@@ -12,7 +12,7 @@
         >Tertiary, on Tertiary</span
       >
     </div>
-    <div class="flex flex-row gap-2 mb-2">
+    <div class="scheme flex flex-row gap-2">
       <span
         class="bg-[var(--primary-container)] text-[var(--on-primary-container)]"
         >Primary Container, on Primary Container</span
@@ -26,12 +26,12 @@
         >Tertiary Container, on Tertiary Container</span
       >
     </div>
-    <div class="flex flex-row gap-2 mb-2">
+    <div class="scheme flex flex-row gap-2">
       <span class="bg-[var(--surface-dim)]">Surface Dim</span>
       <span class="bg-[var(--surface)]">Surface</span>
       <span class="bg-[var(--surface-bright)]">Surface Bright</span>
     </div>
-    <div class="flex flex-row gap-2 mb-2">
+    <div class="scheme flex flex-row gap-2">
       <span class="bg-[var(--surface-container-lowest)]"
         >Surf. Container Lowest</span
       >
@@ -44,7 +44,7 @@
         >Surf. Container Highest</span
       >
     </div>
-    <div class="flex flex-row gap-2 mb-2">
+    <div class="scheme flex flex-row gap-2">
       <span class="bg-[var(--on-surface)] text-[var(--surface)]"
         >On Surface</span
       >
@@ -54,7 +54,7 @@
       <span class="bg-[var(--outline)] text-[var(--surface)]">Outline</span>
       <span class="bg-[var(--outline-variant)]">Outline Variant</span>
     </div>
-    <div class="flex flex-row gap-2 mb-2">
+    <div class="scheme flex flex-row gap-2">
       <span class="bg-[var(--error)] text-[var(--on-error)]"
         >Error, on Error</span
       >
@@ -62,7 +62,7 @@
         >Error Container, on Error Container</span
       >
     </div>
-    <div class="flex flex-row gap-2 mb-2">
+    <div class="scheme flex flex-row gap-2">
       <span class="bg-[var(--inverse-surface)] text-[var(--inverse-on-surface)]"
         >Inverse Surface, Inverse On Surface</span
       >
@@ -70,7 +70,7 @@
         >Inverse Primary</span
       >
     </div>
-    <div class="flex flex-row gap-2 mb-2">
+    <div class="scheme flex flex-row gap-2">
       <span class="bg-[var(--scrim)] text-white"
         >Scim - do not put text. Scrim is on top of content.</span
       >
@@ -80,7 +80,7 @@
     <div class="my-5">
       <div class="flex gap-2">
         <div
-          class="bg-[var(--background)] w-1/2 border-2 rounded-2xl py-4 px-2"
+          class="bg-[var(--background)] w-1/2 border-4 border-[var(--outline)] rounded-xl py-4 px-2"
         >
           <div class="flex flex-row justify-between items-start mb-6">
             <h3>Today</h3>
@@ -91,10 +91,13 @@
           </div>
 
           <div
-            class="flex bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
+            class="flex items-center bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
           >
-            <UIcon name="i-lucide-lightbulb" class="size-5 max-w-[40px]" />
-            <p class="w-3/4">
+            <UIcon
+              name="material-symbols:lightbulb-2"
+              class="size-5 max-w-[40px]"
+            />
+            <p class="w-3/4 px-2">
               During the winter your plants slow down and need less water.
             </p>
           </div>
@@ -141,8 +144,9 @@
 </template>
 <style lang="css" scoped>
 @reference 'tailwindcss';
-.scheme,
-span {
-  @apply w-full py-2;
+.scheme {
+  span {
+    @apply w-full py-2 mb-2 px-2;
+  }
 }
 </style>

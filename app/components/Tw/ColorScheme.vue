@@ -76,9 +76,12 @@
       >
       <span class="bg-[var(--shadow)] text-white">Shadow</span>
     </div>
-    <div>
+    <!-- Mobile layout -->
+    <div class="my-5">
       <div class="flex">
-        <div class="bg-[var(--background)] w-1/2 border-2 py-4 px-2">
+        <div
+          class="bg-[var(--background)] w-1/2 border-2 rounded-2xl py-4 px-2"
+        >
           <div class="flex flex-row justify-between items-start mb-6">
             <h3>Today</h3>
             <UIcon
@@ -99,7 +102,7 @@
           <div
             class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3"
           >
-            <h4>Living Room</h4>
+            <h4 class="text-[var(--primary)]">Living Room</h4>
             <ul>
               <li>Water</li>
               <li>Feed</li>
@@ -109,7 +112,7 @@
           <div
             class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3"
           >
-            <h4>Kitchen</h4>
+            <h4 class="text-[var(--primary)]">Kitchen</h4>
             <ul>
               <li>Water</li>
               <li>Feed</li>
@@ -119,7 +122,7 @@
           <div
             class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3"
           >
-            <h4>Bedroom</h4>
+            <h4 class="text-[var(--primary)]">Bedroom</h4>
             <ul>
               <li>Water</li>
               <li>Feed</li>

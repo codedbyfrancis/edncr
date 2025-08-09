@@ -101,10 +101,11 @@
           </div>
           <div class="flex flex-row justify-between items-start mb-6">
             <h3>Today</h3>
-            <UIcon
-              name="material-symbols:person-3-rounded"
-              class="size-5 max-w-[40px] text-right"
-            />
+            <span class="bg-[var(--secondary-container)] px-3 rounded-full">
+              <UIcon
+                name="material-symbols:person-3-rounded"
+                class="size-5 max-w-[40px] text-right mt-1 bg-[var(--on-secondary-container)]"
+            /></span>
           </div>
 
           <div

@@ -77,7 +77,7 @@
       <span class="bg-[var(--shadow)] text-white">Shadow</span>
     </div>
     <!-- Mobile layout -->
-    <div class="my-5">
+    <div class="mobile-layout my-5">
       <div class="flex gap-2">
         <div
           class="bg-[var(--background)] w-1/2 border-4 border-[var(--outline)] rounded-xl py-4 px-2"
@@ -124,8 +124,8 @@
           >
             <h4 class="text-[var(--primary)]">Living Room</h4>
             <ul>
-              <li>Water</li>
-              <li>Feed</li>
+              <li><UCheckbox default-value /> Water</li>
+              <li><UCheckbox default-value /> Feed</li>
             </ul>
           </div>
 
@@ -134,8 +134,8 @@
           >
             <h4 class="text-[var(--primary)]">Kitchen</h4>
             <ul>
-              <li>Water</li>
-              <li>Feed</li>
+              <li><UCheckbox /> Water</li>
+              <li><UCheckbox default-value /> Feed</li>
             </ul>
           </div>
 
@@ -144,8 +144,8 @@
           >
             <h4 class="text-[var(--primary)]">Bedroom</h4>
             <ul>
-              <li>Water</li>
-              <li>Feed</li>
+              <li><UCheckbox default-value /> Water</li>
+              <li><UCheckbox /> Feed</li>
             </ul>
           </div>
         </div>
@@ -164,6 +164,16 @@
 .scheme {
   span {
     @apply w-full py-2 mb-2 px-2;
+  }
+}
+.mobile-layout {
+  h4 {
+    @apply mb-2;
+  }
+  ul {
+    li {
+      @apply flex gap-2 items-center;
+    }
   }
 }
 </style>

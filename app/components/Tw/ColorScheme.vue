@@ -121,7 +121,7 @@
           </div>
 
           <div
-            class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3"
+            class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3 bg-[url('/images/theme/plants1.png')] bg-no-repeat bg-right-bottom bg-contain"
           >
             <h4 class="text-[var(--primary)]">Living Room</h4>
             <ul>
@@ -131,7 +131,7 @@
           </div>
 
           <div
-            class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3"
+            class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3 bg-[url('/images/theme/plants2.png')] bg-no-repeat bg-right-bottom bg-contain"
           >
             <h4 class="text-[var(--primary)]">Kitchen</h4>
             <ul>
@@ -141,7 +141,7 @@
           </div>
 
           <div
-            class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3"
+            class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3 bg-[url('/images/theme/plants3.png')] bg-no-repeat bg-right-bottom bg-contain"
           >
             <h4 class="text-[var(--primary)]">Bedroom</h4>
             <ul>

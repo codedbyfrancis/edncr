@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <h2>Color Scheme</h2>
-    <div class="flex flex-row gap-2">
+    <div class="scheme flex flex-row gap-2">
       <span class="bg-[var(--primary)] text-[var(--on-primary)]"
         >Primary, on Primary</span
       >
@@ -76,6 +76,60 @@
       >
       <span class="bg-[var(--shadow)] text-white">Shadow</span>
     </div>
+    <div>
+      <div class="flex">
+        <div class="bg-[var(--background)] w-1/2 border-2 py-4 px-2">
+          <div class="flex flex-row justify-between items-start mb-6">
+            <h3>Today</h3>
+            <UIcon
+              name="material-symbols:person-3-rounded"
+              class="size-5 max-w-[40px] text-right"
+            />
+          </div>
+
+          <div
+            class="flex bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
+          >
+            <UIcon name="i-lucide-lightbulb" class="size-5 max-w-[40px]" />
+            <p class="w-3/4">
+              During the winter your plants slow down and need less water.
+            </p>
+          </div>
+
+          <div
+            class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3"
+          >
+            <h4>Living Room</h4>
+            <ul>
+              <li>Water</li>
+              <li>Feed</li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3"
+          >
+            <h4>Kitchen</h4>
+            <ul>
+              <li>Water</li>
+              <li>Feed</li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3"
+          >
+            <h4>Bedroom</h4>
+            <ul>
+              <li>Water</li>
+              <li>Feed</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-[var(--background)] w-1/2">test</div>
+      </div>
+    </div>
+
     <div class="flex flex-row gap-2">
       <NuxtImg src="/images/theme/gui.png" width="100%" />
       <NuxtImg src="/images/theme/summary-cheat-sheet.png" width="100%" />
@@ -84,8 +138,8 @@
 </template>
 <style lang="css" scoped>
 @reference 'tailwindcss';
-div,
+.scheme,
 span {
-  @apply w-full py-2 px-2;
+  @apply w-full py-2;
 }
 </style>

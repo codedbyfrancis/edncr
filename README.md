@@ -15,3 +15,8 @@ Run: colima start
 Run: supabase stop --no-backup && supabase start
 
 Run: colima start && supabase stop --no-backup && supabase start
+
+# AI CLI
+
+gemini
+cursor-agent

@@ -88,6 +88,9 @@ definePageMeta({
           />
         </div>
       </div>
+      <div>
+        <TwColors />
+      </div>
     </div>
   </div>
 </template>

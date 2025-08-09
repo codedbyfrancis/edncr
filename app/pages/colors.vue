@@ -7,6 +7,9 @@ definePageMeta({
   <div>
     <div class="container mx-auto">
       <h1>[Colors]</h1>
+      <div>
+        <TwColorScheme />
+      </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Buttons -->
@@ -87,9 +90,6 @@ definePageMeta({
             ]"
           />
         </div>
-      </div>
-      <div>
-        <TwColorScheme />
       </div>
     </div>
   </div>

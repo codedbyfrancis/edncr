@@ -89,7 +89,7 @@ definePageMeta({
         </div>
       </div>
       <div>
-        <TwColors />
+        <TwColorScheme />
       </div>
     </div>
   </div>

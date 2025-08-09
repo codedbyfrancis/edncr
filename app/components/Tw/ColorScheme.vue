@@ -82,6 +82,23 @@
         <div
           class="bg-[var(--background)] w-1/2 border-4 border-[var(--outline)] rounded-xl py-4 px-2"
         >
+          <div class="flex flex-row justify-between items-start mb-10">
+            <span>12:11</span>
+            <span>
+              <UIcon
+                name="material-symbols:signal-wifi-4-bar"
+                class="size-5 max-w-[40px] text-right"
+              />
+              <UIcon
+                name="material-symbols:signal-cellular-3-bar-rounded"
+                class="size-5 max-w-[40px] text-right"
+              />
+              <UIcon
+                name="material-symbols:battery-5-bar"
+                class="size-5 max-w-[40px] text-right"
+              />
+            </span>
+          </div>
           <div class="flex flex-row justify-between items-start mb-6">
             <h3>Today</h3>
             <UIcon

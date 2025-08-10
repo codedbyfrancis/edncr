@@ -36,10 +36,11 @@ const items: DropdownMenuItem[] = locales.value.map((locale) => ({
         <button
           @click="item.onClick"
           :class="locale === item.value ? 'active-locale' : ''"
-          class="locale-buttons flex flex-row gap-1 items-center"
+          class="locale-buttons flex flex-row gap-1 items-center text-normal"
           aria-label="Language Switcher Mobile"
         >
-          <UIcon :name="item.icon" class="size-5" /> {{ item.label }}
+          <UIcon :name="item.icon" class="size-5" />
+          <span>{{ item.label }}</span>
         </button>
       </div>
       <!-- <pre>{{ router }}</pre> -->
@@ -56,10 +57,16 @@ const items: DropdownMenuItem[] = locales.value.map((locale) => ({
 .mobile-language-switcher {
   @apply cursor-pointer;
   .locale-buttons {
-    @apply bg-[var(--ui-transparent)] hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] font-medium rounded-full px-4 py-2 cursor-pointer;
+    @apply bg-[var(--ui-transparent)] hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface)] font-medium rounded-full px-4 py-2 cursor-pointer;
+    span {
+      @apply font-normal;
+    }
   }
   .active-locale {
-    @apply font-semibold text-[var(--on-primary)] bg-[var(--on-primary-container)] hover:text-[var(--on-primary)] hover:bg-[var(--on-primary-container)] rounded-full px-4 py-2 cursor-pointer;
+    @apply text-[var(--on-primary-container)] bg-[var(--primary-container)] hover:text-[var(--on-primary-container)] hover:bg-[var(--primary-container)] rounded-full px-4 py-2 cursor-pointer;
+    span {
+      @apply font-medium;
+    }
   }
 }
 </style>

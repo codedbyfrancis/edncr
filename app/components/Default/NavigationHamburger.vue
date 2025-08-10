@@ -222,10 +222,10 @@ nav {
     @apply hover:bg-[var(--error)] hover:text-[var(--on-surface-variant)];
   }
   .router-link-active {
-    @apply rounded-full px-8 font-semibold text-[var(--on-primary)] bg-[var(--on-primary-container)] hover:text-[var(--on-primary)] hover:bg-[var(--on-primary-container)];
+    @apply rounded-full px-8 font-semibold text-[var(--on-primary-container)] bg-[var(--primary-container)] hover:text-[var(--on-primary-container)] hover:bg-[var(--primary-container)];
   }
   .router-link-exact-active {
-    @apply rounded-full px-8 font-semibold text-[var(--on-primary)] bg-[var(--on-primary-container)] hover:text-[var(--on-primary)] hover:bg-[var(--on-primary-container)];
+    @apply rounded-full px-8 font-semibold text-[var(--on-primary-container)] bg-[var(--primary-container)] hover:text-[var(--on-primary-container)] hover:bg-[var(--primary-container)];
   }
   .nav-items-avatar {
     @apply flex gap-3 items-center pl-3 py-2 font-medium;

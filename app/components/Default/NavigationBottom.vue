@@ -97,18 +97,18 @@ const { locale } = useI18n();
   }
   .router-link-active {
     .icon {
-      @apply bg-[var(--on-primary-container)] hover:bg-[var(--on-primary-container)] text-[var(--on-primary)] hover:text-[var(--on-primary)];
+      @apply bg-[var(--primary-container)] hover:bg-[var(--primary-container)] text-[var(--on-primary-container)] hover:text-[var(--on-primary-container)];
     }
     .name {
-      @apply text-[var(--on-primary-container-fixed)] font-semibold;
+      @apply text-[var(--primary-container-fixed)] font-semibold;
     }
   }
   .router-link-exact-active {
     .icon {
-      @apply bg-[var(--on-primary-container)] hover:bg-[var(--on-primary-container)] text-[var(--on-primary)] hover:text-[var(--on-primary)];
+      @apply bg-[var(--primary-container)] hover:bg-[var(--primary-container)] text-[var(--on-primary-container)] hover:text-[var(--on-primary-container)];
     }
     .name {
-      @apply text-[var(--on-primary-container-fixed)] font-semibold;
+      @apply text-[var(--primary-container-fixed)] font-semibold;
     }
   }
 }

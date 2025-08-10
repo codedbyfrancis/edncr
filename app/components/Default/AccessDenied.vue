@@ -8,7 +8,7 @@
 <style lang="css" scoped>
 @reference 'tailwindcss';
 .page {
-  @apply flex items-center justify-center h-[70vh] text-2xl text-center font-bold;
+  @apply flex flex-col items-center justify-center h-[70vh] text-2xl text-center font-bold;
   color: var(--on-surface);
   p {
     @apply text-xl font-normal;

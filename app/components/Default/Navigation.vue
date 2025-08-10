@@ -105,10 +105,10 @@ nav {
     @apply px-4 rounded-full text-xl bg-[var(--transparent)] text-[var(--on-surface-container)] hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out;
   }
   .router-link-active {
-    @apply rounded-full px-4 text-[var(--on-primary)] bg-[var(--on-primary-container)] hover:text-[var(--on-primary)] hover:bg-[var(--on-primary-container)];
+    @apply rounded-full px-4 bg-[var(--primary-container)] text-[var(--on-primary-container)] hover:text-[var(--on-primary-container)] hover:bg-[var(--primary-container)];
   }
   .router-link-exact-active {
-    @apply rounded-full px-4 text-[var(--on-primary)] bg-[var(--on-primary-container)] hover:text-[var(--on-primary)] hover:bg-[var(--on-primary-container)];
+    @apply rounded-full px-4 bg-[var(--primary-container)]  text-[var(--on-primary-container)] hover:text-[var(--on-primary-container)] hover:bg-[var(--primary-container)];
   }
 }
 </style>

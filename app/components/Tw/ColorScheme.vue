@@ -76,12 +76,13 @@
       >
       <span class="bg-[var(--shadow)] text-white">Shadow</span>
     </div>
+
     <!-- Mobile layout -->
     <!-- Left -->
     <div class="mobile-layout my-5">
       <div class="flex flex-col sm:flex-row gap-2">
         <div
-          class="bg-[var(--background)] w-full xs:min-w-1/2 border-4 border-[var(--outline)] rounded-xl py-4 px-2"
+          class="bg-[var(--background)] w-full xs:w-1/2 border-4 border-[var(--outline)] rounded-xl py-4 px-2"
         >
           <div class="flex flex-row justify-between items-start mb-10">
             <span>12:11</span>
@@ -153,7 +154,7 @@
         </div>
         <!-- Right -->
         <div
-          class="bg-[var(--background)] w-full xs:min-w-1/2 border-4 border-[var(--outline)] rounded-xl py-4 px-2"
+          class="bg-[var(--background)] w-full xs:w-1/2 border-4 border-[var(--outline)] rounded-xl py-4 px-2"
         >
           <div class="flex flex-row justify-between items-start mb-10">
             <span>12:11</span>
@@ -189,7 +190,7 @@
           </div>
 
           <div
-            class="bg-green-300 w-[90%] md:w-[50%] mx-auto rounded-[3rem] sm:rounded-[3rem] md:rounded-[3rem] p-4 mb-3"
+            class="bg-green-300 w-[60%] md:w-[50%] mx-auto rounded-[3rem] sm:rounded-[3rem] md:rounded-[3rem] mb-3"
           >
             <NuxtImg src="/images/theme/plants1.png" class="w-full" />
           </div>

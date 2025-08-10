@@ -179,7 +179,7 @@
             />
 
             <UIcon
-              name="material-symbols:menu-rounded"
+              name="material-symbols:atr"
               class="size-7 max-w-[40px] text-right mt-1 bg-[var(--on-surface)]"
             />
           </div>

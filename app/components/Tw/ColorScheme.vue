@@ -185,11 +185,11 @@
           </div>
 
           <div class="text-center text-[var(--primary)] p-3">
-            <h2 class="font-serif">Monstera Unique</h2>
+            <h1 class="font-serif">Monstera Unique</h1>
           </div>
 
           <div
-            class="bg-green-300 w-[75%] md:w-[40%] mx-auto rounded-[3rem] sm:rounded-[3rem] md:rounded-[3rem] p-4 mb-3"
+            class="bg-green-300 w-[90%] md:w-[50%] mx-auto rounded-[3rem] sm:rounded-[3rem] md:rounded-[3rem] p-4 mb-3"
           >
             <NuxtImg src="/images/theme/plants1.png" class="w-full" />
           </div>

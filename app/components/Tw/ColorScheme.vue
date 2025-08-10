@@ -101,7 +101,7 @@
             </span>
           </div>
           <div class="flex flex-row justify-between items-start mb-6">
-            <h3>Today</h3>
+            <h3 class="font-serif">Today</h3>
             <span class="bg-[var(--secondary-container)] px-3 rounded-full">
               <UIcon
                 name="material-symbols:person-3-rounded"
@@ -124,7 +124,7 @@
           <div
             class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3 bg-[url('/images/theme/plants1.png')] bg-no-repeat bg-right-bottom bg-contain"
           >
-            <h4 class="text-[var(--primary)]">Living Room</h4>
+            <h4 class="text-[var(--primary)] font-serif">Living Room</h4>
             <ul>
               <li><UCheckbox default-value /> Water</li>
               <li><UCheckbox default-value /> Feed</li>
@@ -134,7 +134,7 @@
           <div
             class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3 bg-[url('/images/theme/plants2.png')] bg-no-repeat bg-right-bottom bg-contain"
           >
-            <h4 class="text-[var(--primary)]">Kitchen</h4>
+            <h4 class="text-[var(--primary)] font-serif">Kitchen</h4>
             <ul>
               <li><UCheckbox /> Water</li>
               <li><UCheckbox default-value /> Feed</li>
@@ -144,7 +144,7 @@
           <div
             class="bg-[var(--surface-container)] w-full rounded-3xl p-4 mb-3 bg-[url('/images/theme/plants3.png')] bg-no-repeat bg-right-bottom bg-contain"
           >
-            <h4 class="text-[var(--primary)]">Bedroom</h4>
+            <h4 class="text-[var(--primary)] font-serif">Bedroom</h4>
             <ul>
               <li><UCheckbox default-value /> Water</li>
               <li><UCheckbox /> Feed</li>
@@ -185,11 +185,11 @@
           </div>
 
           <div class="text-center text-[var(--primary)] p-3">
-            <h2>Monstera Unique</h2>
+            <h2 class="font-serif">Monstera Unique</h2>
           </div>
 
           <div
-            class="bg-green-300 w-[50%] md:w-[25%] mx-auto rounded-[3rem] md:rounded-[3rem] p-4 mb-3"
+            class="bg-green-300 w-[75%] md:w-[40%] mx-auto rounded-[3rem] sm:rounded-[3rem] md:rounded-[3rem] p-4 mb-3"
           >
             <NuxtImg src="/images/theme/plants1.png" class="w-full" />
           </div>
@@ -202,7 +202,7 @@
                 name="material-symbols:star-shine-outline-rounded"
                 class="size-5"
               />
-              <span>Most popular</span>
+              <span class="font-serif">Most popular</span>
               <span class="caption">This is a popular plant in our store</span>
             </div>
             <div
@@ -212,14 +212,14 @@
                 name="material-symbols:note-stack-outline-rounded"
                 class="size-5"
               />
-              <span>Easy Care</span>
+              <span class="font-serif">Easy Care</span>
               <span class="caption">This is a popular plant in our store</span>
             </div>
             <div
               class="flex flex-col min-w-[150px] bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
             >
               <UIcon name="material-symbols:notifications" class="size-5" />
-              <span>Faux Avar</span>
+              <span class="font-serif">Faux Avar</span>
               <span class="caption"
                 >Get the best plant without maintenance</span
               >
@@ -227,7 +227,7 @@
           </div>
           <div class="flex flex-col gap-5">
             <div class="flex flex-col">
-              <h4>Care</h4>
+              <h4 class="font-serif">Care</h4>
               <span class="flex items-center"
                 ><UIcon name="material-symbols:water" class="size-5 mr-2" />
                 Water every Tuesday</span
@@ -241,7 +241,7 @@
               >
             </div>
             <div class="flex flex-col">
-              <h4>About</h4>
+              <h4 class="font-serif">About</h4>
               <span class="flex items-center"
                 ><UIcon
                   name="material-symbols:sunny-rounded"

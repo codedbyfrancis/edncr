@@ -175,12 +175,12 @@
           <div class="flex flex-row justify-between items-start mb-6">
             <UIcon
               name="material-symbols:arrow-back-rounded"
-              class="size-7 max-w-[40px] text-right mt-1 bg-[var(--on-secondary-container)]"
+              class="size-7 max-w-[40px] text-right mt-1 bg-[var(--on-surface)]"
             />
 
             <UIcon
               name="material-symbols:menu-rounded"
-              class="size-7 max-w-[40px] text-right mt-1 bg-[var(--on-secondary-container)]"
+              class="size-7 max-w-[40px] text-right mt-1 bg-[var(--on-surface)]"
             />
           </div>
 
@@ -225,7 +225,7 @@
               >
             </div>
           </div>
-          <div>
+          <div class="flex flex-col gap-5">
             <div class="flex flex-col">
               <h4>Care</h4>
               <span class="flex items-center"
@@ -238,6 +238,23 @@
                   class="size-5 mr-2"
                 />
                 Feed once monthly</span
+              >
+            </div>
+            <div class="flex flex-col">
+              <h4>About</h4>
+              <span class="flex items-center"
+                ><UIcon
+                  name="material-symbols:sunny-rounded"
+                  class="size-5 mr-2"
+                />
+                Moderate light</span
+              >
+              <span class="flex items-center"
+                ><UIcon
+                  name="material-symbols:potted-plant-outline"
+                  class="size-5 mr-2"
+                />
+                Low maintenance</span
               >
             </div>
           </div>

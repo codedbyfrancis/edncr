@@ -77,6 +77,7 @@
       <span class="bg-[var(--shadow)] text-white">Shadow</span>
     </div>
     <!-- Mobile layout -->
+    <!-- Left -->
     <div class="mobile-layout my-5">
       <div class="flex gap-2">
         <div
@@ -113,9 +114,9 @@
           >
             <UIcon
               name="material-symbols:lightbulb-2"
-              class="size-5 max-w-[40px]"
+              class="size-5 w-[40px] justify-center"
             />
-            <p class="w-3/4 px-2">
+            <p class="px-2">
               During the winter your plants slow down and need less water.
             </p>
           </div>
@@ -150,7 +151,97 @@
             </ul>
           </div>
         </div>
-        <div class="bg-[var(--background)] w-1/2">test</div>
+        <!-- Right -->
+        <div
+          class="bg-[var(--background)] w-1/2 border-4 border-[var(--outline)] rounded-xl py-4 px-2"
+        >
+          <div class="flex flex-row justify-between items-start mb-10">
+            <span>12:11</span>
+            <span>
+              <UIcon
+                name="material-symbols:signal-wifi-4-bar"
+                class="size-5 max-w-[40px] text-right"
+              />
+              <UIcon
+                name="material-symbols:signal-cellular-3-bar-rounded"
+                class="size-5 max-w-[40px] text-right"
+              />
+              <UIcon
+                name="material-symbols:battery-5-bar"
+                class="size-5 max-w-[40px] text-right"
+              />
+            </span>
+          </div>
+          <div class="flex flex-row justify-between items-start mb-6">
+            <UIcon
+              name="material-symbols:arrow-back-rounded"
+              class="size-7 max-w-[40px] text-right mt-1 bg-[var(--on-secondary-container)]"
+            />
+
+            <UIcon
+              name="material-symbols:menu-rounded"
+              class="size-7 max-w-[40px] text-right mt-1 bg-[var(--on-secondary-container)]"
+            />
+          </div>
+
+          <div class="text-center text-[var(--primary)] p-3">
+            <h2>Monstera Unique</h2>
+          </div>
+
+          <div
+            class="bg-green-300 w-[50%] md:w-[25%] mx-auto rounded-[3rem] md:rounded-[3rem] p-4 mb-3"
+          >
+            <NuxtImg src="/images/theme/plants1.png" class="w-full" />
+          </div>
+
+          <div class="flex gap-5 overflow-hidden">
+            <div
+              class="flex flex-col min-w-[150px] bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
+            >
+              <UIcon
+                name="material-symbols:star-shine-outline-rounded"
+                class="size-5"
+              />
+              <span>Most popular</span>
+              <span class="caption">This is a popular plant in our store</span>
+            </div>
+            <div
+              class="flex flex-col min-w-[150px] bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
+            >
+              <UIcon
+                name="material-symbols:note-stack-outline-rounded"
+                class="size-5"
+              />
+              <span>Easy Care</span>
+              <span class="caption">This is a popular plant in our store</span>
+            </div>
+            <div
+              class="flex flex-col min-w-[150px] bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
+            >
+              <UIcon name="material-symbols:notifications" class="size-5" />
+              <span>Faux Avar</span>
+              <span class="caption"
+                >Get the best plant without maintenance</span
+              >
+            </div>
+          </div>
+          <div>
+            <div class="flex flex-col">
+              <h4>Care</h4>
+              <span class="flex items-center"
+                ><UIcon name="material-symbols:water" class="size-5 mr-2" />
+                Water every Tuesday</span
+              >
+              <span class="flex items-center"
+                ><UIcon
+                  name="material-symbols:nest-eco-leaf"
+                  class="size-5 mr-2"
+                />
+                Feed once monthly</span
+              >
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

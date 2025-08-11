@@ -52,7 +52,9 @@
         >On Surface Var.</span
       >
       <span class="bg-[var(--outline)] text-[var(--surface)]">Outline</span>
-      <span class="bg-[var(--outline-variant)]">Outline Variant</span>
+      <span class="bg-[var(--outline-variant)] text-[var(--surface)]"
+        >Outline Variant</span
+      >
     </div>
     <div class="scheme flex flex-row gap-2">
       <span class="bg-[var(--error)] text-[var(--on-error)]"

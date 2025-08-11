@@ -266,9 +266,49 @@
       </div>
     </div>
 
+    <div class="container mx-auto mt-10">
+      <h2>Inspirations</h2>
+      <NuxtImg
+        src="/images/theme/Material-3-Expressive-Google-apps.webp"
+        class="w-full"
+      />
+      <NuxtImg
+        src="/images/theme/Material-3-Expressive-Fitbit-2.webp"
+        class="w-full"
+      />
+      <NuxtImg
+        src="/images/theme/Material-3-Experssive-media-app-concept.webp"
+        class="w-full"
+      />
+      <NuxtImg
+        src="/images/theme/google-material-3-expressive-design_dezeen_2364_hero-1536x864.webp"
+        class="w-full"
+      />
+      <NuxtImg
+        src="/images/theme/google-material-3-expressive-design_dezeen_1704_col_5-852x425.webp"
+        class="w-full"
+      />
+      <NuxtImg
+        src="/images/theme/Material-3-Expressive-toolbars-3.webp"
+        class="w-full"
+      />
+      <NuxtImg
+        src="/images/theme/collapsed-and-expanded-navigation-rails.webp"
+        class="w-full"
+      />
+      <NuxtImg
+        src="/images/theme/Material-3-Expressive-flexible-navigation-rail-2.webp"
+        class="w-full"
+      />
+    </div>
+
     <div class="flex flex-row gap-2">
-      <NuxtImg src="/images/theme/gui.png" width="100%" />
-      <NuxtImg src="/images/theme/summary-cheat-sheet.png" width="100%" />
+      <div class="w-1/2">
+        <NuxtImg src="/images/theme/gui.png" class="w-[100%]" />
+      </div>
+      <div class="w-1/2">
+        <NuxtImg src="/images/theme/summary-cheat-sheet.png" class="w-[100%]" />
+      </div>
     </div>
   </div>
 </template>

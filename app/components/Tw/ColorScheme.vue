@@ -294,6 +294,7 @@
         src="/images/theme/Material-3-Expressive-toolbars-3.webp"
         class="w-full"
       />
+      <NuxtImg src="/images/theme/maaqdf2b-01.png" class="w-full" />
       <NuxtImg
         src="/images/theme/collapsed-and-expanded-navigation-rails.webp"
         class="w-full"

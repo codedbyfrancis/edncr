@@ -114,7 +114,7 @@
             class="flex items-center bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
           >
             <UIcon
-              name="material-symbols:lightbulb-2"
+              name="material-symbols:lightbulb-2-outline-rounded"
               class="size-5 w-[40px] justify-center"
             />
             <p class="px-2">
@@ -197,7 +197,7 @@
 
           <div class="flex gap-5 overflow-hidden">
             <div
-              class="flex flex-col min-w-[150px] bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
+              class="flex flex-col bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
             >
               <UIcon
                 name="material-symbols:star-shine-outline-rounded"
@@ -207,7 +207,7 @@
               <span class="caption">This is a popular plant in our store</span>
             </div>
             <div
-              class="flex flex-col min-w-[150px] bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
+              class="flex flex-col bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
             >
               <UIcon
                 name="material-symbols:note-stack-outline-rounded"
@@ -217,9 +217,12 @@
               <span class="caption">This is a popular plant in our store</span>
             </div>
             <div
-              class="flex flex-col min-w-[150px] bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
+              class="flex flex-col bg-[var(--tertiary-container)] text-[var(--on-tertiary-container)] rounded-3xl p-3 mb-6"
             >
-              <UIcon name="material-symbols:notifications" class="size-5" />
+              <UIcon
+                name="material-symbols:notifications-outline-rounded"
+                class="size-5"
+              />
               <span class="font-serif">Faux Avar</span>
               <span class="caption"
                 >Get the best plant with less maintenance</span

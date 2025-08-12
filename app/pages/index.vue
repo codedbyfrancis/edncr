@@ -24,7 +24,7 @@ useSeoMeta({
     <div class="content container mx-auto">
       <h1>Index {{ $t('language') }}</h1>
       <h2>{{ $t('welcome') }}</h2>
-      <UiDirhamFont />
+      <DevUiDirhamFont />
     </div>
   </div>
 </template>

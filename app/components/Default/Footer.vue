@@ -18,7 +18,7 @@ import LogoMain from '~/assets/logo/logo.svg';
       </span>
     </div>
 
-    <div class="datetime"><VueuseUseNow /></div>
+    <div class="datetime"><DevVueuseUseNow /></div>
   </section>
 </template>
 <style lang="css" scoped>

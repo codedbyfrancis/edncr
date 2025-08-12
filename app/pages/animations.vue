@@ -9,8 +9,8 @@ definePageMeta({
       <h1>[Animations]</h1>
 
       <div class="flex flex-col gap-5">
-        <div><AnimationsButtons /></div>
-        <div><AnimationsDrawer /></div>
+        <div><DevAnimationsButtons /></div>
+        <div><DevAnimationsDrawer /></div>
       </div>
     </div>
   </div>

@@ -37,15 +37,15 @@ useGoogleOneTap({
       </div>
       <div class="flex flex-col justify-center items-center">
         <div class="box">
-          <AuthPhone />
+          <DefaultAuthPhone />
           <LazyUSeparator />
-          <AuthMagiclink />
+          <DefaultAuthMagiclink />
           <USeparator />
-          <AuthGoogle />
+          <DefaultAuthGoogle />
           <USeparator />
-          <AuthEmailLogin />
+          <DefaultAuthEmailLogin />
           <USeparator />
-          <AuthEmailSignup />
+          <DefaultAuthEmailSignup />
         </div>
       </div>
     </div>

@@ -37,7 +37,7 @@ useGoogleOneTap({
 
       <div class="flex flex-col justify-center items-center">
         <div class="box">
-          <AuthEmailSignup />
+          <DefaultAuthEmailSignup />
         </div>
       </div>
     </div>

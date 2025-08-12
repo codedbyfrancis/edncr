@@ -25,7 +25,7 @@ import LogoMain from '~/assets/logo/logo.svg';
 @reference "tailwindcss";
 section,
 .footer {
-  @apply flex flex-col justify-center items-center text-center py-5 mb-12;
+  @apply hidden md:flex flex-col justify-center items-center text-center py-5 mb-12;
   .copyright {
     @apply flex flex-row items-center justify-center gap-2 text-base;
   }

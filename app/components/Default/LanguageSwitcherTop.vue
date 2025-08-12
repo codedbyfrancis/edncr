@@ -16,7 +16,10 @@ const items: DropdownMenuItem[] = locales.value.map((locale) => ({
   <section>
     <UDropdownMenu
       :items="items"
-      :ui="{ content: 'w-48', item: 'text-base' }"
+      :ui="{
+        content: 'w-48 bg-[var(--surface-container)] ',
+        item: 'text-base',
+      }"
       class="hidden md:flex items-center justify-center"
     >
       <UButton
@@ -30,7 +33,7 @@ const items: DropdownMenuItem[] = locales.value.map((locale) => ({
     <div
       class="mobile-language-switcher md:hidden flex items-center justify-center flex-row"
     >
-      <div v-for="item in items" :key="item.value">
+      <div v-for="item in items" :key="item.value" class="">
         <button
           @click="item.onClick"
           :class="locale === item.value ? 'active-locale' : ''"
@@ -39,7 +42,6 @@ const items: DropdownMenuItem[] = locales.value.map((locale) => ({
           <UIcon :name="item.icon" class="size-5" />{{ item.label }}
         </button>
       </div>
-      Top
       <!-- <pre>{{ router }}</pre> -->
     </div>
   </section>
@@ -51,7 +53,7 @@ const items: DropdownMenuItem[] = locales.value.map((locale) => ({
   @apply px-4 rounded-full text-xl bg-[var(--transparent)] text-[var(--on-surface-container)] hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out;
 }
 .mobile-language-switcher {
-  @apply cursor-pointer;
+  @apply cursor-pointer bg-[var(--error)];
   .locale-buttons {
     @apply bg-[var(--ui-transparent)] hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] font-medium rounded-full px-3 py-2 cursor-pointer;
   }

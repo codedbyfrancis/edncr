@@ -19,14 +19,14 @@
           <UButton
             to="/accounts/signup"
             size="xl"
-            class="bg-[var(--primary)] text-white"
+            class="bg-[var(--primary-container)] text-[var(--on-primary-container)] hover:bg-[var(--primary-container)]/70 hover:text-[var(--on-primary-container)]/100"
             variant="solid"
             label="Get started"
           />
           <UButton
             to="/about"
             size="xl"
-            class="bg-[var(--primary)] text-white"
+            class="bg-[var(--primary-container)] text-[var(--on-primary-container)] hover:bg-[var(--primary-container)]/70 hover:text-[var(--on-primary-container)]/100"
             variant="link"
             label="Learn more"
             trailing-icon="i-heroicons-arrow-right-20-solid"

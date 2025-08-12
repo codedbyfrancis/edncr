@@ -17,7 +17,9 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@vueuse/nuxt',
     '@nuxt/fonts',
+    'nuxt-svgo',
   ],
+
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
     public: {
@@ -29,6 +31,7 @@ export default defineNuxtConfig({
       // supabaseKey: process.env.NUXT_PUBLIC_SUPABASE_KEY,
     },
   },
+
   app: {
     head: {
       // titleTemplate: '%s | ' + process.env.NUXT_PUBLIC_APP_NAME,

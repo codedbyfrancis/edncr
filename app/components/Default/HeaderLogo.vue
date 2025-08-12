@@ -1,11 +1,13 @@
 <script setup>
 const config = useRuntimeConfig();
-// import CbfLogo from '~/assets/logo/cbf-logo.svg';
+import LogoMain from '~/assets/logo/logo.svg';
 </script>
 <template>
   <div class="flex flex-row items-center gap-2">
     <div>
-      <LogoCbf :fill="`var(--logo-fill)`" :width="2" :height="2" />
+      <LogoMain
+        class="text-4xl text-[var(--logo-fill)] fill-[var(--logo-fill)]"
+      />
     </div>
 
     <div

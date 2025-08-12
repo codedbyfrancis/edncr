@@ -1,13 +1,21 @@
+<script lang="ts" setup>
+const config = useRuntimeConfig();
+import LogoMain from '~/assets/logo/logo.svg';
+</script>
+
 <template>
   <section class="footer">
     <div class="copyright">
-      <span>ⓒ Copyright {{ new Date().getFullYear() }}</span>
+      <span
+        >ⓒ Copyright {{ new Date().getFullYear() }}
+        {{ config.public.appName }}</span
+      >
     </div>
     <div class="cbf">
       <span
         >This website was CodedbyFrancis
-        <LogoCbf :fill="`var(--logo-fill)`" :width="0.8" :height="0.8" />.</span
-      >
+        <LogoMain class="text-[var(--logo-fill)]" />.
+      </span>
     </div>
 
     <div class="datetime"><VueuseUseNow /></div>
@@ -23,7 +31,7 @@ section,
   }
   .cbf,
   span {
-    @apply flex flex-row justify-center items-center gap-2 text-sm;
+    @apply flex flex-row gap-1 justify-center items-center text-sm;
   }
   .datetime {
     @apply flex flex-row justify-center items-center text-xs;

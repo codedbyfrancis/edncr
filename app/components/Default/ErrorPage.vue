@@ -49,7 +49,7 @@ useSeoMeta({
 section {
   @apply container mx-auto;
   .error_page {
-    @apply flex flex-col text-left text-2xl text-center font-bold;
+    @apply flex flex-col text-left text-2xl font-bold;
     color: var(--on-surface);
     p {
       @apply text-xl font-normal;

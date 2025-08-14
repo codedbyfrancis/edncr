@@ -15,7 +15,6 @@ function close() {
         <div class="flex items-center justify-center pl-2">
           <div class="nav-items-components"><DefaultColorModeButton /></div>
           <div class="nav-items-components"><DefaultLanguageSwitcherTop /></div>
-          <!-- <DefaultTextSizeControl /> -->
         </div>
       </div>
       <button

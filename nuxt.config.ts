@@ -25,8 +25,9 @@ export default defineNuxtConfig({
     public: {
       appName: '',
       appUrl: '',
+      appEnv: '',
       imageCndUrl: '',
-      googleClientId: process.env.NUXT_PUBLIC_GOOGLE_CLIENT_ID,
+      googleClientId: '',
       // supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL,
       // supabaseKey: process.env.NUXT_PUBLIC_SUPABASE_KEY,
     },

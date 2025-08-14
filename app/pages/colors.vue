@@ -2,6 +2,19 @@
 definePageMeta({
   layout: 'defaultpages',
 });
+
+const config = useRuntimeConfig();
+useSeoMeta({
+  title: 'Colors',
+  ogTitle: 'Colors' + ' | ' + config.public.appName,
+  description: 'Colors description',
+  ogDescription: 'Colors description for social media',
+  ogUrl: config.public.appUrl + '/account/',
+  ogType: 'website',
+  ogSiteName: config.public.appName,
+  ogImage: config.public.imageCdnUrl + '/icons/android-chrome-512x512.png',
+  twitterCard: 'summary_large_image',
+});
 </script>
 <template>
   <div>

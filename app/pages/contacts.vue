@@ -6,12 +6,24 @@ definePageMeta({
   layout: 'defaultpages',
 });
 
-const config = useRuntimeConfig();
 const { locale } = useI18n();
 const supabase = useSupabaseClient();
 
 const pageData = ref<any>(null);
 const error = ref<any>(null);
+
+const config = useRuntimeConfig();
+useSeoMeta({
+  title: 'Contacts',
+  ogTitle: 'Contacts' + ' | ' + config.public.appName,
+  description: 'Contacts description',
+  ogDescription: 'Contacts description for social media',
+  ogUrl: config.public.appUrl + '/account/',
+  ogType: 'website',
+  ogSiteName: config.public.appName,
+  ogImage: config.public.imageCdnUrl + '/icons/android-chrome-512x512.png',
+  twitterCard: 'summary_large_image',
+});
 
 async function fetchPage() {
   try {

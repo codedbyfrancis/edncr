@@ -33,11 +33,8 @@ useSeoMeta({
     <div v-if="`${error?.statusCode}`.slice(0, 2) === '50'">
       <DefaultErrors500 :error="error" />
     </div>
-    <div v-if="error?.statusCode === 400">
+    <div v-if="`${error?.statusCode}`.slice(0, 2) === '40'">
       <DefaultErrors404 />
-    </div>
-    <div v-if="error?.statusCode !== 404 && error?.statusCode !== 500">
-      <DefaultErrorsAllError />
     </div>
 
     <NuxtLink to="/">Go back home</NuxtLink>

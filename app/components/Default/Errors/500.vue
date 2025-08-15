@@ -21,8 +21,6 @@ mail.send({
     '\nTime: ' +
     new Date().toLocaleString(),
 });
-alert('Error: ' + props.error);
-console.log(props.error);
 </script>
 <template>
   <div>

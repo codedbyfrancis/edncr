@@ -10,7 +10,7 @@ defineProps({
       <div class="container mx-auto">
         <h1>{{ data.title }}</h1>
         <h2>{{ $t('welcome') }}</h2>
-        <p>{{ data.description }}</p>
+        <p class="secondary-body">{{ data.description }}</p>
       </div>
       <div class="container mx-auto">
         <div class="w-full lg:w-1/2">

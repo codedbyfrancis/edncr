@@ -1,6 +1,6 @@
 <script setup lang="ts">
 throw createError({
-  statusCode: 503,
-  statusMessage: 'Service Unavailable',
+  statusCode: 500,
+  statusMessage: 'Internal Server Error',
 });
 </script>

@@ -30,11 +30,11 @@ useSeoMeta({
     </div>
 
     <!-- For Production -->
-    <div v-if="error?.statusCode === 404">
-      <DefaultErrors404 />
+    <div v-if="`${error?.statusCode}`.slice(0, 2) === '50'">
+      <DefaultErrors500 :error="error" />
     </div>
-    <div v-if="error?.statusCode === 500">
-      <DefaultErrors500 />
+    <div v-if="error?.statusCode === 400">
+      <DefaultErrors404 />
     </div>
     <div v-if="error?.statusCode !== 404 && error?.statusCode !== 500">
       <DefaultErrorsAllError />

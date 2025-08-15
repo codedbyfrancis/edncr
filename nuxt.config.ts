@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/fonts',
     'nuxt-svgo',
+    'nuxt-mail',
   ],
 
   css: ['~/assets/css/main.css'],
@@ -30,6 +31,19 @@ export default defineNuxtConfig({
       googleClientId: '',
       // supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL,
       // supabaseKey: process.env.NUXT_PUBLIC_SUPABASE_KEY,
+    },
+    mail: {
+      message: {
+        to: process.env.NUXT_PUBLIC_EMAIL,
+      },
+      smtp: {
+        host: process.env.NUXT_PUBLIC_SMTP_HOST,
+        port: process.env.NUXT_PUBLIC_SMTP_PORT,
+        auth: {
+          user: process.env.NUXT_PUBLIC_EMAIL,
+          pass: process.env.NUXT_PUBLIC_PASSWORD,
+        },
+      },
     },
   },
 

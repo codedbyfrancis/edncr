@@ -31,9 +31,11 @@ useSeoMeta({
 
     <!-- For Production -->
     <div v-if="`${error?.statusCode}`.slice(0, 2) === '50'">
+      500
       <DefaultErrors50x :error="error" />
     </div>
     <div v-if="`${error?.statusCode}`.slice(0, 2) === '40'">
+      400
       <DefaultErrors40x :error="error" />
     </div>
 

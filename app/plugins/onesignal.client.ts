@@ -10,9 +10,8 @@ export default defineNuxtPlugin(() => {
     (window as any).OneSignalDeferred = (window as any).OneSignalDeferred || [];
     (window as any).OneSignalDeferred.push(async (OneSignal: any) => {
       await OneSignal.init({
-        appId: '733cfb84-f996-423f-9602-e41b3e49a0d9',
-        safari_web_id:
-          'web.onesignal.auto.459ab5a0-25ed-43f1-a7b1-99d986ce9992',
+        appId: import.meta.env.NUXT_PUBLIC_APP_ID,
+        safari_web_id: import.meta.env.NUXT_PUBLIC_SAFARI_WEB_ID,
         notifyButton: {
           enable: false,
         },

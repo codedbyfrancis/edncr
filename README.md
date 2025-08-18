@@ -24,3 +24,13 @@ Run: colima start && supabase stop --no-backup && supabase start
 
 gemini
 cursor-agent
+
+# Supabase Migration
+
+## Initial Schema
+
+Run: supabase db diff --use-migra initial_schema -f initial_schema.sql
+
+## New Table and Column
+
+Run: supabase db diff --use-migra new_table_column -f new_table_column

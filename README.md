@@ -1,5 +1,9 @@
 # Nuxt 4 NuxtUi Supabase TailwindCss Boilerplate
 
+## Material Design
+
+https://9to5google.com/2025/08/17/google-material-3-expressive-redesign/
+
 ## Google One Tap Sign in do not show
 
 Remove the url to allow
@@ -33,4 +37,4 @@ Run: supabase db diff --use-migra initial_schema -f initial_schema.sql
 
 ## New Table and Column
 
-Run: supabase db diff --use-migra new_table_column -f new_table_column
+Run: supabase db diff --use-migra new_table_column -f new_table_column.sql

@@ -119,6 +119,7 @@ export default defineNuxtConfig({
         isCustomElement: () => true,
       },
     },
+    // Added from Google Tag Manager
     hooks: {
       'app:rendered'(ctx) {
         // Prevent Vue from escaping innerHTML

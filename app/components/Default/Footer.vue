@@ -20,6 +20,7 @@ import LogoMain from '~/assets/logo/logo.svg';
 
     <div class="datetime"><DevVueuseUseNow /></div>
   </section>
+  <div class="h-[70px]"></div>
 </template>
 <style lang="css" scoped>
 @reference "tailwindcss";

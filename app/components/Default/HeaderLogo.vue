@@ -14,13 +14,13 @@ import LogoMain from '~/assets/logo/logo.svg';
       class="md:flex-row md:flex items-center font-[Inika] hidden text-3xl font-semibold text-[var(--logo-fill)]"
     >
       <!-- Desktop -->
-      <span class="cbf-logo-text">{{ config.public.appName }}1</span>
+      <span class="cbf-logo-text">{{ config.public.appName }}</span>
     </div>
     <div
       class="md:hidden flex flex-row items-center font-[Inika] text-2xl font-semibold text-[var(--logo-fill)]"
     >
       <!-- Mobile -->
-      <span class="cbf-logo-text">{{ config.public.appName }}2</span>
+      <span class="cbf-logo-text">{{ config.public.appName }}</span>
     </div>
   </div>
 </template>

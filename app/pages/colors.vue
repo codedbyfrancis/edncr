@@ -21,6 +21,14 @@ useSeoMeta({
     <div class="container mx-auto">
       <h1>[Colors]</h1>
       <div>
+        <div class="text-center py-5">
+          <a
+            href="https://9to5google.com/2025/08/17/google-material-3-expressive-redesign/"
+            target="blank"
+            rel="”nofollow”"
+            >Guide 9to5google-google-material-3-expressive-redesign</a
+          >
+        </div>
         <DevTwColorScheme />
       </div>
 
@@ -65,7 +73,7 @@ useSeoMeta({
         </div>
 
         <!-- Cards -->
-        <div class="space-y-4">
+        <div class="space-y-4 mt-3">
           <h2 class="text-xl font-semibold">Cards</h2>
           <UCard
             class="bg-[var(--surface-container)] text-[color:var(--on-surface-container)]"

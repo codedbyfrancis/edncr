@@ -29,6 +29,7 @@ export default defineNuxtConfig({
       appEnv: '',
       imageCndUrl: '',
       googleClientId: '',
+      googleTagManager: '',
       // supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL,
       // supabaseKey: process.env.NUXT_PUBLIC_SUPABASE_KEY,
     },
@@ -91,9 +92,44 @@ export default defineNuxtConfig({
         // Web App Manifest
         // { rel: 'manifest', href: '/site.webmanifest' },
       ],
+      script: [
+        {
+          hid: 'gtm-script',
+          innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','${process.env.NUXT_PUBLIC_GOOGLE_TAG_MANAGER}');`,
+          type: 'text/javascript',
+        },
+      ],
+      noscript: [
+        {
+          hid: 'gtm-noscript',
+          innerHTML: `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.NUXT_PUBLIC_GOOGLE_TAG_MANAGER}"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          pbody: true,
+        },
+      ],
     },
     pageTransition: { name: 'page', mode: 'out-in' },
+    // required to allow innerHTML
+    vue: {
+      compilerOptions: {
+        isCustomElement: () => true,
+      },
+    },
+    hooks: {
+      'app:rendered'(ctx) {
+        // Prevent Vue from escaping innerHTML
+        ctx.ssrContext?.event.res.setHeader(
+          'Content-Security-Policy',
+          "script-src 'unsafe-inline'"
+        );
+      },
+    },
   },
+
   // Supabase module configuration
   supabase: {
     url: process.env.NUXT_PUBLIC_SUPABASE_URL,

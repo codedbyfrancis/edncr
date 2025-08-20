@@ -53,7 +53,7 @@ const items: DropdownMenuItem[] = locales.value.map((locale) => ({
   @apply px-4 rounded-full text-xl bg-[var(--transparent)] text-[var(--on-surface-container)] hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out;
 }
 .mobile-language-switcher {
-  @apply cursor-pointer bg-[var(--error)];
+  @apply cursor-pointer;
   .locale-buttons {
     @apply bg-[var(--ui-transparent)] hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] font-medium rounded-full px-3 py-2 cursor-pointer;
   }

@@ -43,7 +43,6 @@ const items: DropdownMenuItem[] = locales.value.map((locale) => ({
           <span>{{ item.label }}</span>
         </button>
       </div>
-      test
       <!-- <pre>{{ router }}</pre> -->
     </div>
   </section>

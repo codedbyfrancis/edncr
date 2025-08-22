@@ -38,3 +38,4 @@ Run: supabase db diff --use-migra initial_schema -f initial_schema.sql
 ## New Table and Column
 
 Run: supabase db diff --use-migra new_table_column -f new_table_column.sql
+# edncr

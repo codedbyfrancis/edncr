@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const config = useRuntimeConfig();
-import LogoMain from '~/assets/logo/logo.svg';
+import LogoCbf from '~/assets/logo/cbf-logo.svg';
 </script>
 
 <template>
@@ -8,17 +8,17 @@ import LogoMain from '~/assets/logo/logo.svg';
     <div class="copyright">
       <span
         >ⓒ Copyright {{ new Date().getFullYear() }}
-        {{ config.public.appName }}</span
+        {{ config.public.appName }} ({{ config.public.appTag }})</span
       >
     </div>
     <div class="cbf">
       <span
         >This website was CodedbyFrancis
-        <LogoMain class="text-[var(--logo-fill)]" />.
+        <LogoCbf class="text-[var(--logo-fill)]" />.
       </span>
     </div>
 
-    <div class="datetime"><DevVueuseUseNow /></div>
+    <!-- <div class="datetime"><DevVueuseUseNow /></div> -->
   </section>
   <div class="h-[70px]"></div>
 </template>
@@ -26,7 +26,7 @@ import LogoMain from '~/assets/logo/logo.svg';
 @reference "tailwindcss";
 section,
 .footer {
-  @apply hidden md:flex flex-col justify-center items-center text-center py-5 mb-12;
+  @apply flex flex-col justify-center items-center text-center py-5 mb-12;
   .copyright {
     @apply flex flex-row items-center justify-center gap-2 text-base;
   }

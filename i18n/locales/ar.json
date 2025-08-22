@@ -6,5 +6,9 @@
   "currency-unit": "Dirham",
   "flag-icon": "flag:ae-4x3",
   "hello": "مرحبًا",
-  "welcome": "مرحباً"
+  "welcome": "مرحباً",
+  "select-your-language": "اختر لغتك.",
+  "log-in-with-google": "تسجيل الدخول مع جوجل",
+  "log-in-with-uae-registered-phone": "تسجيل الدخول باستخدام الهاتف المسجل في الإمارات العربية المتحدة.",
+  "send-otp": "أرسل كلمة مرور لمرة واحدة"
 }

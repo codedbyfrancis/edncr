@@ -17,7 +17,7 @@ const {
     </div>
     <div v-else-if="user && user.phone">
       <UTooltip :text="user.phone">
-        <UIcon name="material-symbols:contact-phone" class="size-7 mt-2"
+        <UIcon name="material-symbols:mobile-2-outline" class="size-7 mt-2"
       /></UTooltip>
     </div>
     <div v-else>

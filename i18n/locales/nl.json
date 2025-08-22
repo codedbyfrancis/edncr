@@ -6,5 +6,9 @@
   "currency-unit": "EURO",
   "flag-icon": "flag:nl-4x3",
   "hello": "Hallo",
-  "welcome": "Welkom"
+  "welcome": "Welkom",
+  "select-your-language": "Selecteer uw taal.",
+  "log-in-with-google": "Log in met Google",
+  "log-in-with-uae-registered-phone": "Meld u aan met een in de VAE geregistreerde telefoon.",
+  "send-otp": "OTP verzenden"
 }

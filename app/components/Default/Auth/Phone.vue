@@ -26,14 +26,16 @@ async function signInWithOtp() {
     loading_phone.value = true;
     errorMsg.value = null;
     successMsg.value = null;
-    const { error } = await supabase.auth.signInWithOtp({
+    const { data, error } = await supabase.auth.signInWithOtp({
       phone: phone.value,
     });
     if (error) {
       errorMsg.value = error.message;
     } else {
       // router.push('/account');
-      successMsg.value = 'Please check your phone for the OTP';
+      successMsg.value =
+        `Please check your phone for the OTP. ` + JSON.stringify(data);
+      console.log('OTP sent.');
     }
   } catch (error) {
     errorMsg.value =
@@ -50,10 +52,7 @@ async function verifyOtp() {
     loading_otp.value = true;
     errorMsg.value = null;
     successMsg.value = null;
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.verifyOtp({
+    const { data, error } = await supabase.auth.verifyOtp({
       phone: phone.value,
       token: password.value.join(''),
       type: 'sms',
@@ -61,7 +60,7 @@ async function verifyOtp() {
     if (error) {
       errorMsg.value = error.message;
     } else {
-      successMsg.value = 'OTP verified successfully!' + session;
+      successMsg.value = 'OTP verified successfully!' + JSON.stringify(data);
       router.push('/dashboard');
     }
   } catch (error) {
@@ -77,12 +76,9 @@ async function verifyOtp() {
 <template>
   <section class="auth-card">
     <div>
-      <h3>Login with Phone</h3>
+      <h3>{{ $t('log-in-with-uae-registered-phone') }}</h3>
     </div>
     <div class="note">
-      <div>No account registration needed.</div>
-      <div>No password needed to log in.</div>
-      <div>An OTP will be sent to your phone.</div>
       <div>393662536579</div>
     </div>
     <div class="flex flex-col gap-2">
@@ -92,13 +88,12 @@ async function verifyOtp() {
           class="input-phone"
           v-model="phone"
           :ui="{
-            base: 'px-4 py-2 pl-22',
-            leading: 'pointer-events-none',
+            base: 'px-4 py-2 text-center text-lg',
           }"
         >
-          <template #leading>
-            <p class="text-sm text-muted pl-18">+971</p>
-          </template>
+          <!-- <template #leading>
+            <p class="hidden text-sm text-muted pl-18">+971</p>
+          </template> -->
         </UInput>
       </div>
 
@@ -108,7 +103,7 @@ async function verifyOtp() {
           @click="signInWithOtp"
           class="auth-button rounded-form-buttons"
           ><span>
-            {{ loading_phone ? 'Sending login OTP...' : 'Send OTP' }}</span
+            {{ loading_phone ? 'Sending login OTP...' : $t('send-otp') }}</span
           >
         </UButton>
       </div>
@@ -119,11 +114,11 @@ async function verifyOtp() {
           :length="6"
           v-model="password"
           type="number"
-          class="auth-button pin"
+          class="auth-button pin rounded-full"
         />
       </div>
 
-      <div>
+      <div class="flex justify-center">
         <UButton
           @click="verifyOtp"
           class="auth-button rounded-form-buttons"
@@ -141,6 +136,8 @@ async function verifyOtp() {
         :description="errorMsg"
         icon="material-symbols:error-outline"
         :ui="{
+          title: 'text-left',
+          description: 'text-left',
           icon: 'size-10',
         }"
       />
@@ -151,6 +148,8 @@ async function verifyOtp() {
         :description="successMsg"
         icon="material-symbols:check-circle"
         :ui="{
+          title: 'text-left',
+          description: 'text-left',
           icon: 'size-10',
         }"
       />

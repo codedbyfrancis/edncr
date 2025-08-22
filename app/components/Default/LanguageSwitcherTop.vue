@@ -20,7 +20,7 @@ const items: DropdownMenuItem[] = locales.value.map((locale) => ({
         content: 'w-48 bg-[var(--surface-container)] ',
         item: 'text-base',
       }"
-      class="hidden md:flex items-center justify-center"
+      class="hidden 2xl:flex items-center justify-center"
     >
       <UButton
         rounded-full
@@ -31,7 +31,7 @@ const items: DropdownMenuItem[] = locales.value.map((locale) => ({
     </UDropdownMenu>
 
     <div
-      class="mobile-language-switcher md:hidden flex items-center justify-center flex-row"
+      class="mobile-language-switcher 2xl:hidden flex items-center justify-center flex-row"
     >
       <div v-for="item in items" :key="item.value" class="">
         <button

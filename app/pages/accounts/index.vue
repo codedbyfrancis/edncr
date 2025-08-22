@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'defaultpages',
+  layout: 'defaultindex',
 });
 const config = useRuntimeConfig();
 
@@ -30,22 +30,19 @@ useGoogleOneTap({
 </script>
 <template>
   <section>
-    <div class="auth">
-      <div>
-        <h1>Accounts/Index {{ $t('language') }}</h1>
-        <h2>{{ $t('welcome') }}</h2>
-      </div>
-      <div class="flex flex-col justify-center items-center">
-        <div class="box">
+    <div class="content container mx-auto">
+      <div class="flex flex-col h-svh justify-center items-center">
+        <div
+          class="flex flex-col h-[30%] justify-center items-center text-center"
+        >
+          <h1 class="display">{{ config.public.appName }}</h1>
+          <h5>{{ config.public.appTag }}</h5>
+        </div>
+        <div class="flex flex-col h-[70%] justify-center items-center">
+          <div>{{ $t('select-your-language') }}</div>
+          <DefaultLanguageSwitcherTop />
+          <!-- <DefaultAuthGoogle /> -->
           <DefaultAuthPhone />
-          <LazyUSeparator />
-          <DefaultAuthMagiclink />
-          <USeparator />
-          <DefaultAuthGoogle />
-          <USeparator />
-          <DefaultAuthEmailLogin />
-          <USeparator />
-          <DefaultAuthEmailSignup />
         </div>
       </div>
     </div>
@@ -66,16 +63,4 @@ section {
     }
   }
 }
-/* section {
-  @apply flex flex-col items-center justify-center text-center;
-  h1 {
-    @apply text-2xl font-bold mb-4;
-  }
-  .box {
-    @apply flex flex-col items-center justify-center gap-4 w-full md:w-1/2 rounded-2xl bg-[var(--surface-container-low)] p-4 shadow-lg;
-    .auth-google {
-      @apply w-full max-w-md;
-    }
-  }
-} */
 </style>

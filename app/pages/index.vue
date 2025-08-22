@@ -1,11 +1,11 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'default',
+  layout: 'defaultmain',
 });
 const config = useRuntimeConfig();
 useSeoMeta({
-  title: 'Index',
-  ogTitle: 'Index' + ' | ' + config.public.appName,
+  title: 'Welcome to ' + config.public.appTag,
+  ogTitle: 'Welcome to ' + config.public.appTag + ' | ' + config.public.appName,
   description: 'Index description',
   ogDescription: 'Index description for social media',
   ogUrl: config.public.appUrl + '/account/',
@@ -17,14 +17,13 @@ useSeoMeta({
 </script>
 <template>
   <div>
-    <div class="hero">
-      <DefaultHero />
-    </div>
-
     <div class="content container mx-auto">
-      <h1>Index {{ $t('language') }}</h1>
-      <h2>{{ $t('welcome') }}</h2>
-      <DevUiDirhamFont />
+      <DefaultCardsWelcome />
+      <DefaultCardsStepsEdncr />
+      <DefaultCardsIndexFaq />
     </div>
   </div>
 </template>
+<style lang="css" scoped>
+@reference "tailwindcss";
+</style>

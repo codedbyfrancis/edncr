@@ -25,6 +25,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       appName: '',
+      appTag: '',
       appUrl: '',
       appEnv: '',
       imageCndUrl: '',
@@ -50,7 +51,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      // titleTemplate: '%s | ' + process.env.NUXT_PUBLIC_APP_NAME,
+      titleTemplate: '%s | ' + process.env.NUXT_PUBLIC_APP_NAME,
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/icons/favicon.ico' },
 

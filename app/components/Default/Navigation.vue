@@ -31,7 +31,7 @@ async function signOut() {
   <nav class="p-4">
     <div><DefaultHeaderLogo /></div>
 
-    <ul class="flex">
+    <!-- <ul class="flex">
       <NuxtLinkLocale to="/" class="nav-items">
         <li>Home</li>
       </NuxtLinkLocale>
@@ -81,10 +81,7 @@ async function signOut() {
           <li>Sign up</li>
         </NuxtLinkLocale>
       </ClientOnly>
-
-      <!-- <li><DefaultLanguageSwitcher /></li>
-      <li><DefaultColorModeButton /></li> -->
-    </ul>
+    </ul> -->
   </nav>
 </template>
 <style lang="css" scoped>
@@ -94,7 +91,7 @@ async function signOut() {
   @apply flex items
 } */
 nav {
-  @apply flex items-center justify-between bg-[var(--surface-container-low)] text-[var(--on-surface-container)] p-4;
+  @apply flex items-center justify-between bg-[var(--surface)] text-[var(--on-surface)] p-4;
   .nav-items {
     @apply flex flex-row justify-end items-center gap-0 px-4 py-2 whitespace-nowrap font-[Verdana] font-medium rounded-full hover:bg-[var(--surface-container-highest)] hover:text-[var(--on-surface-variant)] transition-colors duration-200 ease-in-out;
   }

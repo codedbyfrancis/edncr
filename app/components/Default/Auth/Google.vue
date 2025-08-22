@@ -22,7 +22,9 @@ const signInWithGoogle = async () => {
 </script>
 <template>
   <section class="auth-card">
-    <div><h3>Log in with Google</h3></div>
+    <div>
+      <h3>{{ $t('log-in-with-google') }}</h3>
+    </div>
 
     <UButton
       icon="mdi:google"
@@ -35,7 +37,7 @@ const signInWithGoogle = async () => {
       {{
         loading
           ? 'Redirecting to Google for authentication'
-          : 'Log in with Google'
+          : $t('log-in-with-google')
       }}
     </UButton>
   </section>

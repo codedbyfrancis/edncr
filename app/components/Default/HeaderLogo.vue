@@ -8,22 +8,32 @@ import LogoMain from '~/assets/logo/logo.svg';
       <LogoMain
         class="text-4xl text-[var(--logo-fill)] fill-[var(--logo-fill)]"
       />
+      <!-- <div class="logo"></div> -->
     </div>
 
     <div
-      class="md:flex-row md:flex items-center font-[Inika] hidden text-3xl font-semibold text-[var(--logo-fill)]"
+      class="md:flex-row md:flex items-center hidden text-3xl font-extrabold text-[var(--logo-fill)]"
     >
       <!-- Desktop -->
-      <span class="cbf-logo-text">{{ config.public.appName }}</span>
+      <span>{{ config.public.appName }}</span>
     </div>
     <div
-      class="md:hidden flex flex-row items-center font-[Inika] text-2xl font-semibold text-[var(--logo-fill)]"
+      class="md:hidden flex flex-row items-center text-2xl font-extrabold text-[var(--logo-fill)]"
     >
       <!-- Mobile -->
-      <span class="cbf-logo-text">{{ config.public.appName }}</span>
+      <span>{{ config.public.appName }}</span>
     </div>
   </div>
 </template>
 <style lang="css" scoped>
 @reference "tailwindcss";
+.logo {
+  background-image: url('~/assets/logo/logo.svg');
+  background-size: contain; /* scale nicely */
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+  fill: currentColor;
+}
 </style>

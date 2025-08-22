@@ -170,7 +170,7 @@ onBeforeUnmount(() => {
                     to="/dashboard/profile"
                   >
                     <DefaultAvatar />
-                    <span>{{ user.email }}</span>
+                    <span>{{ user.phone }}</span>
                   </NuxtLinkLocale>
                 </div>
                 <div class="w-1/4 overflow-hidden">
@@ -211,7 +211,7 @@ onBeforeUnmount(() => {
 @reference "tailwindcss";
 
 nav {
-  @apply flex items-center justify-between py-2 bg-[var(--surface-container-low)];
+  @apply flex items-center justify-between py-2 bg-[var(--surface-container-low)] text-[var(--on-surface-container)];
   .logo {
     @apply pl-2;
   }

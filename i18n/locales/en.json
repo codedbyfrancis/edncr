@@ -4,6 +4,11 @@
   "language": "English",
   "currency-symbol": "$",
   "currency-unit": "USD",
+  "flag-icon": "flag:gb-4x3",
   "hello": "Hello",
-  "welcome": "Welcome"
+  "welcome": "Welcome",
+  "select-your-language": "Select your language.",
+  "log-in-with-google": "Log in with Google",
+  "log-in-with-uae-registered-phone": "Log in with UAE registered phone.",
+  "send-otp": "Send OTP"
 }

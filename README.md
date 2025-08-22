@@ -1,4 +1,6 @@
-# Nuxt 4 NuxtUi Supabase TailwindCss Boilerplate
+# eDNCR
+
+Nuxt 4 NuxtUi Supabase TailwindCss Boilerplate
 
 ## Material Design
 
@@ -38,4 +40,5 @@ Run: supabase db diff --use-migra initial_schema -f initial_schema.sql
 ## New Table and Column
 
 Run: supabase db diff --use-migra new_table_column -f new_table_column.sql
+
 # edncr

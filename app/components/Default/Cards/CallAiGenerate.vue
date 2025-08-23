@@ -13,22 +13,30 @@ const loading2 = ref(false);
 const sendMessage = async () => {
   loading.value = true;
   const md = new MarkdownIt();
-  const { data } = await useFetch('/api/gemini', {
+  const { data, error } = await $fetch('/api/gemini', {
     method: 'POST',
     body: { message: chat },
   });
-  reply.value = md.render(data.value);
+  if (error.value) {
+    reply.value = error.value;
+  } else {
+    reply.value = md.render(data.value);
+  }
   loading.value = false;
 };
 
 const sendMessageFollowUp = async () => {
   loading2.value = true;
   const md = new MarkdownIt();
-  const { data } = await useFetch('/api/gemini', {
+  const { data, error } = await $fetch('/api/gemini', {
     method: 'POST',
     body: { message: chat + ' ' + userMessage.value },
   });
-  reply2.value = md.render(data.value);
+  if (error.value) {
+    reply2.value = error.value;
+  } else {
+    reply2.value = md.render(data.value);
+  }
   loading2.value = false;
 };
 

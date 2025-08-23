@@ -18,7 +18,7 @@ const sendMessage = async () => {
     body: { message: chat },
   });
   if (error.value) {
-    reply.value = error.value;
+    reply.value = error?.value;
   } else {
     reply.value = md.render(data.value);
   }
@@ -33,7 +33,7 @@ const sendMessageFollowUp = async () => {
     body: { message: chat + ' ' + userMessage.value },
   });
   if (error.value) {
-    reply2.value = error.value;
+    reply2.value = error?.value;
   } else {
     reply2.value = md.render(data.value);
   }

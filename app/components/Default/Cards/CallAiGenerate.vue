@@ -18,7 +18,7 @@ const sendMessage = async () => {
     body: { message: chat },
   });
   if (error.value) {
-    reply.value = error?.value;
+    reply.value = `Error: ${error.value}`;
   } else {
     reply.value = md.render(data.value);
   }

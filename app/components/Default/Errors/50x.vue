@@ -6,26 +6,28 @@ const props = defineProps({
   error: Object,
 });
 
-mail.send({
-  from: config.public.email,
-  subject:
-    config.public.appName +
-    ': ' +
-    props.error?.statusCode +
-    ': ' +
-    props.error?.message,
-  text:
-    'Error: ' +
-    props.error?.statusCode +
-    ' ' +
-    props.error?.message +
-    '\nTime: ' +
-    new Date().toLocaleString() +
-    '\nRoute:\n' +
-    JSON.stringify(route, null, 2) +
-    '\nError Details:\n' +
-    JSON.stringify(props.error, null, 2),
-});
+if (config.public.appEnv !== 'dev') {
+  mail.send({
+    from: config.public.email,
+    subject:
+      config.public.appName +
+      ': ' +
+      props.error?.statusCode +
+      ': ' +
+      props.error?.message,
+    text:
+      'Error: ' +
+      props.error?.statusCode +
+      ' ' +
+      props.error?.message +
+      '\nTime: ' +
+      new Date().toLocaleString() +
+      '\nRoute:\n' +
+      JSON.stringify(route, null, 2) +
+      '\nError Details:\n' +
+      JSON.stringify(props.error, null, 2),
+  });
+}
 </script>
 <template>
   <div>

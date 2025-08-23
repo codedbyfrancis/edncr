@@ -23,6 +23,8 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
+    geminiKey: process.env.GEMINI_API_KEY, // server-only
+    openaiKey: process.env.OPENAI_API_KEY, // only available server-side
     public: {
       appName: '',
       appTag: '',
@@ -130,6 +132,11 @@ export default defineNuxtConfig({
         );
       },
     },
+  },
+
+  // ChatGPT
+  chatgpt: {
+    apiKey: process.env.OPENAI_API_KEY,
   },
 
   // Supabase module configuration

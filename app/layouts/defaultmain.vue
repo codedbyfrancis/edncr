@@ -10,10 +10,10 @@ const head = useLocaleHead({
 <template>
   <Html :lang="locale.code" :dir="head.htmlAttrs.dir">
     <header>
-      <!-- <section class="header_accessibility">
+      <section class="header_accessibility">
         <DefaultNavigationAccessibility />
       </section>
-      <section class="header_navigation">
+      <!-- <section class="header_navigation">
         <DefaultNavigation />
       </section> -->
       <section class="header_hamburger">

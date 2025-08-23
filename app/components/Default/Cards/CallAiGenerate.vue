@@ -53,7 +53,8 @@ onMounted(() => {
         class="box prose dark:prose-invert p-8 bg-[var(--surface-container-high)] rounded-4xl"
         v-html="reply2"
       ></div>
-      <h3>Do you have any questions?</h3>
+
+      <h3 class="mt-5">Do you have any questions?</h3>
       <div class="flex flex-col">
         <input
           v-model="userMessage"

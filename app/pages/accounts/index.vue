@@ -36,7 +36,7 @@ useGoogleOneTap({
           class="flex flex-col h-[30%] justify-center items-center text-center"
         >
           <h1 class="display">{{ config.public.appName }}</h1>
-          <h5>{{ config.public.appTag }}</h5>
+          <h5>{{ $t('enhanced-do-not-call-registry') }}</h5>
         </div>
         <div class="flex flex-col h-[70%] justify-center items-center">
           <div>{{ $t('select-your-language') }}</div>

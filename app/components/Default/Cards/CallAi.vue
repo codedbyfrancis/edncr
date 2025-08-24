@@ -10,12 +10,12 @@ const userMessage = ref('');
 const sendMessageFollowUp = async () => {
   loading.value = true;
   const md = new MarkdownIt();
-  const { data } = await useFetch('/api/gemini', {
+  const data = await $fetch('/api/gemini', {
     method: 'POST',
     body: { message: userMessage.value },
   });
   loading.value = false;
-  reply.value = md.render(data.value);
+  reply.value = md.render(data);
   console.log(reply.value);
 };
 </script>

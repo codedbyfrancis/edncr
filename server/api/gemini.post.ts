@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
     model: 'gemini-2.5-flash',
   });
   const result = await model.generateContent(body.message);
-  console.log(result.response.text());
+  // console.log(result.response.text());
   return result.response.text();
 
   // const paragraphs = 5;

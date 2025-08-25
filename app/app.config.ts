@@ -4,11 +4,16 @@ export default defineAppConfig({
     description: 'Nuxt 4 Boilerplate SB NuxtUi TW',
   },
   ui: {
+    input: {
+      slots: {
+        base: 'bg-red-900',
+      },
+    },
     drawer: {
       slots: {
         handle: ['shrink-0 !bg-[var(--primary)]', 'transition-opacity'],
         container: 'bg-[var(--surface-container)]',
-        content: 'bg-[var(--surface-container)] rounded-t-4xl px-4 ring-0',
+        content: 'rounded-t-4xl bg-[var(--surface-container)]  px-4 ring-0',
         overlay:
           'bg-[var(--surface-container)]/75 backdrop-filter backdrop-grayscale backdrop-blur-lg backdrop-contrast-100',
       },

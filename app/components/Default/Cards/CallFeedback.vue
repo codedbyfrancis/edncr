@@ -1,3 +1,8 @@
+<script setup>
+import { ref } from 'vue';
+
+const open = ref(false);
+</script>
 <template>
   <div class="flex flex-col gap-1 px-2 py-10">
     <h2>What would you like to do?</h2>
@@ -5,8 +10,14 @@
     <UDrawer
       title="Drawer with description"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      :ui="{
+        content: 'rounded-t-4xl',
+      }"
     >
-      <div class="group hover:bg-[var(--surface-container)]/10">
+      <div
+        class="group hover:bg-[var(--surface-container)]/10"
+        @click="open = true"
+      >
         <div class="button rounded-t-4xl">
           <UIcon name="material-symbols:check-circle-rounded" class="p-5" />
           <div class="flex flex-col">
@@ -43,7 +54,13 @@
       </div>
     </NuxtLink> -->
 
-    <UDrawer title="Drawer with title">
+    <UDrawer
+      title="Drawer with description"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      :ui="{
+        content: 'rounded-t-4xl',
+      }"
+    >
       <div class="group hover:bg-[var(--surface-container)]/10">
         <div class="button">
           <UIcon name="material-symbols:check-circle-rounded" class="p-5" />
@@ -76,7 +93,13 @@
       </div>
     </NuxtLink> -->
 
-    <UDrawer title="Drawer with title">
+    <UDrawer
+      title="Drawer with description"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      :ui="{
+        content: 'rounded-t-4xl',
+      }"
+    >
       <div class="group hover:bg-[var(--surface-container)]/10">
         <div class="button">
           <UIcon name="material-symbols:check-circle-rounded" class="p-5" />
@@ -110,7 +133,13 @@
       </div>
     </NuxtLink> -->
 
-    <UDrawer>
+    <UDrawer
+      title="Drawer with description"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      :ui="{
+        content: 'rounded-t-4xl',
+      }"
+    >
       <div class="group hover:bg-[var(--surface-container)]/10">
         <div class="button rounded-b-4xl">
           <UIcon name="material-symbols:check-circle-rounded" class="p-5" />

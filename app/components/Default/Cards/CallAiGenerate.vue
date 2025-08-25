@@ -30,8 +30,27 @@ onMounted(() => {
     <div v-if="loading">Gemini is thinking... please wait.</div>
     <div
       v-else
-      class="box prose dark:prose-invert p-8 bg-[var(--surface-container-high)] rounded-4xl"
+      class="md box prose dark:prose-invert p-8 bg-[var(--surface-container-high)] rounded-4xl"
       v-html="reply"
     ></div>
   </div>
 </template>
+<style lang="css">
+@reference "tailwindcss";
+.md {
+  p {
+    @apply py-2;
+  }
+  hr {
+    @apply py-2;
+  }
+  h3 {
+    @apply py-2;
+  }
+  ol,
+  ul,
+  li {
+    @apply py-2;
+  }
+}
+</style>

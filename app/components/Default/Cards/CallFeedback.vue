@@ -7,7 +7,7 @@ const reject = ref(false);
 const accept = ref(false);
 const reschedule = ref(false);
 
-const dateReschedule = shallowRef(
+const selectedDate = shallowRef(
   (() => {
     const date = new Date();
     const day = date.getDay();
@@ -239,7 +239,7 @@ const selectedTime = ref();
           <div class="my-5 flex flex-col items-center">
             <div>
               <UCalendar
-                v-model="dateReschedule"
+                v-model="selectedDate"
                 :min-value="minDate"
                 :max-value="maxDate"
                 size="xl"
@@ -257,16 +257,23 @@ const selectedTime = ref();
               />
             </div>
             <div class="flex flex-col">
-              <div>{{ dateReschedule }}</div>
-              <div>{{ minDate }}</div>
-              <div>{{ maxDate }}</div>
+              <div>
+                Selected:
+                {{ selectedDate }}
+                {{ selectedTime }}
+              </div>
+              <!-- <div>{{ minDate }}</div>
+              <div>{{ maxDate }}</div> -->
             </div>
-            <UCheckbox
-              class="mt-5 m-3"
-              v-model="reschedule"
-              size="xl"
-              label="I confirm to reschedule this call."
-            />
+            <UTooltip text="Select date and time.">
+              <UCheckbox
+                :disabled="!selectedDate || !selectedTime"
+                class="mt-5 m-3"
+                v-model="reschedule"
+                size="xl"
+                label="I confirm to reschedule this call."
+              />
+            </UTooltip>
             <UTooltip
               text="Confirm to reschedule the call by checking the checkbox."
             >

@@ -4,10 +4,10 @@ definePageMeta({
 });
 const config = useRuntimeConfig();
 useSeoMeta({
-  title: 'Welcome to ' + config.public.appTag,
-  ogTitle: 'Welcome to ' + config.public.appTag + ' | ' + config.public.appName,
-  description: 'Index description',
-  ogDescription: 'Index description for social media',
+  title: 'Call to ' + config.public.appTag,
+  ogTitle: 'Call to ' + config.public.appTag + ' | ' + config.public.appName,
+  description: 'Call description',
+  ogDescription: 'Call description for social media',
   ogUrl: config.public.appUrl + '/account/',
   ogType: 'website',
   ogSiteName: config.public.appName,

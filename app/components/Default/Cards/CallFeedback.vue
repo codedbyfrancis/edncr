@@ -396,7 +396,7 @@ const selectedTime = ref();
       <div class="group">
         <UTooltip text="Report this call.">
           <UButton
-            icon="material-symbols:shield-lock-outline-rounded"
+            icon="material-symbols:report-outline-rounded"
             size="xl"
             variant="solid"
             :ui="{

@@ -125,27 +125,29 @@ const selectedTime = ref();
             Reject the call or automatically selected after 3 days of
             inactivity.
           </p>
-          <div class="my-5 flex flex-col items-center">
-            <UCheckbox
-              class="mb-3"
-              v-model="reject"
-              size="xl"
-              label="I confirm to reject this call."
-            />
-            <UTooltip
-              text="Confirm to reject the call by checking the checkbox."
-            >
-              <UButton
-                :disabled="!reject"
-                icon="material-symbols:phone-disabled-outline-rounded"
+          <div class="my-5 flex flex-col justify-center items-center">
+            <div class="w-full lg:w-1/2">
+              <UCheckbox
+                class="mb-3"
+                v-model="reject"
                 size="xl"
-                variant="solid"
-                :ui="{
-                  base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
-                }"
-                >Reject</UButton
-              ></UTooltip
-            >
+                label="I confirm to reject this call."
+              />
+              <UTooltip
+                text="Confirm to reject the call by checking the checkbox."
+              >
+                <UButton
+                  :disabled="!reject"
+                  icon="material-symbols:phone-disabled-outline-rounded"
+                  size="xl"
+                  variant="solid"
+                  :ui="{
+                    base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
+                  }"
+                  >Reject</UButton
+                ></UTooltip
+              >
+            </div>
           </div>
         </div>
       </template>
@@ -187,27 +189,29 @@ const selectedTime = ref();
         <div class="drawer_content">
           <h2>Accept</h2>
           <p>Allow this caller to call you at any given time.</p>
-          <div class="my-5 flex flex-col items-center">
-            <UCheckbox
-              class="mb-3"
-              v-model="accept"
-              size="xl"
-              label="I confirm to accept this call."
-            />
-            <UTooltip
-              text="Confirm to accept the call by checking the checkbox."
-            >
-              <UButton
-                :disabled="!accept"
-                icon="material-symbols:phone-callback-outline-rounded"
+          <div class="my-5 flex flex-col justify-center items-center">
+            <div class="w-full lg:w-1/2">
+              <UCheckbox
+                class="mb-3"
+                v-model="accept"
                 size="xl"
-                variant="solid"
-                :ui="{
-                  base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
-                }"
-                >Accept</UButton
-              ></UTooltip
-            >
+                label="I confirm to accept this call."
+              />
+              <UTooltip
+                text="Confirm to accept the call by checking the checkbox."
+              >
+                <UButton
+                  :disabled="!accept"
+                  icon="material-symbols:phone-callback-outline-rounded"
+                  size="xl"
+                  variant="solid"
+                  :ui="{
+                    base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
+                  }"
+                  >Accept</UButton
+                ></UTooltip
+              >
+            </div>
           </div>
         </div>
       </template>
@@ -274,34 +278,34 @@ const selectedTime = ref();
                 Selected:
                 {{ formattedDate }},
                 {{ selectedTime ? selectedTime : 'Select time.' }}
-                <!-- {{ selectedDate }} -->
               </div>
-              <!-- <div>{{ minDate }}</div>
-              <div>{{ maxDate }}</div> -->
             </div>
-            <UTooltip text="Select date and time.">
-              <UCheckbox
-                :disabled="!selectedDate || !selectedTime"
-                class="mt-5 m-3"
-                v-model="reschedule"
-                size="xl"
-                label="I confirm to reschedule this call."
-              />
-            </UTooltip>
-            <UTooltip
-              text="Confirm to reschedule the call by checking the checkbox."
-            >
-              <UButton
-                :disabled="!reschedule"
-                icon="material-symbols:calendar-month-outline-rounded"
-                size="xl"
-                variant="solid"
-                :ui="{
-                  base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
-                }"
-                >Reschedule</UButton
-              ></UTooltip
-            >
+
+            <div class="w-full lg:w-1/2">
+              <UTooltip text="Select date and time.">
+                <UCheckbox
+                  :disabled="!selectedDate || !selectedTime"
+                  class="mt-5 m-3"
+                  v-model="reschedule"
+                  size="xl"
+                  label="I confirm to reschedule this call."
+                />
+              </UTooltip>
+              <UTooltip
+                text="Confirm to reschedule the call by checking the checkbox."
+              >
+                <UButton
+                  :disabled="!reschedule"
+                  icon="material-symbols:calendar-month-outline-rounded"
+                  size="xl"
+                  variant="solid"
+                  :ui="{
+                    base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
+                  }"
+                  >Reschedule</UButton
+                ></UTooltip
+              >
+            </div>
           </div>
         </div>
       </template>
@@ -342,27 +346,29 @@ const selectedTime = ref();
         <div class="drawer_content">
           <h2>eDNCR</h2>
           <p>Customize eDNCR for this company or business category.</p>
-          <div class="my-5 flex flex-col items-center">
-            <UCheckbox
-              class="mb-3"
-              v-model="reject"
-              size="xl"
-              label="I confirm to eDNCR this call."
-            />
-            <UTooltip
-              text="Confirm to eDNCR the call by checking the checkbox."
-            >
-              <UButton
-                :disabled="!reject"
-                icon="material-symbols:shield-lock-outline-rounded"
+          <div class="my-5 flex flex-col justify-center items-center">
+            <div class="w-full lg:w-1/2">
+              <UCheckbox
+                class="mb-3"
+                v-model="reject"
                 size="xl"
-                variant="solid"
-                :ui="{
-                  base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
-                }"
-                >eDNCR</UButton
-              ></UTooltip
-            >
+                label="I confirm to eDNCR this call."
+              />
+              <UTooltip
+                text="Confirm to eDNCR the call by checking the checkbox."
+              >
+                <UButton
+                  :disabled="!reject"
+                  icon="material-symbols:shield-lock-outline-rounded"
+                  size="xl"
+                  variant="solid"
+                  :ui="{
+                    base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
+                  }"
+                  >eDNCR</UButton
+                ></UTooltip
+              >
+            </div>
           </div>
         </div>
       </template>
@@ -380,13 +386,67 @@ const selectedTime = ref();
       </div>
     </NuxtLink> -->
 
-    <NuxtLink to="#" class="group">
+    <UDrawer
+      title="Drawer with description"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      :ui="{
+        content: 'rounded-t-4xl',
+      }"
+    >
+      <div class="group">
+        <UTooltip text="Report this call.">
+          <UButton
+            icon="material-symbols:shield-lock-outline-rounded"
+            size="xl"
+            variant="solid"
+            :ui="{
+              base: 'cursor-pointer bg-[var(--error-container)]/95 text-[var(--on-error-container)]/90 hover:bg-[var(--error-container)] hover:text-[var(--on-error-container)] w-full rounded-full justify-center py-4 text-xl',
+            }"
+            >Report this call</UButton
+          ></UTooltip
+        >
+      </div>
+
+      <template #content>
+        <div class="drawer_content">
+          <h2>Report this call</h2>
+          <p>
+            Report this company or business category for any telemarketing
+            violations.
+          </p>
+          <div class="my-5 flex flex-col justify-center items-center">
+            <div class="w-full lg:w-1/2">
+              <UCheckbox
+                class="mb-3 justify-center"
+                v-model="reject"
+                size="xl"
+                label="I confirm to report this call."
+              />
+              <UTooltip text="Report this call.">
+                <UButton
+                  :disabled="!reject"
+                  icon="material-symbols:shield-lock-outline-rounded"
+                  size="xl"
+                  variant="solid"
+                  :ui="{
+                    base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
+                  }"
+                  >Report</UButton
+                ></UTooltip
+              >
+            </div>
+          </div>
+        </div>
+      </template>
+    </UDrawer>
+
+    <!-- <NuxtLink to="#" class="group">
       <div
         class="opacity-50 my-5 py-4 text-center text-lg rounded-full bg-[var(--error-container)]/90 hover:bg-[var(--error-container)] text-[var(--on-error-container)]/90 hover:text-[var(--on-error-container)]"
       >
         Report this call
       </div>
-    </NuxtLink>
+    </NuxtLink> -->
   </div>
 </template>
 <style lang="css" scoped>

@@ -33,7 +33,7 @@ const sendMessageFollowUp = async () => {
       <div class="flex flex-col p-5 justify-center items-center">
         <UIcon
           name="streamline:artificial-intelligence-spark-remix"
-          class="p-10 bg-[var(--primary-container)]/90 hover:bg-[var(--primary-container)]"
+          class="p-6 bg-[var(--primary-container)]/90 hover:bg-[var(--primary-container)]"
         />
       </div>
       <template #content>

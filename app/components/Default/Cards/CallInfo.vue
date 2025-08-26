@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-1 px-2 py-4">
+  <div class="flex flex-col gap-1 p-2">
     <div
       class="flex flex-col gap-1 p-4 rounded-t-4xl bg-[var(--surface-container)] text-[var(--on-surface)] text-center"
     >

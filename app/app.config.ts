@@ -9,6 +9,17 @@ export default defineAppConfig({
         base: 'bg-red-900',
       },
     },
+    tooltip: {
+      slots: {
+        content:
+          'bg-[var(--surface-container-high)] ring-0 text-white text-base py-4',
+      },
+    },
+    checkbox: {
+      slots: {
+        base: 'bg-[var(--surface-container-high)] ring-0 text-white text-base ',
+      },
+    },
     drawer: {
       slots: {
         handle: ['shrink-0 !bg-[var(--primary)]', 'transition-opacity'],

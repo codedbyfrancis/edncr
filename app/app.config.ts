@@ -12,7 +12,8 @@ export default defineAppConfig({
     tooltip: {
       slots: {
         content:
-          'bg-[var(--surface-container-high)] ring-0 text-white text-base py-4',
+          'bg-[var(--surface-container-high)]  ring-0 text-white text-base py-4',
+        text: 'text-[var(--on-surface)]',
       },
     },
     checkbox: {

@@ -425,7 +425,7 @@ const selectedTime = ref();
               <UTooltip text="Report this call.">
                 <UButton
                   :disabled="!reject"
-                  icon="material-symbols:shield-lock-outline-rounded"
+                  icon="material-symbols:report-outline-rounded"
                   size="xl"
                   variant="solid"
                   :ui="{

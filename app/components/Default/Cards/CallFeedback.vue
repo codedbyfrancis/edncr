@@ -7,6 +7,19 @@ const reject = ref(false);
 const accept = ref(false);
 const reschedule = ref(false);
 
+const formattedDate = computed(() => {
+  const date = selectedDate.value;
+  return new Date(date.year, date.month - 1, date.day).toLocaleDateString(
+    $t('language-code'),
+    {
+      weekday: 'short',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }
+  );
+});
+
 const selectedDate = shallowRef(
   (() => {
     const date = new Date();
@@ -259,8 +272,9 @@ const selectedTime = ref();
             <div class="flex flex-col">
               <div>
                 Selected:
-                {{ selectedDate }}
-                {{ selectedTime }}
+                {{ formattedDate }},
+                {{ selectedTime ? selectedTime : 'Select time.' }}
+                <!-- {{ selectedDate }} -->
               </div>
               <!-- <div>{{ minDate }}</div>
               <div>{{ maxDate }}</div> -->

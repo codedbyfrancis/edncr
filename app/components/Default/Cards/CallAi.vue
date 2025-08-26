@@ -55,23 +55,28 @@ const sendMessageFollowUp = async () => {
           </div>
           <div class="pt-4">
             <h3>Do you have any questions?</h3>
-            <div class="flex flex-col">
+            <div class="flex flex-col mb-10">
               <UInput
                 v-model="userMessage"
                 placeholder="What would you like to ask?"
                 :ui="{
-                  base: 'mt-2 py-2 text-lg bg-[var(--surface-container-high)] border-0 text-[var(--on-surface-container)]', // Set a custom background color for the input field
+                  base: 'my-2 py-2 text-lg bg-[var(--surface-container-high)] border-0 text-[var(--on-surface-container)]', // Set a custom background color for the input field
                   // You can also target specific states like focus or hover:
                   // focus: 'ring-red-500',
                   // hover: 'bg-red-300'
                 }"
               />
-              <button
+
+              <UButton
+                :disabled="!userMessage"
                 @click="sendMessageFollowUp"
-                class="bg-[var(--primary-container)]/90 text-[var(--on-primary-container)] hover:bg-[var(--primary-container)] p-2 my-2 rounded-full"
+                size="xl"
+                variant="solid"
+                :ui="{
+                  base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
+                }"
+                >Ask Gemini</UButton
               >
-                Ask Gemini
-              </button>
             </div>
           </div>
         </div>

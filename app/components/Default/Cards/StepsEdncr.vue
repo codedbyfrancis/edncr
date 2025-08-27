@@ -28,7 +28,7 @@
         name="material-symbols:shield-question-outline-rounded"
         class="icons"
       />
-      <span>Companies will call or must block you from their database.</span>
+      <span>Company will call or must block you from their database.</span>
     </div>
   </div>
 </template>
@@ -38,9 +38,9 @@
   @apply flex justify-center items-center gap-1 mx-auto bg-[var(--surface-container)] text-[var(--on-surface)] px-4 py-2 rounded-2xl;
 }
 .steps_dots {
-  @apply flex justify-center items-center mx-auto size-7 p-7 text-[var(--on-surface)]/50;
+  @apply flex justify-center items-center mx-auto size-5 p-5 my-1 text-[var(--on-surface)]/50;
 }
 .icons {
-  @apply size-7 p-5 text-[var(--on-surface-variant)];
+  @apply p-4 text-[var(--on-surface-variant)];
 }
 </style>

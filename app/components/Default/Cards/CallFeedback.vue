@@ -6,6 +6,8 @@ const open = ref(false);
 const reject = ref(false);
 const accept = ref(false);
 const reschedule = ref(false);
+const feedback_sent = ref(false);
+const feedback_message = ref();
 
 const formattedDate = computed(() => {
   const date = selectedDate.value;
@@ -90,9 +92,35 @@ const itemsTime = ref([
   '17:00 - 18:00',
 ]);
 const selectedTime = ref();
+
+const callReject = async () => {
+  feedback_sent.value = true;
+  feedback_message.value = 'Call is rejected.';
+  alert('Reject.');
+};
+const callAccept = async () => {
+  feedback_sent.value = true;
+  feedback_message.value = 'Call is accepted.';
+  alert('Accept.');
+};
+const callReschedule = async () => {
+  feedback_sent.value = true;
+  feedback_message.value = 'Call is rescheduled.';
+  alert('Reschedule.');
+};
+const callEndcr = async () => {
+  feedback_sent.value = true;
+  feedback_message.value = 'You have eDNCR this call.';
+  alert('eDNCR.');
+};
+const callReport = async () => {
+  feedback_sent.value = true;
+  feedback_message.value = 'You have reported this call.';
+  alert('Report.');
+};
 </script>
 <template>
-  <div class="flex flex-col gap-1 px-2 py-10">
+  <div v-if="!feedback_sent" class="flex flex-col gap-1 px-2 py-10">
     <h2>What would you like to do?</h2>
 
     <UDrawer
@@ -137,6 +165,7 @@ const selectedTime = ref();
                 text="Confirm to reject the call by checking the checkbox."
               >
                 <UButton
+                  @click="callReject"
                   :disabled="!reject"
                   icon="material-symbols:phone-disabled-outline-rounded"
                   size="xl"
@@ -201,6 +230,7 @@ const selectedTime = ref();
                 text="Confirm to accept the call by checking the checkbox."
               >
                 <UButton
+                  @click="callAccept"
                   :disabled="!accept"
                   icon="material-symbols:phone-callback-outline-rounded"
                   size="xl"
@@ -295,6 +325,7 @@ const selectedTime = ref();
                 text="Confirm to reschedule the call by checking the checkbox."
               >
                 <UButton
+                  @click="callReschedule"
                   :disabled="!reschedule"
                   icon="material-symbols:calendar-month-outline-rounded"
                   size="xl"
@@ -358,6 +389,7 @@ const selectedTime = ref();
                 text="Confirm to eDNCR the call by checking the checkbox."
               >
                 <UButton
+                  @click="callEndcr"
                   :disabled="!reject"
                   icon="material-symbols:shield-lock-outline-rounded"
                   size="xl"
@@ -424,6 +456,7 @@ const selectedTime = ref();
               />
               <UTooltip text="Report this call.">
                 <UButton
+                  @click="callReport"
                   :disabled="!reject"
                   icon="material-symbols:report-outline-rounded"
                   size="xl"
@@ -439,14 +472,11 @@ const selectedTime = ref();
         </div>
       </template>
     </UDrawer>
-
-    <!-- <NuxtLink to="#" class="group">
-      <div
-        class="opacity-50 my-5 py-4 text-center text-lg rounded-full bg-[var(--error-container)]/90 hover:bg-[var(--error-container)] text-[var(--on-error-container)]/90 hover:text-[var(--on-error-container)]"
-      >
-        Report this call
-      </div>
-    </NuxtLink> -->
+  </div>
+  <div v-else>
+    <h2>Submitted</h2>
+    <p>Your feedback has been submitted.</p>
+    <p>{{ feedback_message }}</p>
   </div>
 </template>
 <style lang="css" scoped>

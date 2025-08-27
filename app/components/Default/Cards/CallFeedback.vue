@@ -417,66 +417,79 @@ const callReport = async () => {
         </div>
       </div>
     </NuxtLink> -->
-
-    <UDrawer
-      title="Drawer with description"
-      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      :ui="{
-        content: 'rounded-t-4xl',
-      }"
-    >
-      <div class="group">
-        <UTooltip text="Report this call.">
-          <UButton
-            icon="material-symbols:report-outline-rounded"
-            size="xl"
-            variant="solid"
-            :ui="{
-              base: 'cursor-pointer bg-[var(--error-container)]/95 text-[var(--on-error-container)]/90 hover:bg-[var(--error-container)] hover:text-[var(--on-error-container)] w-full rounded-full justify-center py-4 text-xl',
-            }"
-            >Report this call</UButton
-          ></UTooltip
-        >
-      </div>
-
-      <template #content>
-        <div class="drawer_content">
-          <h2>Report this call</h2>
-          <p>
-            Report this company or business category for any telemarketing
-            violations.
-          </p>
-          <div class="my-5 flex flex-col justify-center items-center">
-            <div class="w-full lg:w-1/2">
-              <UCheckbox
-                class="mb-3 justify-center"
-                v-model="reject"
-                size="xl"
-                label="I confirm to report this call."
-              />
-              <UTooltip text="Report this call.">
-                <UButton
-                  @click="callReport"
-                  :disabled="!reject"
-                  icon="material-symbols:report-outline-rounded"
-                  size="xl"
-                  variant="solid"
-                  :ui="{
-                    base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
-                  }"
-                  >Report</UButton
-                ></UTooltip
-              >
-            </div>
-          </div>
-        </div>
-      </template>
-    </UDrawer>
   </div>
   <div v-else>
-    <h2>Submitted</h2>
-    <p>Your feedback has been submitted.</p>
-    <p>{{ feedback_message }}</p>
+    <div>
+      <h2>Submitted</h2>
+      <div
+        class="my-5 py-4 rounded-2xl text-center bg-[var(--surface-container)] text-[var(--on-surface-container)]"
+      >
+        <p class="text-lg">{{ feedback_message }}</p>
+      </div>
+    </div>
+    <div>
+      <h3>Report this call</h3>
+      <p>
+        If you found any violations on this call, e.i. Content of call is not
+        about the correct details.
+      </p>
+    </div>
+    <div class="py-5">
+      <UDrawer
+        title="Drawer with description"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        :ui="{
+          content: 'rounded-t-4xl',
+        }"
+      >
+        <div class="group">
+          <UTooltip text="Report this call.">
+            <UButton
+              icon="material-symbols:report-outline-rounded"
+              size="xl"
+              variant="solid"
+              :ui="{
+                base: 'cursor-pointer bg-[var(--error-container)]/95 text-[var(--on-error-container)]/90 hover:bg-[var(--error-container)] hover:text-[var(--on-error-container)] w-full rounded-full justify-center py-4 text-xl',
+              }"
+              >Report this call</UButton
+            ></UTooltip
+          >
+        </div>
+
+        <template #content>
+          <div class="drawer_content">
+            <h3>Report this call</h3>
+            <p>
+              Report this company or business category for any telemarketing
+              violations.
+            </p>
+            <div class="my-5 flex flex-col justify-center items-center">
+              <div class="w-full lg:w-1/2">
+                <UCheckbox
+                  class="mb-3 justify-center"
+                  v-model="reject"
+                  size="xl"
+                  label="I confirm to report this call."
+                />
+                <UTooltip text="Report this call.">
+                  <UButton
+                    @click="callReport"
+                    :disabled="!reject"
+                    icon="material-symbols:report-outline-rounded"
+                    size="xl"
+                    variant="solid"
+                    :ui="{
+                      base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
+                    }"
+                    >Report</UButton
+                  ></UTooltip
+                >
+              </div>
+            </div>
+          </div>
+        </template>
+      </UDrawer>
+    </div>
   </div>
 </template>
 <style lang="css" scoped>

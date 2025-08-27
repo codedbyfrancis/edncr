@@ -23,6 +23,7 @@ const sendMessageFollowUp = async () => {
 <template>
   <div class="px-2 mt-10">
     <h2>Explain with Artificial Intelligence.</h2>
+
     <UDrawer
       title="Drawer with description"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
@@ -33,7 +34,7 @@ const sendMessageFollowUp = async () => {
       <div class="flex flex-col p-5 justify-center items-center">
         <UIcon
           name="streamline:artificial-intelligence-spark-remix"
-          class="p-6 bg-[var(--primary-container)]/90 hover:bg-[var(--primary-container)]"
+          class="p-6 bg-[linear-gradient(to_right,indigo,purple,pink)]"
         />
       </div>
       <template #content>

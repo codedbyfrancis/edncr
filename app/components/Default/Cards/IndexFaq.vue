@@ -26,10 +26,6 @@ const items = ref<AccordionItem[]>([
 <template>
   <div class="px-2">
     <h2>Frequently Asked Questions</h2>
-    <UAccordion
-      type="multiple"
-      :items="items"
-      :ui="{ label: 'text-lg', body: 'text-base' }"
-    />
+    <UAccordion :items="items" :ui="{ label: 'text-lg', body: 'text-base' }" />
   </div>
 </template>

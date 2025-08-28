@@ -33,25 +33,9 @@ export default defineAppConfig({
   },
   theme: {
     extend: {
-      // transitionTimingFunction: {
-      //   material: 'cubic-bezier(0.4, 0, 0.2, 1)',
-      // },
-      keyframes: {
-        'gradient-shimmer': {
-          '0%': { 'background-position': '200% 0%' },
-          '100%': { 'background-position': '-200% 0%' },
-        },
-      },
-      animation: {
-        'gradient-shimmer': 'gradient-shimmer 3s linear infinite',
-      },
-      boxShadow: {
-        elevated: '0px 4px 20px rgba(0,0,0,0.12)',
-        hovered: '0px 8px 30px rgba(0,0,0,0.16)',
-      },
-      backgroundSize: {
-        '200%': '200% 100%',
-      },
+      keyframes: {},
+      animation: {},
+      boxShadow: {},
     },
   },
 });

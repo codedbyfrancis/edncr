@@ -37,29 +37,20 @@ export default defineAppConfig({
       //   material: 'cubic-bezier(0.4, 0, 0.2, 1)',
       // },
       keyframes: {
-        // 'slide-up-fade': {
-        //   '0%': { opacity: '0', transform: 'translateY(6px)' },
-        //   '100%': { opacity: '1', transform: 'translateY(0)' },
-        // },
-        // ripple: {
-        //   '0%': { transform: 'scale(0)', opacity: '0.3' },
-        //   '80%': { transform: 'scale(1)', opacity: '0' },
-        //   '100%': { opacity: '0' },
-        // },
-        gradient: {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
+        'gradient-shimmer': {
+          '0%': { 'background-position': '200% 0%' },
+          '100%': { 'background-position': '-200% 0%' },
         },
       },
       animation: {
-        // 'slide-up-fade':
-        //   'slide-up-fade 250ms var(--tw-transition-timing-function) both',
-        // ripple: 'ripple 600ms ease-out both',
-        gradient: 'gradient 6s ease infinite', // Adjust duration and timing function as needed
+        'gradient-shimmer': 'gradient-shimmer 3s linear infinite',
       },
       boxShadow: {
         elevated: '0px 4px 20px rgba(0,0,0,0.12)',
         hovered: '0px 8px 30px rgba(0,0,0,0.16)',
+      },
+      backgroundSize: {
+        '200%': '200% 100%',
       },
     },
   },

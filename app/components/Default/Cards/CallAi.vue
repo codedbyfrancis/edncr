@@ -31,11 +31,27 @@ const sendMessageFollowUp = async () => {
         content: 'rounded-t-4xl',
       }"
     >
-      <div class="flex flex-col p-5 justify-center items-center">
-        <UIcon
-          name="streamline:artificial-intelligence-spark-remix"
-          class="cursor-pointer p-6 bg-[linear-gradient(to_top_left,#E10AC8,#76F8D2,#220760)] hover:bg-[linear-gradient(to_top_right,#220760,#76F8D2,#E10AC8)]"
-        />
+      <div class="cursor-pointer container mx-auto relative w-16 h-16 mt-3">
+        <!-- Masked icon container -->
+        <div
+          class="absolute inset-0"
+          style="
+            -webkit-mask: url('https://api.iconify.design/streamline/artificial-intelligence-spark-remix.svg')
+              no-repeat center / contain;
+            mask: url('https://api.iconify.design/streamline/artificial-intelligence-spark-remix.svg')
+              no-repeat center / contain;
+            overflow: hidden;
+          "
+        >
+          <!-- Rotating gradient layer, bigger than icon -->
+          <div
+            class="absolute -top-10 -left-10 w-[calc(100%+80px)] h-[calc(100%+80px)]"
+            style="
+              background: conic-gradient(#e10ac8, #220760, #76f8d2, #e10ac8);
+              animation: spin 8s linear infinite;
+            "
+          ></div>
+        </div>
       </div>
       <template #content>
         <!-- <Placeholder class="h-48 m-4" /> -->
@@ -85,4 +101,14 @@ const sendMessageFollowUp = async () => {
     </UDrawer>
   </div>
 </template>
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+@reference 'tailwindcss';
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>

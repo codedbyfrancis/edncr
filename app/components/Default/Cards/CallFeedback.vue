@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { CalendarDate } from '@internationalized/date';
 import { ref } from 'vue';
 
@@ -122,6 +122,7 @@ const callReport = async () => {
   feedback_message.value = 'You have reported this call.';
   alert('Report.');
 };
+const value = ref<File[]>([]);
 </script>
 <template>
   <div v-if="!feedback_sent" class="flex flex-col gap-1 px-2 py-10">
@@ -473,31 +474,62 @@ const callReport = async () => {
                 <label>Describe the violation</label>
                 <UTextarea
                   v-model="report_message"
-                  :maxrows="4"
+                  :maxrows="10"
                   autoresize
                   class="w-full mb-3"
+                  :ui="{
+                    base: 'rounded-2xl text-lg',
+                  }"
                 />
-                <div class="w-full lg:w-1/2">
-                  <UCheckbox
-                    class="mb-3 justify-center"
-                    v-model="reject"
-                    size="xl"
-                    label="I confirm to report this call."
-                  />
-                  <UTooltip text="Report this call.">
+                <UFileUpload
+                  icon="i-lucide-image"
+                  layout="list"
+                  :interactive="true"
+                  multiple
+                  label="Drop your screenshots here"
+                  description="SVG, PNG, JPG or GIF (max. 2MB)"
+                  class="w-full min-h-24"
+                >
+                  <template #actions="{ open }">
                     <UButton
-                      @click="callReport"
-                      :disabled="!reject"
-                      icon="material-symbols:report-outline-rounded"
-                      size="xl"
-                      variant="solid"
-                      :ui="{
-                        base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
-                      }"
-                      >Report</UButton
-                    ></UTooltip
-                  >
-                </div>
+                      label="Select images"
+                      icon="i-lucide-upload"
+                      color="neutral"
+                      variant="outline"
+                      @click="open()"
+                    />
+                  </template>
+
+                  <template #files-bottom="{ removeFile, files }">
+                    <UButton
+                      v-if="files?.length"
+                      label="Remove all files"
+                      color="primary"
+                      @click="removeFile()"
+                    />
+                  </template>
+                </UFileUpload>
+              </div>
+              <div class="w-full lg:w-1/2 mt-5">
+                <UCheckbox
+                  class="mb-3 justify-center"
+                  v-model="reject"
+                  size="xl"
+                  label="I confirm to report this call."
+                />
+                <UTooltip text="Report this call.">
+                  <UButton
+                    @click="callReport"
+                    :disabled="!reject"
+                    icon="material-symbols:report-outline-rounded"
+                    size="xl"
+                    variant="solid"
+                    :ui="{
+                      base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
+                    }"
+                    >Report</UButton
+                  ></UTooltip
+                >
               </div>
             </div>
           </div>

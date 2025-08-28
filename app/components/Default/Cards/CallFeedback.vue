@@ -7,7 +7,8 @@ const reject = ref(false);
 const accept = ref(false);
 const reschedule = ref(false);
 const feedback_sent = ref(false);
-const feedback_message = ref();
+const feedback_message = ref('');
+const report_message = ref('');
 
 const formattedDate = computed(() => {
   const date = selectedDate.value;
@@ -91,7 +92,10 @@ const itemsTime = ref([
   '16:00 - 17:00',
   '17:00 - 18:00',
 ]);
-const selectedTime = ref();
+const selectedTime = ref('');
+const second_feedback_message = ref(
+  `Come back to this page to report any violations for the company/telemarketer.`
+);
 
 const callReject = async () => {
   feedback_sent.value = true;
@@ -425,6 +429,7 @@ const callReport = async () => {
         class="my-5 py-4 rounded-2xl text-center bg-[var(--surface-container)] text-[var(--on-surface-container)]"
       >
         <p class="text-lg">{{ feedback_message }}</p>
+        <p class="text-lg">{{ second_feedback_message }}</p>
       </div>
     </div>
     <div>
@@ -465,25 +470,34 @@ const callReport = async () => {
             </p>
             <div class="my-5 flex flex-col justify-center items-center">
               <div class="w-full lg:w-1/2">
-                <UCheckbox
-                  class="mb-3 justify-center"
-                  v-model="reject"
-                  size="xl"
-                  label="I confirm to report this call."
+                <label>Describe the violation</label>
+                <UTextarea
+                  v-model="report_message"
+                  :maxrows="4"
+                  autoresize
+                  class="w-full mb-3"
                 />
-                <UTooltip text="Report this call.">
-                  <UButton
-                    @click="callReport"
-                    :disabled="!reject"
-                    icon="material-symbols:report-outline-rounded"
+                <div class="w-full lg:w-1/2">
+                  <UCheckbox
+                    class="mb-3 justify-center"
+                    v-model="reject"
                     size="xl"
-                    variant="solid"
-                    :ui="{
-                      base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
-                    }"
-                    >Report</UButton
-                  ></UTooltip
-                >
+                    label="I confirm to report this call."
+                  />
+                  <UTooltip text="Report this call.">
+                    <UButton
+                      @click="callReport"
+                      :disabled="!reject"
+                      icon="material-symbols:report-outline-rounded"
+                      size="xl"
+                      variant="solid"
+                      :ui="{
+                        base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
+                      }"
+                      >Report</UButton
+                    ></UTooltip
+                  >
+                </div>
               </div>
             </div>
           </div>

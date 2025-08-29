@@ -48,7 +48,7 @@ const sendMessageFollowUp = async () => {
             class="absolute -top-10 -left-10 w-[calc(100%+80px)] h-[calc(100%+80px)]"
             style="
               background: conic-gradient(#e10ac8, #220760, #76f8d2, #e10ac8);
-              animation: spin 8s linear infinite;
+              animation: spin 4s ease-in-out infinite;
             "
           ></div>
         </div>

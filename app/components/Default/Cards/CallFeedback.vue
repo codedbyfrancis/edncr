@@ -94,33 +94,33 @@ const itemsTime = ref([
 ]);
 const selectedTime = ref('');
 const second_feedback_message = ref(
-  `Come back to this page to report any violations for the company/telemarketer.`
+  `You can come back to this page to report any violations for the company/telemarketer.`
 );
 
 const callReject = async () => {
   feedback_sent.value = true;
   feedback_message.value = 'Call is rejected.';
-  alert('Reject.');
+  // alert('Reject.');
 };
 const callAccept = async () => {
   feedback_sent.value = true;
   feedback_message.value = 'Call is accepted.';
-  alert('Accept.');
+  // alert('Accept.');
 };
 const callReschedule = async () => {
   feedback_sent.value = true;
   feedback_message.value = 'Call is rescheduled.';
-  alert('Reschedule.');
+  // alert('Reschedule.');
 };
 const callEndcr = async () => {
   feedback_sent.value = true;
   feedback_message.value = 'You have eDNCR this call.';
-  alert('eDNCR.');
+  // alert('eDNCR.');
 };
 const callReport = async () => {
   feedback_sent.value = true;
   feedback_message.value = 'You have reported this call.';
-  alert('Report.');
+  // alert('Report.');
 };
 const value = ref<File[]>([]);
 </script>

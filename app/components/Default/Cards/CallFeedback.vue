@@ -93,12 +93,15 @@ const itemsTime = ref([
   '17:00 - 18:00',
 ]);
 const selectedTime = ref('');
-const second_feedback_message = ref(
-  `You can come back to this page to report any violations for the company/telemarketer.`
+const feedback_message_reject = ref(false);
+const feedback_message_report = ref(
+  `You can come back to this page to report any violations made by the company/telemarketer on this call.`
 );
 
 const callReject = async () => {
   feedback_sent.value = true;
+  feedback_message_reject.value =
+    'The company mentioned above is not permitted to call you.';
   feedback_message.value = 'Call is rejected.';
   // alert('Reject.');
 };
@@ -423,118 +426,135 @@ const value = ref<File[]>([]);
       </div>
     </NuxtLink> -->
   </div>
-  <div v-else>
+  <div v-else class="px-2">
     <div>
       <h2>Submitted</h2>
       <div
         class="my-5 py-4 rounded-2xl text-center bg-[var(--surface-container)] text-[var(--on-surface-container)]"
       >
-        <p class="text-lg">{{ feedback_message }}</p>
-        <p class="text-lg">{{ second_feedback_message }}</p>
+        <h3>{{ feedback_message }}</h3>
+        <p class="text-lg" v-if="feedback_message_reject">
+          {{ feedback_message_reject }}
+        </p>
+        <p class="text-lg" v-if="feedback_message_report">
+          {{ feedback_message_report }}
+        </p>
       </div>
     </div>
     <div>
-      <h3>Report this call</h3>
-      <p>
-        If you found any violations on this call, e.i. Content of call is not
-        about the correct details.
-      </p>
-    </div>
-    <div class="py-5">
-      <UDrawer
-        title="Drawer with description"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        :ui="{
-          content: 'rounded-t-4xl',
-        }"
-      >
-        <div class="group">
-          <UTooltip text="Report this call.">
-            <UButton
-              icon="material-symbols:report-outline-rounded"
-              size="xl"
-              variant="solid"
-              :ui="{
-                base: 'cursor-pointer bg-[var(--error-container)]/95 text-[var(--on-error-container)]/90 hover:bg-[var(--error-container)] hover:text-[var(--on-error-container)] w-full rounded-full justify-center py-4 text-xl',
-              }"
-              >Report this call</UButton
-            ></UTooltip
-          >
-        </div>
+      <div>
+        <h3>Report this call</h3>
+        <p>
+          If you found any violations on this call, e.i. Content of call is not
+          about the correct details.
+        </p>
+      </div>
+      <div>
+        <UDrawer
+          title="Drawer with description"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          :ui="{
+            content: 'rounded-t-4xl',
+          }"
+        >
+          <div class="group">
+            <UTooltip text="Report this call.">
+              <UButton
+                icon="material-symbols:report-outline-rounded"
+                size="xl"
+                variant="solid"
+                :ui="{
+                  base: 'cursor-pointer bg-[var(--error-container)]/95 text-[var(--on-error-container)]/90 hover:bg-[var(--error-container)] hover:text-[var(--on-error-container)] w-full rounded-full justify-center py-4 text-xl',
+                }"
+                >Report this call</UButton
+              ></UTooltip
+            >
+          </div>
 
-        <template #content>
-          <div class="drawer_content">
-            <h3>Report this call</h3>
-            <p>
-              Report this company or business category for any telemarketing
-              violations.
-            </p>
-            <div class="my-5 flex flex-col justify-center items-center">
-              <div class="w-full lg:w-1/2">
-                <label>Describe the violation</label>
-                <UTextarea
-                  v-model="report_message"
-                  :maxrows="10"
-                  autoresize
-                  class="w-full mb-3"
-                  :ui="{
-                    base: 'rounded-2xl text-lg',
-                  }"
-                />
-                <UFileUpload
-                  icon="i-lucide-image"
-                  layout="list"
-                  :interactive="true"
-                  multiple
-                  label="Drop your screenshots here"
-                  description="SVG, PNG, JPG or GIF (max. 2MB)"
-                  class="w-full min-h-24"
-                >
-                  <template #actions="{ open }">
-                    <UButton
-                      label="Select images"
-                      icon="i-lucide-upload"
-                      color="neutral"
-                      variant="outline"
-                      @click="open()"
-                    />
-                  </template>
+          <template #content>
+            <div class="drawer_content">
+              <h3>Report this call</h3>
+              <p>
+                Report this company or business category for any telemarketing
+                violations.
+              </p>
+              <div class="my-5 flex flex-col justify-center items-center">
+                <div class="w-full lg:w-1/2">
+                  <p
+                    class="my-3 py-3 text-center rounded-md bg-[var(--error-container)] text-[var(--on-error-container)]"
+                  >
+                    Any tampering of screenshots or false accusation are illegal
+                    and can be used against you.
+                  </p>
 
-                  <template #files-bottom="{ removeFile, files }">
-                    <UButton
-                      v-if="files?.length"
-                      label="Remove all files"
-                      color="primary"
-                      @click="removeFile()"
-                    />
-                  </template>
-                </UFileUpload>
-              </div>
-              <div class="w-full lg:w-1/2 mt-5">
-                <UCheckbox
-                  class="mb-3 justify-center"
-                  v-model="reject"
-                  size="xl"
-                  label="I confirm to report this call."
-                />
-                <UTooltip text="Report this call.">
-                  <UButton
-                    @click="callReport"
-                    :disabled="!reject"
-                    icon="material-symbols:report-outline-rounded"
-                    size="xl"
-                    variant="solid"
+                  <label>Describe the violation</label>
+                  <UTextarea
+                    v-model="report_message"
+                    :maxrows="10"
+                    autoresize
+                    class="w-full mb-3"
                     :ui="{
-                      base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
+                      base: 'rounded-2xl text-lg',
                     }"
-                    >Report</UButton
-                  ></UTooltip
-                >
+                  />
+                  <UFileUpload
+                    icon="i-lucide-image"
+                    layout="list"
+                    :interactive="true"
+                    multiple
+                    label="Drop your screenshots here"
+                    description="SVG, PNG, JPG or GIF (max. 2MB)"
+                    class="w-full min-h-24"
+                    :ui="{
+                      base: 'rounded-2xl',
+                    }"
+                  >
+                    <template #actions="{ open }">
+                      <UButton
+                        label="Select images"
+                        icon="i-lucide-upload"
+                        color="neutral"
+                        variant="outline"
+                        @click="open()"
+                      />
+                    </template>
+
+                    <template #files-bottom="{ removeFile, files }">
+                      <UButton
+                        v-if="files?.length"
+                        label="Remove all files"
+                        color="primary"
+                        @click="removeFile()"
+                      />
+                    </template>
+                  </UFileUpload>
+                </div>
+                <div class="w-full lg:w-1/2 mt-5">
+                  <UCheckbox
+                    class="mb-3 justify-center"
+                    v-model="reject"
+                    size="xl"
+                    label="I confirm to report this call."
+                  />
+                  <UTooltip text="Report this call.">
+                    <UButton
+                      @click="callReport"
+                      :disabled="!reject"
+                      icon="material-symbols:report-outline-rounded"
+                      size="xl"
+                      variant="solid"
+                      :ui="{
+                        base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
+                      }"
+                      >Report</UButton
+                    ></UTooltip
+                  >
+                </div>
               </div>
             </div>
-          </div>
-        </template>
-      </UDrawer>
+          </template>
+        </UDrawer>
+      </div>
     </div>
   </div>
 </template>
@@ -549,5 +569,9 @@ const value = ref<File[]>([]);
 }
 .drawer_content {
   @apply px-4 pb-10;
+}
+div[disabled] {
+  pointer-events: none;
+  opacity: 0.1;
 }
 </style>

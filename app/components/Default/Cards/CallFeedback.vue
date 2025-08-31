@@ -427,10 +427,10 @@ const value = ref<File[]>([]);
     </NuxtLink> -->
   </div>
   <div v-else class="px-2">
-    <div>
+    <div class="mt-5">
       <h2>Submitted</h2>
       <div
-        class="my-5 py-4 rounded-2xl text-center bg-[var(--surface-container)] text-[var(--on-surface-container)]"
+        class="my-5 py-4 px-2 rounded-xl text-center bg-[var(--surface-container)] text-[var(--on-surface-container)]"
       >
         <h3>{{ feedback_message }}</h3>
         <p class="text-lg" v-if="feedback_message_reject">
@@ -441,7 +441,7 @@ const value = ref<File[]>([]);
         </p>
       </div>
     </div>
-    <div>
+    <div class="mt-5">
       <div>
         <h3>Report this call</h3>
         <p>
@@ -449,7 +449,7 @@ const value = ref<File[]>([]);
           about the correct details.
         </p>
       </div>
-      <div>
+      <div class="mt-5">
         <UDrawer
           title="Drawer with description"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
@@ -475,16 +475,16 @@ const value = ref<File[]>([]);
             <div class="drawer_content">
               <h3>Report this call</h3>
               <p>
-                Report this company or business category for any telemarketing
+                Report this telemarketer or company for any telemarketing
                 violations.
               </p>
               <div class="my-5 flex flex-col justify-center items-center">
                 <div class="w-full lg:w-1/2">
                   <p
-                    class="my-3 py-3 text-center rounded-md bg-[var(--error-container)] text-[var(--on-error-container)]"
+                    class="my-3 py-3 text-center rounded-xl bg-[var(--error-container)] text-[var(--on-error-container)]"
                   >
-                    Any tampering of screenshots or false accusation are illegal
-                    and can be used against you.
+                    Any tampering of screenshots or false accusation are
+                    unlawful and can be used against you.
                   </p>
 
                   <label>Describe the violation</label>
@@ -534,7 +534,7 @@ const value = ref<File[]>([]);
                     class="mb-3 justify-center"
                     v-model="reject"
                     size="xl"
-                    label="I confirm to report this call."
+                    label="I confirm that all the screenshots and details attached herewith are truthful."
                   />
                   <UTooltip text="Report this call.">
                     <UButton

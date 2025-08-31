@@ -61,11 +61,11 @@ const sendMessageFollowUp = async () => {
             <div>
               <DefaultCardsCallAiGenerate />
             </div>
-            <div class="py-6 px-4">
+            <div class="py-6">
               <div v-if="loading">Gemini is thinking... please wait.</div>
               <div
                 v-if="reply"
-                class="md box prose dark:prose-invert p-8 bg-[var(--surface-container-high)] rounded-4xl"
+                class="md box prose dark:prose-invert py-3 px-4 bg-[var(--surface-container-high)] rounded-lg"
                 v-html="reply"
               ></div>
             </div>

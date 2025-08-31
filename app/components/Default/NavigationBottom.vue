@@ -22,6 +22,24 @@ const { locale } = useI18n();
         </li>
       </NuxtLinkLocale>
 
+      <NuxtLinkLocale to="/call" class="icon">
+        <li>
+          <span class="icon">
+            <UIcon
+              name="material-symbols:mobile-gear-rounded"
+              class="size-7"
+              v-if="route.name === 'call___' + locale"
+            />
+            <UIcon
+              v-else
+              name="material-symbols:mobile-gear-outline-rounded"
+              class="size-7"
+            />
+          </span>
+          <span class="name">Call</span>
+        </li>
+      </NuxtLinkLocale>
+
       <NuxtLinkLocale to="/about" class="icon">
         <li>
           <span class="icon">

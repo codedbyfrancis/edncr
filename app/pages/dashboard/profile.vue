@@ -9,7 +9,16 @@ const user = data?.claims;
 
 const { data: profileData, error } = await supabase
   .from('profiles')
-  .select()
+  .select(
+    `
+    id,
+    user_id,
+    role,
+    created_at,
+    modified_at,
+    company_id, companies (id, name, telephone, email, mobile, status, modified_by, profiles (user_id, first_name, last_name, email, phone, role), modified_at, created_at))
+  `
+  )
   .eq('user_id', user?.sub)
   .single();
 

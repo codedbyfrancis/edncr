@@ -125,3 +125,19 @@ BEGIN
         END IF;
     END LOOP;
 END $$;
+
+-- Add 3 companies
+DO $$
+DECLARE
+    superuser_id uuid;
+BEGIN
+    -- Get user_id
+    SELECT id INTO superuser_id FROM auth.users WHERE email = 'superuser@example.com';
+
+    -- Insert 3 companies
+    INSERT INTO public.companies (name, email, telephone, mobile, website, logo, trade_license, trade_license_expiration, contact_person_name, contact_person_phone, contact_person_email, status, modified_by)
+    VALUES
+        ('Innovate Tech', 'contact@innovatetech.com', '04-1234567', '050-1111111', 'https://innovatetech.com', 'https://example.com/logos/innovate.png', 'TR-12345', '2026-08-01', 'John Doe', '050-1234567', 'john.doe@innovatetech.com', 'active', superuser_id),
+        ('Global Solutions', 'info@globalsolutions.ae', '02-7654321', '055-2222222', 'https://globalsolutions.ae', 'https://example.com/logos/global.png', 'TR-54321', '2027-01-15', 'Jane Smith', '055-9876543', 'jane.smith@globalsolutions.ae', 'active', superuser_id),
+        ('Future Enterprises', 'hello@future-ent.com', '06-5558888', '052-3333333', 'https://future-ent.com', 'https://example.com/logos/future.png', 'TR-67890', '2025-11-20', 'Peter Jones', '052-4567890', 'peter.jones@future-ent.com', 'inactive', superuser_id);
+END $$;

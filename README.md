@@ -33,6 +33,10 @@ cursor-agent
 
 # Supabase Migration
 
+## DB Reset
+
+Run: supabase db reset
+
 ## Initial Schema
 
 Run: supabase db diff --use-migra initial_schema -f initial_schema.sql

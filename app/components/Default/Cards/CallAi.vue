@@ -77,7 +77,7 @@ const sendMessageFollowUp = async () => {
                 v-model="userMessage"
                 placeholder="What would you like to ask?"
                 :ui="{
-                  base: 'my-2 py-2 text-lg bg-[var(--surface-container-high)] border-0 text-[var(--on-surface-container)]', // Set a custom background color for the input field
+                  base: 'my-2 py-2 text-lg border-0 rounded-2xl', // Set a custom background color for the input field
                   // You can also target specific states like focus or hover:
                   // focus: 'ring-red-500',
                   // hover: 'bg-red-300'

@@ -20,7 +20,8 @@ const { data: profileData, error } = await supabase
   .single();
 
 async function role_update(newRole: string) {
-  if (!user?.sub) {
+  if (!user?.sub || profileData?.role === 'user') {
+    showErrorToast();
     throw new Error('User not authenticated');
   }
 

@@ -11,13 +11,10 @@ const { data: profileData, error } = await supabase
   .from('profiles')
   .select(
     `
-    id,
-    user_id,
-    role,
-    created_at,
-    modified_at,
-    company_id, companies (id, name, telephone, email, mobile, status, modified_by, profiles (user_id, first_name, last_name, email, phone, role), modified_at, created_at))
-  `
+    id, user_id, first_name, last_name, email, phone, role, created_at, company_id, modified_at,
+    company:companies 
+       (id, name, telephone, email, mobile, status)
+    `
   )
   .eq('user_id', user?.sub)
   .single();

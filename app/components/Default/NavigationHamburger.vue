@@ -7,7 +7,7 @@ const user = ref<User | null>(null);
 
 const getUser = async () => {
   const { data } = await supabase.auth.getUser();
-  user.value = data.user;
+  user.value = data?.user;
 };
 
 onMounted(async () => {
@@ -59,6 +59,7 @@ const { data: profileData, error } = await supabase
   )
   .eq('user_id', profile?.sub)
   .single();
+console.log(profileData);
 </script>
 
 <template>
@@ -193,6 +194,8 @@ const { data: profileData, error } = await supabase
                         v-if="profileData?.company"
                         class="text-sm font-normal"
                       >
+                        <span class="capitalize">{{ profileData?.role }}</span>
+                        @
                         {{ profileData?.company.name }}
                       </div>
                     </div>

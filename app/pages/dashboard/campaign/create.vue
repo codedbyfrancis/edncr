@@ -45,9 +45,11 @@ const database = ref('');
 const fileUploadValidation = (file: File) => {
   const acceptedTypes = [
     'text/csv',
+    'application/vnd.ms-excel',
     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   ];
-  const acceptedSize = 5 * 1024 * 1024;
+
+  const acceptedSize = 5242880; // 5MB limit
   if (!acceptedTypes.includes(file.type)) {
     return {
       valid: false,

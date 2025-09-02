@@ -121,7 +121,7 @@ const onCreateCampaign = async () => {
           v-model="database"
           layout="list"
           label="Drop your data here"
-          description="csv,xls (max. 2MB)"
+          description="csv, xlsx (max. 5MB)"
           class="w-full"
           :ui="{
             base: 'min-h-16',

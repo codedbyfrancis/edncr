@@ -14,11 +14,11 @@ const user = data?.claims;
 // const user = useSupabaseUser();
 const config = useRuntimeConfig();
 useSeoMeta({
-  title: 'Dashboard/Upload Campaign',
-  ogTitle: 'Dashboard/Upload Campaign' + ' | ' + config.public.appName,
-  description: 'Dashboard/Upload Campaign description',
-  ogDescription: 'Dashboard/Upload Campaign description for social media',
-  ogUrl: config.public.appUrl + '/dashboard/upload-campaign',
+  title: 'Dashboard/create Campaign',
+  ogTitle: 'Dashboard/create Campaign' + ' | ' + config.public.appName,
+  description: 'Dashboard/create Campaign description',
+  ogDescription: 'Dashboard/create Campaign description for social media',
+  ogUrl: config.public.appUrl + '/dashboard/campaign-create',
   ogType: 'website',
   ogSiteName: config.public.appName,
   ogImage: config.public.imageCdnUrl + '/icons/android-chrome-512x512.png',
@@ -40,10 +40,43 @@ const daterange = ref({
     today.getDate() + 7
   ),
 });
+const database = ref('');
+
+const fileUploadValidation = (file: File) => {
+  const acceptedTypes = [
+    'text/csv',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  ];
+  const acceptedSize = 5 * 1024 * 1024;
+  if (!acceptedTypes.includes(file.type)) {
+    return {
+      valid: false,
+      message: 'Only csv and xslx files are allowed',
+    };
+  }
+  if (file.size > acceptedSize) {
+    return {
+      valid: false,
+      message: 'File size must be less than 5mb',
+    };
+  }
+  return {
+    valid: true,
+  };
+};
+
+const onCreateCampaign = async () => {
+  const validation = fileUploadValidation(database.value);
+  if (validation.valid) {
+    alert('success', validation.message);
+  } else {
+    alert('error', database.value);
+  }
+};
 </script>
 <template>
   <div>
-    <h1>Upload Campaign</h1>
+    <h1>Create Campaign</h1>
     <div class="flex flex-col w-full lg:w-1/2 mx-auto gap-3">
       <div class="flex flex-col">
         <label for="name">Campaign name:</label
@@ -63,6 +96,7 @@ const daterange = ref({
           <UCalendar
             range
             v-model="daterange"
+            size="lg"
             :min-value="
               new CalendarDate(
                 today.getFullYear(),
@@ -79,15 +113,30 @@ const daterange = ref({
             "
           />
         </div>
-        <div class="mt-3">
-          <UButton
-            label="Submit campaign"
-            :ui="{
-              base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
-            }"
-          />
-        </div>
       </div>
+      <div>
+        <UFileUpload
+          v-model="database"
+          layout="list"
+          label="Drop your data here"
+          description="csv,xls (max. 2MB)"
+          class="w-full"
+          :ui="{
+            base: 'min-h-16',
+          }"
+          :validation="fileUploadValidation"
+        />
+      </div>
+      <div>
+        <UButton
+          @click="onCreateCampaign"
+          label="Create campaign"
+          :ui="{
+            base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
+          }"
+        />
+      </div>
+      <!-- <div>{{ fileUploadValidation(database) }}</div> -->
     </div>
   </div>
 </template>

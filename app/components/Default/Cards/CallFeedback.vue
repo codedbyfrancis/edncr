@@ -336,7 +336,7 @@ const value = ref<File[]>([]);
                   @click="callReschedule"
                   :disabled="!reschedule"
                   icon="material-symbols:calendar-month-outline-rounded"
-                  size="xl"
+                  size="lg"
                   variant="solid"
                   :ui="{
                     base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',

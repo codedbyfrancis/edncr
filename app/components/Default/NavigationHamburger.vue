@@ -43,6 +43,22 @@ onMounted(() => {
 onBeforeUnmount(() => {
   document.removeEventListener('mousedown', handleClickOutside);
 });
+
+// Get profiles details from profiles table
+const { data } = await supabase.auth.getClaims();
+const profile = data?.claims;
+
+const { data: profileData, error } = await supabase
+  .from('profiles')
+  .select(
+    `
+    id, user_id, first_name, last_name, email, phone, role, created_at, company_id, modified_at,
+    company:companies 
+       (id, name, telephone, email, mobile, status)
+    `
+  )
+  .eq('user_id', profile?.sub)
+  .single();
 </script>
 
 <template>
@@ -170,7 +186,16 @@ onBeforeUnmount(() => {
                     to="/dashboard/profile"
                   >
                     <DefaultAvatar />
-                    <span>{{ user.phone }}</span>
+
+                    <div class="flex flex-col">
+                      <div>{{ user.phone }}</div>
+                      <div
+                        v-if="profileData?.company"
+                        class="text-sm font-normal"
+                      >
+                        {{ profileData?.company.name }}
+                      </div>
+                    </div>
                   </NuxtLinkLocale>
                 </div>
                 <div class="w-1/4 overflow-hidden">

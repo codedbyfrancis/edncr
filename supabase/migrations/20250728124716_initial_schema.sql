@@ -2,7 +2,7 @@ create type "public"."language" as enum ('en', 'ar', 'nl');
 
 create type "public"."pages_status" as enum ('draft', 'for_review', 'rejected',  'approved', 'deleted');
 
-create type "public"."roles" as enum ('user', 'contributor', 'editor', 'manager', 'superuser');
+create type "public"."roles" as enum ('user', 'contributor', 'editor', 'agent', 'supervisor', 'manager', 'superuser');
 
 create type "public"."user_status" as enum ('active', 'on_hold', 'banned');
 

@@ -17,8 +17,8 @@ function isValidPhone() {
   // Example: UAE phone numbers (9 digits, starts with 5)
   // Adjust the regex as needed for your requirements
   const phoneDigits = phone.value.replace(/\D/g, '');
-  // return /^5\d{8}$/.test(phoneDigits); // For UAE numbers
-  return /^3\d{11}$/.test(phoneDigits); // For Italy numbers
+  return /^5\d{8}$/.test(phoneDigits); // For UAE numbers
+  // return /^3\d{11}$/.test(phoneDigits); // For Italy numbers
 }
 
 async function signInWithOtp() {
@@ -79,7 +79,34 @@ async function verifyOtp() {
       <h3>{{ $t('log-in-with-uae-registered-phone') }}</h3>
     </div>
     <div class="note">
-      <div>393662536579</div>
+      <!-- <div>393662536579</div> -->
+
+      <select v-model="phone" class="select">
+        <option value="">Select a test user</option>
+        <optgroup label="Company 1">
+          <option value="500000100">Manager 1</option>
+          <option value="500000101">Manager 2</option>
+          <option value="500000110">Supervisor 1</option>
+          <option value="500000120">Supervisor 2</option>
+          <option value="500000111">Agent 1</option>
+          <option value="500000112">Agent 2</option>
+          <option value="500000113">Agent 3</option>
+        </optgroup>
+        <optgroup label="Company 2">
+          <option value="500000200">Manager 1</option>
+          <option value="500000201">Manager 2</option>
+          <option value="500000210">Supervisor 1</option>
+          <option value="500000220">Supervisor 2</option>
+          <option value="500000211">Agent 1</option>
+          <option value="500000212">Agent 2</option>
+          <option value="500000213">Agent 3</option>
+        </optgroup>
+        <optgroup label="Users">
+          <option value="500000001">User 1</option>
+          <option value="500000002">User 2</option>
+          <option value="500000003">User 3</option>
+        </optgroup>
+      </select>
     </div>
     <div class="flex flex-col gap-2">
       <div>

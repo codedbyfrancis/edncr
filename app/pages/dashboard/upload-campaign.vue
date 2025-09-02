@@ -70,6 +70,21 @@ const daterange = ref({
                 today.getDate()
               )
             "
+            :max-value="
+              new CalendarDate(
+                today.getFullYear() + 1,
+                today.getMonth(),
+                today.getDate()
+              )
+            "
+          />
+        </div>
+        <div class="mt-3">
+          <UButton
+            label="Submit campaign"
+            :ui="{
+              base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
+            }"
           />
         </div>
       </div>

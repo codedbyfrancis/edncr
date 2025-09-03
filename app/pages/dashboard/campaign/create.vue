@@ -129,6 +129,8 @@ const onCreateCampaign = async () => {
           :validation="fileUploadValidation"
         />
       </div>
+
+      <DefaultCardsFileUpload />
       <div>
         <UButton
           @click="onCreateCampaign"

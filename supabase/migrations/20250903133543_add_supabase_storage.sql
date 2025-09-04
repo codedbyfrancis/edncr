@@ -1,6 +1,6 @@
 -- # Replace 'files' with your bucket name if needed
 insert into storage.buckets (id, name, public)
-values ('campaigns', 'campaigns', true)
+values ('campaigns', 'campaigns', false)
 on conflict (id) do nothing;
 
 -- # Remove any old conflicting policies
@@ -30,5 +30,5 @@ with check (
 create policy "Allow all selects"
 on storage.objects
 for select
-to public
+to authenticated
 using (true);

@@ -3,12 +3,6 @@ insert into storage.buckets (id, name, public)
 values ('campaigns', 'campaigns', false)
 on conflict (id) do nothing;
 
--- # Remove any old conflicting policies
--- drop policy if exists "Allow all uploads" on storage.objects;
--- drop policy if exists "Allow authenticated uploads" on storage.objects;
--- drop policy if exists "Allow anon uploads" on storage.objects;
-
-
 -- # Only allow authenticated users to upload, and only into 'files' bucket
 create policy "Authenticated users can upload"
 on storage.objects
@@ -19,16 +13,13 @@ with check (
   and owner = auth.uid()
 );
 
--- # For testing: allow anyone to insert
--- create policy "Allow all uploads"
--- on storage.objects
--- for insert
--- to public
--- with check (true);
-
--- # Also allow reads (optional, for testing)
-create policy "Allow all selects"
+-- # Only allow authenticated users to select files
+create policy "Authenticated users can select"
 on storage.objects
 for select
 to authenticated
-using (true);
+using (
+  bucket_id = 'campaigns'
+  and owner = auth.uid()
+);
+

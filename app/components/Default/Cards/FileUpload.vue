@@ -3,9 +3,15 @@
     <div class="flex flex-col gap-3">
       <h2>Upload file</h2>
       <label for="file">Select a file:</label>
-      <input type="file" id="file" @change="fileSelected" />
+      <input
+        type="file"
+        id="file"
+        @change="fileSelected"
+        :disabled="submitButton"
+      />
 
       <UButton
+        :disabled="submitButton"
         type="submit"
         :ui="{
           base: 'cursor-pointer bg-[var(--primary)]/95 text-[var(--on-primary)]/90 hover:bg-[var(--primary)] hover:text-[var(--on-primary)] w-full rounded-full justify-center py-4 text-xl',
@@ -30,12 +36,35 @@ const file = ref(null);
 const error = ref(null);
 const success = ref(false);
 const filePublicUrl = ref(null);
+const submitButton = ref(false);
 
 function fileSelected(event) {
   file.value = event.target.files[0];
 }
 
+function validateFile() {
+  if (!file.value) return true;
+  const isCsv =
+    file.value.type === 'text/csv' ||
+    file.value.type ===
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+  const isUnder5mb = file.value.size < 5 * 1024 * 1024;
+  if (!isCsv) {
+    error.value = 'Please select a CSV file';
+    return false;
+  }
+  if (!isUnder5mb) {
+    error.value = 'Please select a file under 5MB in size';
+    return false;
+  }
+  return true;
+}
+
 async function submitFile() {
+  error.value = null;
+  success.value = null;
+  if (!validateFile()) return;
+
   if (!file.value) {
     error.value = 'Please select a file';
     return;
@@ -51,9 +80,9 @@ async function submitFile() {
   } else {
     // Generate public URL
     const { data: publicData } = supabase.storage
-      .from('files')
+      .from('campaigns')
       .getPublicUrl(filePath);
-
+    submitButton.value = true;
     success.value = true;
     filePublicUrl.value = publicData.publicUrl;
   }

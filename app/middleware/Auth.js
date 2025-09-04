@@ -12,7 +12,8 @@ export default defineNuxtRouteMiddleware(async () => {
   // console.log(user);
 
   if (!user) {
-    return navigateTo('../accounts/');
+    // return navigateTo('/accounts/');
+    window.location.href = '/accounts/';
   }
   console.log(`Finished: ${Date.now() - startTime}ms`);
 });

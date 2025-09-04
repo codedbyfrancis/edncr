@@ -23,6 +23,9 @@
     <div v-if="success">
       <div>File uploaded successfully!</div>
       <div>File URL: {{ filePublicUrl }}</div>
+      <div v-if="signedUrl">
+        Signed URL: {{ JSON.stringify(signedUrl) }} (expires in 60seconds)
+      </div>
     </div>
   </form>
 </template>
@@ -37,6 +40,7 @@ const error = ref(null);
 const success = ref(false);
 const filePublicUrl = ref(null);
 const submitButton = ref(false);
+const signedUrl = ref('');
 
 function fileSelected(event) {
   file.value = event.target.files[0];
@@ -85,6 +89,19 @@ async function submitFile() {
     submitButton.value = true;
     success.value = true;
     filePublicUrl.value = publicData.publicUrl;
+    signedUrl.value = createSignedUrl(filePath);
+  }
+}
+
+async function createSignedUrl(filePath) {
+  const { data, error } = await supabase.storage
+    .from('campaigns')
+    .createSignedUrl(filePath, 60); // 60 = expires in 60 seconds
+
+  if (data) {
+    // console.log('Signed URL:', data.signedUrl);
+    signedUrl.value = data.signedUrl;
+    return data.signedUrl;
   }
 }
 </script>
